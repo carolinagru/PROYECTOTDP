@@ -117,7 +117,7 @@ public class Logica {
 						p.actualizarGrafico();
 					}
 					//else if (o.getElement().dejoAtacar(p.getVisitor()))
-							//atacarEnemigo(p,o);	
+							//atacarEnemigo(p,o);	 kjndsi
 			}		
 		}
 	}
