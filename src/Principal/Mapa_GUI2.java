@@ -42,7 +42,7 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JPanel panel_3; 
+	private JPanel panel_3;   
 	/**
 	 * Launch the application.
 	 */
