@@ -27,7 +27,7 @@ import java.awt.Graphics;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.SwingConstants;
-
+ 
 
 public class Mapa_GUI2 extends JFrame {
 	
@@ -42,7 +42,7 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JPanel panel_3; 
+	private JPanel panel_3;   
 	/**
 	 * Launch the application.
 	 */
