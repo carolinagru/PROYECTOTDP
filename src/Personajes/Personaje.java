@@ -30,5 +30,4 @@ public abstract class Personaje extends Obstaculo{
 		return v;
 	}
 		
-	public abstract void atacar();
 }

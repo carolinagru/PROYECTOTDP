@@ -35,7 +35,7 @@ public class Logica {
 	
 	protected int monedas;
 	protected int puntos;
-	protected Timer t1,t2,t3;
+	protected Timer t1,t2,t3,t4;
 	protected LinkedList<Personaje> aliensMapa;
 	protected LinkedList<Personaje> soldadosMapa;
 	protected LinkedList<Obstaculo> eliminados;
@@ -74,6 +74,7 @@ public class Logica {
 	
 	    insertarEnemigos();
 	    moverAlien();
+		
 	}
 	
 	public void insertarEnemigos() {
@@ -110,10 +111,11 @@ public class Logica {
 				c.setElemento(p);
 				p.actualizarGrafico();
 			}
-			else if (o.accept(p.getVisitor()))
-					p.atacar();
+		//	else if (o.accept(p.getVisitor()))
+						
 		}
 	}
+	
 	
 	public void crearS1(int x, int y) {
 		Celda c = mapaCombate.getCelda(x, y);

@@ -18,5 +18,15 @@ public class VisitorAlien implements Visitor {
 		return true;
 	}
 
+	public void sacarVida(ObjetoVida a) {
+		a.setVida(20);
+	}
+
+	public void sacarVida(Alien a) {
+	}
+
+	public void sacarVida(Soldado a) {
+		a.setVida(10);
+	}
 	
 }

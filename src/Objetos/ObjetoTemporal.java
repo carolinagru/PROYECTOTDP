@@ -14,4 +14,8 @@ public class ObjetoTemporal extends Obstaculo{
 	public boolean accept(Visitor v) {
 		return false;
 	}
+	
+	public void atacar(Visitor v) {
+		
+	}
 }

@@ -17,5 +17,8 @@ public class ObjetoVida extends Obstaculo {
 		return v.visit(this);
 	}
 
+	public void atacar(Visitor v) {
+		v.sacarVida(this);
+	}
 
 }

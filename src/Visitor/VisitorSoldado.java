@@ -18,5 +18,15 @@ public class VisitorSoldado implements Visitor {
 	public boolean visit(ObjetoVida a) {
 		return false;
 	}
+	
+	public void sacarVida(ObjetoVida a) {
+	}
+
+	public void sacarVida(Alien a) {
+		a.setVida(30);
+	}
+
+	public void sacarVida(Soldado a) {
+	}
 
 }

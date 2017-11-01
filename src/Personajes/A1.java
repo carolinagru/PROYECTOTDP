@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 
 import Graficos.Alien1Grafico;
 import Graficos.Alien3Grafico;
+import Objetos.Obstaculo;
 import Principal.Celda;
 import Visitor.Visitor;
 import Visitor.VisitorAlien;
@@ -19,5 +20,5 @@ public class A1 extends Alien{
 		this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());		
 	}
 	
-	
+     
 }

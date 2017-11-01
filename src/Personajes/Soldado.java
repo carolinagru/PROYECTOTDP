@@ -18,7 +18,7 @@ public  class Soldado extends Personaje {
 		return v.visit(this);
 	}
 	
-	public void atacar(){
-	    	 
+	public void atacar(Visitor v){
+	    v.sacarVida(this);
 	}
 }

@@ -42,4 +42,7 @@ public abstract class Obstaculo {
 		return vida;
 	}
 	public abstract boolean accept(Visitor v);
+	
+	public abstract void atacar(Visitor v);
+	
 }
