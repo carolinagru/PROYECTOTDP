@@ -1,7 +1,6 @@
 package Personajes;
 
 import Principal.Celda;
-import Visitor.ElementoSoldado;
 import Visitor.Visitor;
 import Visitor.VisitorSoldado;
 
@@ -13,10 +12,13 @@ public  class Soldado extends Personaje {
 	public Soldado(Celda pos) {
  		super(pos);
  		v = new VisitorSoldado();
- 		e = new ElementoSoldado();
- 		
+	}
 	
- }
-
+	public boolean accept(Visitor v) {
+		return v.visit(this);
+	}
 	
+	public void atacar(){
+	    	 
+	}
 }

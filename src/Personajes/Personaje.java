@@ -29,9 +29,6 @@ public abstract class Personaje extends Obstaculo{
 	public Visitor getVisitor() {
 		return v;
 	}
-	public Elemento getElemento() {
-		return e;
-	}
-	
-	
+		
+	public abstract void atacar();
 }

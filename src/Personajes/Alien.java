@@ -11,13 +11,18 @@ public  class Alien extends Personaje {
     protected int punto;
     protected Premio powerUps;
      
-     public Alien(Celda pos) {
+    public Alien(Celda pos) {
  		super(pos);
  		v = new VisitorAlien(); 
- 		e = new ElementoAlien();
  	}
-
+    
+    public boolean accept(Visitor v) {
+ 		return v.visit(this);
+ 	}
 	
+    public void atacar(){
+    	 
+    }
      
      
 

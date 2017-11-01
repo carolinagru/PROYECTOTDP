@@ -9,14 +9,12 @@ import javax.swing.JPanel;
 
 import Graficos.PersonajeGrafico;
 import Principal.Celda;
-import Visitor.Elemento;
 import Visitor.Visitor;
 
 public abstract class Obstaculo {
 
 	protected PersonajeGrafico grafico;
 	protected Celda pos;
-	protected Elemento e;	
 	protected static int vida=100;
 	
 	public JLabel getGrafico() {	
@@ -31,20 +29,17 @@ public abstract class Obstaculo {
 	  grafico.actualizarGrafico();
 	}
 	
-	
 	public void setCelda(int x, int y) {
 		pos.set(x, y);
 		grafico.setPoint(x,y);
-	}
-	public Elemento getElement() {
-		return e;
 	}
 	
 	public void setVida(int i) {
 		vida-=i;
 	}
+	
 	public int getVida() {
 		return vida;
 	}
-	
+	public abstract boolean accept(Visitor v);
 }

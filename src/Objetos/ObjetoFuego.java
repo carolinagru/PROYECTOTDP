@@ -2,16 +2,18 @@ package Objetos;
 
 import Graficos.ObjetoFuegoGrafico;
 import Principal.Celda;
-import Visitor.ElementoFuego;
+import Visitor.Visitor;
 
 public class ObjetoFuego extends ObjetoTemporal{
 
 	public ObjetoFuego(Celda c) {
 		super(c);
 		grafico = new ObjetoFuegoGrafico(c.getFila(), c.getColumna());
-		e = new ElementoFuego();
 	}
 	
+	public boolean accept(Visitor v) {
+		return false;
+	}
 	
 	
 }

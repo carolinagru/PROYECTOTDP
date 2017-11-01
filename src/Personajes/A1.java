@@ -16,9 +16,8 @@ public class A1 extends Alien{
 	public A1(Celda pos ) {	
 		super(pos);
 		this.fuerza = (float) 0.7;
-		System.out.println("Entre A1 Fila :"+ pos.getFila()+ " Columna :"+pos.getColumna());
-
 		this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());		
 	}
+	
 	
 }

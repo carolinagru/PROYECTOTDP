@@ -109,32 +109,10 @@ public class Logica {
 				p.setCelda(c.getFila(), c.getColumna());
 				c.setElemento(p);
 				p.actualizarGrafico();
-			}else {	
-					if (o.getElement().dejoPasar(p.getVisitor())) {
-						c = siguiente;
-						p.setCelda(c.getFila(), c.getColumna());
-						c.setElemento(p);
-						p.actualizarGrafico();
-					}
-					//else if (o.getElement().dejoAtacar(p.getVisitor()))
-							//atacarEnemigo(p,o);	 kjndsi
-			}		
+			}
+			else if (o.accept(p.getVisitor()))
+					p.atacar();
 		}
-	}
-	
-	public void atacarEnemigo(Personaje p, Obstaculo o) {
-		t3 = new Timer (200, new ActionListener (){
-			public void actionPerformed(ActionEvent e){
-				int cant = o.getElement().sacarVida(p.getVisitor());
-		        o.setVida(cant);
-				if (o.getVida() <= 0) {
-					mapaCombate.eliminar(o);
-					eliminados.addLast(o);
-					
-				}
-		    }
-		});
-	  t3.start();	
 	}
 	
 	public void crearS1(int x, int y) {

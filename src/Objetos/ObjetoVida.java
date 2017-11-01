@@ -1,6 +1,7 @@
 package Objetos;
 
 import Principal.Celda;
+import Visitor.Visitor;
 
 public class ObjetoVida extends Obstaculo {
 	
@@ -9,6 +10,11 @@ public class ObjetoVida extends Obstaculo {
 		this.pos = pos;
 		grafico = null;
 		
+	}
+
+	@Override
+	public boolean accept(Visitor v) {
+		return v.visit(this);
 	}
 
 

@@ -21,10 +21,6 @@ public class S3 extends Soldado {
 	}
 
 
-	 
-	
-
-
 }
 
 
