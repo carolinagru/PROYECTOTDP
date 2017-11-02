@@ -1,12 +1,11 @@
 /Logica.java
-/.gitignore
-/Archivos/
-/Sprites/
+/Disparo/
 /Factory/
 /Graficos/
 /Objetos/
 /Personajes/
 /Premios/
 /Principal/
+/Sprites/
 /UML/
 /Visitor/
