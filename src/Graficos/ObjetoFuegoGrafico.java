@@ -6,7 +6,7 @@ public class ObjetoFuegoGrafico extends ObstaculoGrafico{
 
 	public ObjetoFuegoGrafico(int fila, int columna) {
 		super(fila, columna);
-		//cambiar imagen 
+		//cambiar imagen y
 		image[0] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
 	    image[1] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
 	    image[2] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
