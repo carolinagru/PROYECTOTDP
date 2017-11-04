@@ -184,7 +184,7 @@ public class Logica {
 	}
 	
 	public boolean moverDisparo(DisparoSoldado p ){
-		boolean toReturn = true;
+		boolean toReturn = true;  
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
 		if (siguiente != null) {
