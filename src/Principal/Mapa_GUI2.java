@@ -42,24 +42,16 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JPanel panel_3; 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SplashScreen splash = new SplashScreen(2000);
-					splash.showSplash();
-					Mapa_GUI2 frame = new Mapa_GUI2();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private JPanel panel_3;
+	
+	public void iniciar() {
+		try {
+			Mapa_GUI2 frame = new Mapa_GUI2();
+			frame.setLocationRelativeTo(null);
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
 	}
 
 	/**
@@ -88,6 +80,20 @@ public class Mapa_GUI2 extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		JLabel lblPuntaje = new JLabel("");
+		lblPuntaje.setForeground(Color.WHITE);
+		lblPuntaje.setFont(new Font("Segoe UI Black", Font.BOLD, 14));
+		lblPuntaje.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPuntaje.setBounds(281, 21, 211, 29);
+		panel.add(lblPuntaje);
+		
+		JLabel lblMonedas = new JLabel("");
+		lblMonedas.setFont(new Font("Segoe UI Black", Font.BOLD, 14));
+		lblMonedas.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMonedas.setForeground(Color.WHITE);
+		lblMonedas.setBounds(654, 21, 211, 29);
+		panel.add(lblMonedas);
+		
 		image2 = new ImageIcon(getClass().getResource("/Sprites/fondo/baseMapa.png")).getImage();
 		panel_1 = new JPanel() {
 			public void paint(Graphics g){
@@ -100,26 +106,7 @@ public class Mapa_GUI2 extends JFrame {
 		panel_1.setBorder(null);
 		panel_1.setBounds(10, 11, 325, 649);
 		contentPane.add(panel_1);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(10, 11, 305, 62);
-		panel_4.setOpaque(false);
-		panel_1.add(panel_4);
-		panel_4.setLayout(null);
-		
-		
-		/**
-		 * Etiqueta de puntaje-------------------------------------------------------------------------------------------------------
-		 */
-		JLabel label = new JLabel();
-		label.setBounds(0, 11, 150, 40);
 		ImageIcon imagen = new ImageIcon(getClass().getResource("/Sprites/FondosYmenus/puntaje.png"));
-		Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
-		label.setIcon(icono); 
-		panel_4.add(label);
-		JLabel label_1 = new JLabel();
-		label_1.setBounds(151, 0, 154, 62);
-		panel_4.add(label_1);
 		/**
 		 * --------------------------------------------------------------------------------------------------------------------------
 		 */
@@ -152,50 +139,13 @@ public class Mapa_GUI2 extends JFrame {
 		contentPane.add(panel_3);
 		
 		logica = new Logica(panel_3);
-
-		
-		// B O T O N E S     O B J E T O S--------------------------------------------------------------------------------------------------------------------------------------------------------------
-		JButton botonObjeto1 = new JButton();
-		botonObjeto1.setBounds(24, 11, 267, 54);
-		botonObjeto1.setContentAreaFilled(false);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/boton.png"));
-		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonObjeto1.getWidth(), botonObjeto1.getHeight(), Image.SCALE_SMOOTH));
-		botonObjeto1.setIcon(iconoBoton);
-		panel.add(botonObjeto1);
-		botonObjeto1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-
-		
-		JButton botonObjeto2 = new JButton();
-		botonObjeto2.setBounds(363, 11, 267, 54);
-		botonObjeto2.setContentAreaFilled(false);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/boton.png"));
-		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonObjeto2.getWidth(), botonObjeto2.getHeight(), Image.SCALE_SMOOTH));
-		botonObjeto2.setIcon(iconoBoton);
-		panel.add(botonObjeto2);
-		botonObjeto2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		JButton botonObjeto3 = new JButton();
-		botonObjeto3.setBounds(700, 11, 267, 54);
-		botonObjeto3.setContentAreaFilled(false);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/boton.png"));
-		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonObjeto3.getWidth(), botonObjeto3.getHeight(), Image.SCALE_SMOOTH));
-		botonObjeto3.setIcon(iconoBoton);
-		panel.add(botonObjeto3);
-		botonObjeto3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		// B O T O N E S    S O L D A D O S--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		JButton botonSoldado1 = new JButton();
-		botonSoldado1.setBounds(10, 0, 106, 76);
-		botonSoldado1.setBackground(Color.WHITE);
+		botonSoldado1.setBounds(10, 0, 132, 76);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold1.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado1.getWidth(), botonSoldado1.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado1.setIcon(iconoBoton);
@@ -214,7 +164,7 @@ public class Mapa_GUI2 extends JFrame {
 		
 		
 		JButton botonSoldado2 = new JButton();
-		botonSoldado2.setBounds(152, 0, 106, 76);
+		botonSoldado2.setBounds(143, 0, 132, 76);
 		botonSoldado2.setBackground(Color.WHITE);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold2.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado2.getWidth(), botonSoldado2.getHeight(), Image.SCALE_SMOOTH));
@@ -234,7 +184,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		
 		JButton botonSoldado3 = new JButton();
-		botonSoldado3.setBounds(295, 0, 106, 76);
+		botonSoldado3.setBounds(276, 0, 132, 76);
 		botonSoldado3.setBackground(Color.WHITE);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold3.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado3.getWidth(), botonSoldado3.getHeight(), Image.SCALE_SMOOTH));
@@ -255,7 +205,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		
 		JButton botonSoldado4 = new JButton();
-		botonSoldado4.setBounds(436, 0, 106, 76);
+		botonSoldado4.setBounds(409, 0, 132, 76);
 		botonSoldado4.setBackground(Color.WHITE);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold4.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado4.getWidth(), botonSoldado4.getHeight(), Image.SCALE_SMOOTH));
@@ -276,7 +226,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		
 		JButton botonSoldado5 = new JButton();
-		botonSoldado5.setBounds(573, 0, 106, 76);
+		botonSoldado5.setBounds(542, 0, 132, 76);
 		botonSoldado5.setBackground(Color.WHITE);
 		botonSoldado5.setContentAreaFilled(false);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold5.png"));
@@ -295,14 +245,14 @@ public class Mapa_GUI2 extends JFrame {
 					}});
 			}});
 		
-			JButton botonBorrar = new JButton();
-			botonBorrar.setBounds(689, 0, 301, 76);
-			botonBorrar.setContentAreaFilled(false);
-			imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonBorrar.png"));
-			iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonBorrar.getWidth(), botonBorrar.getHeight(), Image.SCALE_SMOOTH));
-			botonBorrar.setIcon(iconoBoton);
-			panel_2.add(botonBorrar);
-				botonBorrar.addActionListener(new ActionListener() {
+			JButton botonVender = new JButton();
+			botonVender.setBounds(684, 11, 306, 54);
+			botonVender.setContentAreaFilled(false);
+			imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonVenderSoldado.png"));
+			iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonVender.getWidth(), botonVender.getHeight(), Image.SCALE_SMOOTH));
+			botonVender.setIcon(iconoBoton);
+			panel_2.add(botonVender);
+				botonVender.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
 							public void mousePressed(MouseEvent e) {
