@@ -61,41 +61,41 @@ public class Mapa {
 	}
 	
 	public void insertarObjetos() {
-	 try {	
-		FileReader f = new FileReader(getClass().getResource("/Archivos/mapa1.txt").getFile());
-        BufferedReader b = new BufferedReader(f);
-        String cadena = "";
-        char d;
-        int y = 0;
-        
-        	while ((cadena = b.readLine()) != null) {
-        		int x = 0;
-	        	for (int i = 0; i < cadena.length(); i++){
-	      		   d = cadena.charAt(i);
-	      		   Celda c = getCelda(y,x);
-	                if (d == 'f')
-	                  obs= new ObjetoFuego(c);
-	                	else if (d == 'a')
-	                	   obs=new ObjetoAgua(c);
-	                	      else if(d == 'u')
-	                		       obs= new ObjetoFuente(c);
-	                		       else if(d == 'p')
-	                				     obs= new ObjetoPiedra(c);
-	                			        
-	                   
-	             if (obs != null){
-	            	 objetosMapa.addLast(obs); 
-	            	 obs.getCelda().setElemento(obs);
-	            	 insertar(obs.getGrafico());
-	             }
-	             obs=null;
-	             x++; 
-	          }
-	          y++;
-	        }
+		 try {	
+			FileReader f = new FileReader(getClass().getResource("/Archivos/mapa1.txt").getFile());
+	        BufferedReader b = new BufferedReader(f);
+	        String cadena = "";
+	        char d;
+	        int y = 0;
 	        
-	 b.close();
- }
+	        	while ((cadena = b.readLine()) != null) {
+	        		int x = 0;
+		        	for (int i = 0; i < cadena.length(); i++){
+		      		   d = cadena.charAt(i);
+		      		   Celda c = getCelda(y,x);
+		                if (d == 'f')
+		                  obs= new ObjetoFuego(c);
+		                	else if (d == 'a')
+		                	   obs=new ObjetoAgua(c);
+		                	      else if(d == 'u')
+		                		       obs= new ObjetoFuente(c);
+		                		       else if(d == 'p')
+		                				     obs= new ObjetoPiedra(c);
+		                			        
+		                   
+		             if (obs != null){
+		            	 objetosMapa.addLast(obs); 
+		            	 obs.getCelda().setElemento(obs);
+		            	 insertar(obs.getGrafico());
+		             }
+		             obs=null;
+		             x++; 
+		          }
+		          y++;
+		        }
+		        
+		 b.close();
+	 }
    catch (IOException e) {
 	 System.out.println("Error en objeto - leerArchivo. ");
    }	 
@@ -107,32 +107,31 @@ public class Mapa {
 	}
 	
 	public Personaje insertarEnemigo(PersonajesFactoryMethod factory) {
-	
 		Random r = new Random();
 		int x = (int ) (Math.random() * 5);
 		Celda c = getCelda(x,11);
-		while (c.getElemento() != null) {
-			x = (int ) (Math.random() * 5);
-			c = getCelda(x,11);
-		}
 		factory = new A1factory(panel);
 		Personaje p = factory.createPersonaje(c);
-		
 	  return p;
 	}
 
-	public Celda siguienteCelda(Celda c) {
+	public Celda siguienteCeldaIzq(Celda c) {
 		int col = c.getColumna()-1;		
 		return getCelda(c.getFila(),col);
 	}
 	
-	public void eliminar(Obstaculo o) {
-		o.getCelda().setElemento(null);
-		panel.remove(o.getGrafico());
-		panel.revalidate();
-		panel.repaint();
+	public Celda siguienteCeldaDer(Celda c) {
+		int col = c.getColumna()+1;		
+		return getCelda(c.getFila(),col);
 	}
 	
 	
+	public void eliminar(Obstaculo o) {
+		panel.remove(o.getGrafico());
+		panel.revalidate();
+		panel.repaint();
+		o.getCelda().setElemento(null);
+	}
+
 }
 

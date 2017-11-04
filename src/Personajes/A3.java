@@ -18,4 +18,6 @@ public class A3 extends Alien{
 	}
 
 	
+	
+	
 }

@@ -9,6 +9,7 @@ import Personajes.Personaje;
 import Personajes.S1;
 import Principal.Celda;
 import Principal.Logica;
+import Visitor.VisitorSoldado;
 
 public class A1factory implements PersonajesFactoryMethod {
 	protected JPanel panel;

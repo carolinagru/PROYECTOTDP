@@ -1,95 +1,70 @@
 package Visitor;
 
 import Disparo.Bala;
+import Disparo.DisparoSoldado;
+import Objetos.ObjetoAgua;
+import Objetos.ObjetoFuego;
+import Objetos.ObjetoFuente;
+import Objetos.ObjetoPiedra;
+import Objetos.ObjetoTemporal;
+import Objetos.ObjetoVida;
+import Personajes.Alien;
+import Personajes.Soldado;
 
 public class VisitorDisparo implements Visitor{
-	protected Bala myBala;
+	protected DisparoSoldado myDisparoSoldado;
 	
-	public void setBala (Bala b){
-		myBala = b;
+	public void setBala (DisparoSoldado b){
+		  myDisparoSoldado = b;
 	}
 	 
-	public boolean puedoPasar(ElementoDisparo a) {
+	public void visit(Alien a) {
+		System.out.println("-------VISIT DISPARO  Fuerza de impacto: "+myDisparoSoldado.getFuerzaImpacto()+" Alien vida :"+a.getVida());
+		a.setVida(myDisparoSoldado.getFuerzaImpacto()*a.getVida());
+		System.out.println("-----------VISIT DISPARO   Alien vida :"+a.getVida());
+
+	}
+
+	 
+	public void visit(Soldado a) {
+		
+	}
+	
+	public void visit(Bala b){
+		
+	}
+
+	 
+	public void visit(ObjetoVida a) {
+		
+	}
+
+	 
+	public void visit(ObjetoTemporal a) {
 		 
-		return true;
+		
 	}
 
 	 
-	public boolean puedoPasar(ElementoSoldado a) {
+	public void visit(ObjetoAgua a) {
 		 
-		return true;
 	}
 
 	 
-	public boolean puedoPasar(ElementoAgua a) {
-		 
-		return true;
+	public void visit(ObjetoFuego a) {
+	 
 	}
 
 	 
-	public boolean puedoPasar(ElementoFuego a) {
-		  
-		return true;
+	public void visit(ObjetoFuente a) {
+	 
 	}
 
 	 
-	public boolean puedoPasar(ElementoFuente a) {
-		 
-		return true;
-	}
-
+	public void visit(ObjetoPiedra a) {
 	 
-	public boolean puedoPasar(ElementoPiedra a) {
-		 
-		return true;
 	}
-
-	 
-	public boolean puedoAtacar(ElementoSoldado a) {
-		 
-		return false;
-	}
-
-	 
-	public boolean puedoAtacar(ElementoAlien a) {
-	 
-		return true;
-	}
-
-	 
-	public boolean puedoAtacar(ElementoFuente a) {
-		 
-		return false;
-	}
-
-	 
-	public boolean puedoAtacar(ElementoPiedra a) {
-		 
-		return false;
-	}
-
-	 
-	public int sacameVida(ElementoFuente a) {
-	 
-		return 0;
-	}
-
-	 
-	public int sacameVida(ElementoSoldado a) {
-		 
-		return 0;
-	}
-
-	 
-	public int sacameVida(ElementoAlien a) {
-		 
-		return 0;
-	}
-
- 
-	public int sacameVida(ElementoPiedra a) {
-		 
-		return 0;
-	}
+	
+	
 
 }

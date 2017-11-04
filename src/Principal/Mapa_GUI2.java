@@ -27,7 +27,7 @@ import java.awt.Graphics;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.SwingConstants;
- 
+
 
 public class Mapa_GUI2 extends JFrame {
 	
@@ -42,7 +42,7 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JPanel panel_3;   
+	private JPanel panel_3; 
 	/**
 	 * Launch the application.
 	 */
@@ -117,6 +117,9 @@ public class Mapa_GUI2 extends JFrame {
 		Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
 		label.setIcon(icono); 
 		panel_4.add(label);
+		JLabel label_1 = new JLabel();
+		label_1.setBounds(151, 0, 154, 62);
+		panel_4.add(label_1);
 		/**
 		 * --------------------------------------------------------------------------------------------------------------------------
 		 */
@@ -192,6 +195,7 @@ public class Mapa_GUI2 extends JFrame {
 
 		JButton botonSoldado1 = new JButton();
 		botonSoldado1.setBounds(10, 0, 106, 76);
+		botonSoldado1.setBackground(Color.WHITE);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold1.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado1.getWidth(), botonSoldado1.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado1.setIcon(iconoBoton);
@@ -230,7 +234,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		
 		JButton botonSoldado3 = new JButton();
-		botonSoldado3.setBounds(292, 0, 106, 76);
+		botonSoldado3.setBounds(295, 0, 106, 76);
 		botonSoldado3.setBackground(Color.WHITE);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold3.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado3.getWidth(), botonSoldado3.getHeight(), Image.SCALE_SMOOTH));
@@ -251,7 +255,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		
 		JButton botonSoldado4 = new JButton();
-		botonSoldado4.setBounds(434, 0, 106, 76);
+		botonSoldado4.setBounds(436, 0, 106, 76);
 		botonSoldado4.setBackground(Color.WHITE);
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold4.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado4.getWidth(), botonSoldado4.getHeight(), Image.SCALE_SMOOTH));
@@ -292,7 +296,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		
 			JButton botonBorrar = new JButton();
-			botonBorrar.setBounds(711, 0, 279, 76);
+			botonBorrar.setBounds(689, 0, 301, 76);
 			botonBorrar.setContentAreaFilled(false);
 			imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonBorrar.png"));
 			iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonBorrar.getWidth(), botonBorrar.getHeight(), Image.SCALE_SMOOTH));

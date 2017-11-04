@@ -20,5 +20,10 @@ public class S4 extends Soldado {
 		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
 
+
+	 
+	
+	
+
 }
 

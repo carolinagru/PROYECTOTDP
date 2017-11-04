@@ -10,12 +10,10 @@ public class ObjetoTemporal extends Obstaculo{
 		grafico = null;	
 	}
 
-	@Override
-	public boolean accept(Visitor v) {
-		return false;
+	 
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
+ 
 	
-	public void atacar(Visitor v) {
-		
-	}
 }

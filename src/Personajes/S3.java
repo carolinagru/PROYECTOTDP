@@ -1,14 +1,10 @@
 
 package Personajes;
 
-import java.awt.Image;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+ 
 import Graficos.Soldado1Grafico;
 import Principal.Celda;
-import Visitor.Visitor;
+ 
 
 public class S3 extends Soldado {
 	
@@ -19,6 +15,10 @@ public class S3 extends Soldado {
 		super(pos);
 		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
+
+
+	 
+	
 
 
 }

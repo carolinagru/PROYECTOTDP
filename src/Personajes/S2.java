@@ -13,11 +13,15 @@ import Visitor.Visitor;
 public class S2 extends Soldado{
 	
 	protected static int precio = 25;
-
+	
 	
 	public S2(Celda pos) {
 		super(pos);
+		this.fuerza = (float) 0.5;
 		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
+
+
+	
 
 }

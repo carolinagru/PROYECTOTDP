@@ -17,6 +17,7 @@ public class PersonajeGrafico {
 	protected int height=80;
 	protected Point pos;
 
+	
 	public PersonajeGrafico( int fila, int columna ) {
 		pos = new Point(fila * this.width, columna * this.height);
 	}
@@ -41,6 +42,10 @@ public class PersonajeGrafico {
 	  Icon icono = new ImageIcon(aux.getImage().getScaledInstance(label.getWidth(), label.getWidth(), Image.SCALE_DEFAULT));
 	  label.setIcon(icono);
 	  label.setBounds(pos.y, pos.x, width, height);
+		
+	}
+
+	public void actualizarGrafico(int n){	
 		
 	}
 }
