@@ -8,5 +8,5 @@ public class Alien1Grafico extends PersonajeGrafico{
 			super(fila, columna);
 			image = new ImageIcon(this.getClass().getResource("/Sprites/Sprite Alien/GIF 's/A2.gif"));
 	}
-
+//nn
 }
