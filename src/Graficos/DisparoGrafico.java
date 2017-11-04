@@ -18,3 +18,4 @@ public class DisparoGrafico extends ObstaculoGrafico {
 	}
 	
 }
+//dis

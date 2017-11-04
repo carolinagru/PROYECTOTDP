@@ -1,4 +1,4 @@
-package Principal;
+package InterfazGrafica;
 
 import java.awt.*;
 import javax.swing.*;
@@ -21,10 +21,10 @@ public class SplashScreen extends JWindow
 		getContentPane().setLayout(null);
 		getContentPane().add(panel);
 		JLabel label = new JLabel();
-		this.setBounds(300,100, 1600, 800);
-		panel.setBounds(-20, -30, 1500, 700);
+		this.setBounds(300,100, 700, 400);
+		panel.setBounds(-20, -30, 800, 450);
 		panel.add(label);
-		label.setIcon(new ImageIcon(getClass().getResource("/Sprites/FondosYmenus/ImagenInicioJuego.gif")));
+		label.setIcon(new ImageIcon(getClass().getResource("/Sprites/FondosYmenus/ImagenSplash.jpg")));
 		label.setBounds(0,0,1000,1000);
 		setVisible(true);
 		
@@ -48,4 +48,3 @@ public class SplashScreen extends JWindow
 	}
 
 }
-
