@@ -22,7 +22,7 @@ protected JLabel l;
 		Personaje p = new S2(c);
 		c.setElemento(p);
 		System.out.println("filas y columnas de factory "+c.getFila()+" "+c.getColumna());
-		l = p.getGrafico();
+		l = p.getGrafico(0);
 		panel.add(l);
 		l.repaint();
 		

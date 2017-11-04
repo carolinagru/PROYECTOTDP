@@ -86,7 +86,7 @@ public class Mapa {
 		             if (obs != null){
 		            	 objetosMapa.addLast(obs); 
 		            	 obs.getCelda().setElemento(obs);
-		            	 insertar(obs.getGrafico());
+		            	 insertar(obs.getGrafico(0));
 		             }
 		             obs=null;
 		             x++; 
@@ -127,7 +127,7 @@ public class Mapa {
 	
 	
 	public void eliminar(Obstaculo o) {
-		panel.remove(o.getGrafico());
+		panel.remove(o.getGrafico(0));
 		panel.revalidate();
 		panel.repaint();
 		o.getCelda().setElemento(null);

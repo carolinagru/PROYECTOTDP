@@ -21,7 +21,7 @@ public class A1factory implements PersonajesFactoryMethod {
 	public Personaje createPersonaje (Celda c) {
 		Personaje p = new A1(c);
 		c.setElemento(p);
-		l = p.getGrafico();
+		l = p.getGrafico(0);
 		panel.add(l);
 		l.repaint();
 	 return p;	

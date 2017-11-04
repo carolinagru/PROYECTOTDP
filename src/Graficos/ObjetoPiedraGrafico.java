@@ -2,13 +2,15 @@ package Graficos;
 
 import javax.swing.ImageIcon;
 
-public class ObjetoPiedraGrafico extends PersonajeGrafico{
+public class ObjetoPiedraGrafico extends ObstaculoGrafico{
 
 	public ObjetoPiedraGrafico(int fila, int columna) {
 		super(fila, columna);
-		
 		//cambiar imagen 
-		image = new ImageIcon(this.getClass().getResource("/Sprites/Alien Caminando/2.png"));
+		image[0] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
+	    image[1] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
+	    image[2] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
+	    image[3] = new ImageIcon(getClass().getResource("/Sprites/objetos/fuego.jpg"));
 
 	}
 

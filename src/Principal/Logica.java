@@ -77,20 +77,6 @@ public class Logica {
 	   inicioJuego();
 	}
 	
-	/*
-	public void insertarEnemigos() {
-	 t1 = new Timer (4500, new ActionListener (){
-	     public void actionPerformed(ActionEvent e){
-	       	if(aliensMapa.size() < 4){
-	       		aliensMapa.addLast(mapaCombate.insertarEnemigo(factory));
-	       		inicioMovimientoAliens();
-	       	}
-	     }
-	 });
-	 t1.start();
-	}
-	*/
-	
 	public void inicioJuego () {
 		insertarEnemigos();
 		t2 = new Timer (500 , new ActionListener (){
@@ -112,8 +98,7 @@ public class Logica {
 			}
 		}
 	}
-		
-		
+			
 	public void insertarEnemigos() {
 	   	while(aliensMapa.size() < 4){
 	   		aliensMapa.addLast(mapaCombate.insertarEnemigo(factory));	 
@@ -123,20 +108,19 @@ public class Logica {
 	public void inicioMovimientoAliens() {
 		for (Personaje p :aliensMapa){				
 			moverAlien(p);	
-			}
 		}
-		 
+	}
 	 	
 	public void moverAlien(Personaje p) {
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(c);
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
-			if (o == null ) {
+			if (o == null ){
 				c = siguiente;
 				p.setCelda(c.getFila(), c.getColumna());
 				c.setElemento(p);
-				p.actualizarGrafico();
+				p.actualizarGrafico(0);
 			}	
 		}
 	}
@@ -154,9 +138,9 @@ public class Logica {
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
 				if ( o.getVida() > 0){
-				VisitorAlien v = new VisitorAlien();
-				v.setAlien(p);
-				o.accept(v);
+					VisitorAlien v = new VisitorAlien();
+					v.setAlien(p);
+					o.accept(v);
 				}
 				else{
 					//eliminar obstaculo del
@@ -181,14 +165,13 @@ public class Logica {
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
 				if ( o.getVida() > 0){
-				VisitorAlien v = new VisitorAlien();
-				v.setAlien(p);
-				o.accept(v);
+					VisitorAlien v = new VisitorAlien();
+					v.setAlien(p);
+					o.accept(v);
 				}
 				else{
 					//eliminar obstaculo del
-					o.actualizarGrafico(0);
-					//o.actualizarGrafico(1);
+					o.actualizarGrafico(0); 
 					mapaCombate.eliminar(o);
 					
 				}
@@ -205,7 +188,7 @@ public class Logica {
 				c = siguiente;
 				p.setCelda(c.getFila(), c.getColumna());
 				c.setElemento(p);
-				p.actualizarGrafico();
+				p.actualizarGrafico(0);
 			}
 			else {	
 				toReturn = false;
@@ -216,7 +199,6 @@ public class Logica {
 					o.accept(v);
 				}
 			}
-						
 		}
 		return toReturn;
 	}
@@ -250,7 +232,7 @@ public class Logica {
 	public DisparoSoldado crearDisparo (Celda c, Personaje p){
 		DisparoSoldado disparo = new DisparoSoldado(c,p.getFuerza());
 		c.setElemento(disparo);
-		l = disparo.getGrafico();
+		l = disparo.getGrafico(0);
 		panelMapa.add(l);
 		l.repaint();
 	return disparo;

@@ -20,7 +20,7 @@ protected JLabel l;
 	public Personaje createPersonaje (Celda c) {
 		Personaje p = new A6(c);
 		c.setElemento(p);
-		l = p.getGrafico();
+		l = p.getGrafico(0);
 		panel.add(l);
 		l.repaint();
 		

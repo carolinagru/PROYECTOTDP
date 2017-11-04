@@ -6,7 +6,7 @@ import Visitor.*;
 
 import javax.swing.JLabel;
 
-import Graficos.PersonajeGrafico;
+import Graficos.ObstaculoGrafico;
 import Objetos.Obstaculo;
 
 public abstract class Personaje extends Obstaculo{

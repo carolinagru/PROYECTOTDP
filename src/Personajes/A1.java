@@ -17,6 +17,7 @@ public class A1 extends Alien{
 		super(pos);
 		this.fuerza = (float) 0.7;
 		this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());		
+		
 	}
 	
 }
