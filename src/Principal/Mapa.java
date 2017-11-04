@@ -48,6 +48,10 @@ public class Mapa {
 		return null;
 	}
 	
+	public LinkedList getListaObjetos() {
+		return objetosMapa;
+	}
+	
 	public Celda[][] getMapa() {
 		return mapa;
 	}

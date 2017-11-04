@@ -57,6 +57,7 @@ public class Logica {
 		puntos=0;
 		aliensMapa=new LinkedList();
 		soldadosMapa= new LinkedList();
+		a_eliminar= new LinkedList();
 	    columnas = ((width - 80 ) / tamanioCelda)+2;
 	    int filas = ((height - 40) / tamanioCelda)+1;
 	    
@@ -90,13 +91,13 @@ public class Logica {
 	}
 	
 	public void limpiarMuertos (){
-		if ( a_eliminar != null){
 			while (a_eliminar.size() > 0){
 				Obstaculo o = a_eliminar.removeFirst();
+				mapaCombate.eliminar(o);
 				aliensMapa.remove(o);
 				soldadosMapa.remove(o);
+				mapaCombate.getListaObjetos().remove(o);
 			}
-		}
 	}
 			
 	public void insertarEnemigos() {
@@ -145,7 +146,6 @@ public class Logica {
 				else{
 					//eliminar obstaculo del
 					o.actualizarGrafico(0);
-					//o.actualizarGrafico(1);
 					mapaCombate.eliminar(o);
 				}
 			}
