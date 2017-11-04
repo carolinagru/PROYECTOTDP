@@ -18,7 +18,7 @@ public void setSoldado (Personaje a){
 	mySoldado = a;
 }
 public void visit(Alien a) {
-	System.out.println("Vida alien"+mySoldado.getVida()+" Vida soldado:"+a.getVida());
+	System.out.println("VISITOR SOLDADO : Fuerza Soldado"+mySoldado.getFuerza()+" Fuerza Alien:"+a.getFuerza()+" Vida Alien :"+a.getVida()+ " Vida Soldado :"+mySoldado.getVida());
 	a.setVida(mySoldado.getFuerza()*a.getVida());
 	 
 }

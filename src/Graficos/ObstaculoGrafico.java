@@ -27,6 +27,9 @@ public class ObstaculoGrafico {
 		pos.setLocation(x*width, y*height);
 	}
 	
+	public JLabel getLabel (){
+		return label;
+	}
 	public JLabel getGrafico(int dir) {
 		label= new JLabel(image[dir]);
 		label.setBounds(pos.y, pos.x, width, height); 

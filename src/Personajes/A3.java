@@ -13,9 +13,19 @@ public class A3 extends Alien{
 
 	public A3( Celda pos ) {		
 		super(pos);
+		this.vida = 100;
 		grafico = new Alien3Grafico(pos.getFila(), pos.getColumna());
 		
 	}
+	
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
+	
 
 	
 	

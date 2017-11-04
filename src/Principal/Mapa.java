@@ -127,7 +127,7 @@ public class Mapa {
 	
 	
 	public void eliminar(Obstaculo o) {
-		panel.remove(o.getGrafico(0));
+		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();
 		o.getCelda().setElemento(null);

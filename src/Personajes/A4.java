@@ -14,9 +14,19 @@ public class A4 extends Alien{
 
 	public A4( Celda pos ) {		
 		super(pos);
+		this.vida = 100;
 		grafico = new Alien4Grafico(pos.getFila(), pos.getColumna());
 		
 	}
+	
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
+	
 
 	
 	

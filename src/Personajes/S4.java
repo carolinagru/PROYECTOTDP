@@ -17,9 +17,17 @@ public class S4 extends Soldado {
 	
 	public S4(Celda pos) {
 		super(pos);
+		this.vida = 100;
 		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
 
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
 
 	 
 	

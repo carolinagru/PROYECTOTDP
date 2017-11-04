@@ -17,10 +17,18 @@ public class S1 extends Soldado {
 	
 	public S1(Celda pos) {
 		super(pos);
+		this.vida = 100;
 		this.fuerza = (float) 0.5;
 		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
 
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
 
  
 	

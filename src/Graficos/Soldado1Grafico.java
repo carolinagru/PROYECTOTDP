@@ -12,7 +12,7 @@ public class Soldado1Grafico extends ObstaculoGrafico{
 			super(x, y);
 			image[0] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S1.gif"));
 		    image[1] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S1.gif"));
-		    image[2] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S1.gif"));
+		    image[2] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/muerte1.gif"));
 		    image[3] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S1.gif"));
 	}
 

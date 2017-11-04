@@ -14,7 +14,7 @@ public abstract class Personaje extends Obstaculo{
 	public float fuerza;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
-	
+	 
 
 	public void setVisitor (Visitor v ){
 		this.v = v;
@@ -28,7 +28,16 @@ public abstract class Personaje extends Obstaculo{
 	public float getFuerza (){
 		return fuerza;
 	}
+	
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
 	 
+
 	 
 	
 }

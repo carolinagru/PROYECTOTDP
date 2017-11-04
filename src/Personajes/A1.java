@@ -12,12 +12,21 @@ public class A1 extends Alien{
 	
 	protected static int moneda=25;
 	protected static int punto=15;
+	 
 
-	public A1(Celda pos ) {	
+	public A1(Celda pos ) {
 		super(pos);
-		this.fuerza = (float) 0.7;
+		this.vida = 100;
+		this.fuerza = (float) 0.9;
 		this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());		
 		
+	}
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
 	}
 	
 }

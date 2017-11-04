@@ -12,7 +12,7 @@ public class Alien1Grafico extends ObstaculoGrafico{
 			System.out.println("Entre alien grafico Fila :"+fila + " Columna :"+columna);
 			image[0] = new ImageIcon(getClass().getResource("/Sprites/Sprite Alien/GIF 's/A1.gif"));
 		    image[1] = new ImageIcon(getClass().getResource("/Sprites/Sprite Alien/GIF 's/A1.gif"));
-		    image[2] = new ImageIcon(getClass().getResource("/Sprites/Sprite Alien/GIF 's/A1.gif"));
+		    image[2] = new ImageIcon(getClass().getResource("/Sprites/Sprite Alien/GIF 's/Amuriendo1.gif"));
 		    image[3] = new ImageIcon(getClass().getResource("/Sprites/Sprite Alien/GIF 's/A1.gif"));
 	}
 	

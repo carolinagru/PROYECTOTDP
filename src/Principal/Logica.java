@@ -55,8 +55,10 @@ public class Logica {
 		
 		panelMapa=p;
 		puntos=0;
+		
 		aliensMapa=new LinkedList();
 		soldadosMapa= new LinkedList();
+		a_eliminar= new LinkedList();
 	    columnas = ((width - 80 ) / tamanioCelda)+2;
 	    int filas = ((height - 40) / tamanioCelda)+1;
 	    
@@ -79,9 +81,10 @@ public class Logica {
 	
 	public void inicioJuego () {
 		insertarEnemigos();
-		t2 = new Timer (500 , new ActionListener (){
+		t2 = new Timer (1000 , new ActionListener (){
 			public void actionPerformed(ActionEvent e){
 				inicioMovimientoAliens();
+				inicioAtaqueSoldados();
 				inicioAtaqueAlien();
 				limpiarMuertos();
 			}
@@ -95,6 +98,7 @@ public class Logica {
 				Obstaculo o = a_eliminar.removeFirst();
 				aliensMapa.remove(o);
 				soldadosMapa.remove(o);
+				mapaCombate.eliminar(o);
 			}
 		}
 	}
@@ -143,16 +147,16 @@ public class Logica {
 					o.accept(v);
 				}
 				else{
-					//eliminar obstaculo del
-					o.actualizarGrafico(0);
-					//o.actualizarGrafico(1);
+					
+					o.actualizarGrafico(2);
 					mapaCombate.eliminar(o);
+					a_eliminar.addLast(o);
 				}
 			}
 		}
 	}
  
-	public void inicioAtaqueSoldado () {
+	public void inicioAtaqueSoldados () {
 		for (Personaje p : soldadosMapa){
 			ataqueSoldado(p);
 		}
@@ -160,24 +164,25 @@ public class Logica {
 	
 	public void ataqueSoldado (Personaje p ) {
 		Celda c = p.getCelda();	
-		Celda siguiente = mapaCombate.siguienteCeldaIzq(c);
+		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
 				if ( o.getVida() > 0){
-					VisitorAlien v = new VisitorAlien();
-					v.setAlien(p);
+					VisitorSoldado v = new VisitorSoldado();
+					v.setSoldado(p);
 					o.accept(v);
 				}
 				else{
 					//eliminar obstaculo del
-					o.actualizarGrafico(0); 
+					o.actualizarGrafico(2); 
 					mapaCombate.eliminar(o);
-					
+					a_eliminar.addLast(o);
 				}
 			}
 		}
 	}
+	
 	public boolean moverDisparo(DisparoSoldado p ){
 		boolean toReturn = true;
 		Celda c = p.getCelda();	
@@ -229,6 +234,8 @@ public class Logica {
 		
 		
 	}
+	
+	
 	public DisparoSoldado crearDisparo (Celda c, Personaje p){
 		DisparoSoldado disparo = new DisparoSoldado(c,p.getFuerza());
 		c.setElemento(disparo);

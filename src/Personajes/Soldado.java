@@ -22,6 +22,14 @@ public void accept(Visitor v) {
  	 v.visit(this);
  	}
 
+public void setVida(float f) {
+	vida-=f;
+}
+
+public int getVida() {
+	return vida;
+}
+
 
 	
 }

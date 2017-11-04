@@ -23,7 +23,7 @@ public class VisitorAlien implements Visitor {
 	}
 
 	public void visit(Soldado a) {
-		System.out.println("VISITOR ALIEN : Fuerza alien"+myAlien.getFuerza()+" Fuerza soldado:"+a.getFuerza());
+		System.out.println("----VISITOR ALIEN : Fuerza alien"+myAlien.getFuerza()+" Fuerza soldado:"+a.getFuerza()+"Vida Alien :"+myAlien.getVida()+" Vida Soldado :"+a.getVida() );
 		a.setVida(myAlien.getFuerza()*a.getVida());
 		 
 	}
