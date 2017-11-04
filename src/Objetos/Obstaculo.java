@@ -11,7 +11,6 @@ public abstract class Obstaculo {
 
 	protected ObstaculoGrafico grafico;
 	protected Celda pos;
-	protected Visitor v;
 	protected int vida;
 
 	
@@ -41,10 +40,7 @@ public abstract class Obstaculo {
 		return vida;
 	}
 	
-	
-	public Visitor getVisitor() {
-		return v;
-	}
+
 	public abstract void accept(Visitor v);
 	
 	

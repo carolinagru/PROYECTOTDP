@@ -1,8 +1,11 @@
 /Logica.java
-/Visitor/
-/Principal/
+/Disparo/
+/Factory/
 /Graficos/
-/Personajes/
 /Objetos/
+/Personajes/
+/Premios/
+/Principal/
 /Sprites/
-/InterfazGrafica/
+/UML/
+/Visitor/

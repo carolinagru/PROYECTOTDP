@@ -18,7 +18,13 @@ public class ObjetoVida extends Obstaculo {
 		 v.visit(this);
 	}
 
-
+	public void setVida(float f) {
+		vida-=f;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
 
 	 
 

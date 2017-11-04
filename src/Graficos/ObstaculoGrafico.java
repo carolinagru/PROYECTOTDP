@@ -9,8 +9,6 @@ import javax.swing.JPanel;
  
 public class ObstaculoGrafico {
 
-
-
 	protected JLabel label; 
 	protected Icon image[];
 	protected int width=80;
@@ -31,13 +29,14 @@ public class ObstaculoGrafico {
 		return label;
 	}
 	public JLabel getGrafico(int dir) {
+	 if (label == null) {
 		label= new JLabel(image[dir]);
 		label.setBounds(pos.y, pos.x, width, height); 
 		ImageIcon aux = (ImageIcon)image[dir];
 		Icon icono = new ImageIcon(aux.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
 		label.setIcon(icono);
-		return label;
-		
+	 }
+	 return label;	
 	}
 	
 	public void actualizarGrafico(int dir){		

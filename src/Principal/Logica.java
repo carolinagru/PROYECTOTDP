@@ -65,13 +65,11 @@ public class Logica {
 	    System.out.println("columnas de constructor de logica "+columnas+" filas de constructor de logica "+filas);
 
 	     mapaCombate = new Mapa(filas,columnas,p);
-	     activarMenu();
-	     
-	     
+	     insertarObjetos();
 	}
 	
 	public void insertarObjetos() {
-		//mapaCombate.insertarObjetos();
+		mapaCombate.insertarObjetos();
 		activarMenu();
 	}
 	
@@ -81,7 +79,7 @@ public class Logica {
 	
 	public void inicioJuego () {
 		insertarEnemigos();
-		t2 = new Timer (1000 , new ActionListener (){
+		t2 = new Timer (1000,new ActionListener (){
 			public void actionPerformed(ActionEvent e){
 				inicioMovimientoAliens();
 				inicioAtaqueSoldados();
@@ -98,7 +96,7 @@ public class Logica {
 				Obstaculo o = a_eliminar.removeFirst();
 				aliensMapa.remove(o);
 				soldadosMapa.remove(o);
-				mapaCombate.eliminar(o);
+				mapaCombate.getLista().remove(o);
 			}
 		}
 	}
@@ -121,6 +119,7 @@ public class Logica {
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
+				c.setElemento(null);
 				c = siguiente;
 				p.setCelda(c.getFila(), c.getColumna());
 				c.setElemento(p);
@@ -135,7 +134,7 @@ public class Logica {
 		}
 	}
 	//Ver tema de buscar a eliminar
-	public void ataqueAlien (Personaje p ) {
+	public void ataqueAlien (Personaje p){
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(c);
 		if (siguiente != null ){
@@ -147,10 +146,9 @@ public class Logica {
 					o.accept(v);
 				}
 				else{
-					
 					o.actualizarGrafico(2);
-					mapaCombate.eliminar(o);
 					a_eliminar.addLast(o);
+					mapaCombate.eliminar(o);
 				}
 			}
 		}
@@ -231,10 +229,7 @@ public class Logica {
 		Celda celdaDisparo = mapaCombate.siguienteCeldaDer(c);
 		DisparoSoldado disp = crearDisparo(celdaDisparo,soldadosMapa.getLast());
 		iniciarDisparo(disp);
-		
-		
 	}
-	
 	
 	public DisparoSoldado crearDisparo (Celda c, Personaje p){
 		DisparoSoldado disparo = new DisparoSoldado(c,p.getFuerza());
@@ -242,10 +237,9 @@ public class Logica {
 		l = disparo.getGrafico(0);
 		panelMapa.add(l);
 		l.repaint();
-	return disparo;
-		
-	
+	  return disparo;
 	}
+	
 	public void crearS2(int x, int y) {
 		Celda c = mapaCombate.getCelda(x, y);	
 		factory = new S2factory(panelMapa);

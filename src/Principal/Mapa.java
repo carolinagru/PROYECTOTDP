@@ -37,6 +37,7 @@ public class Mapa {
 		for(int i = 0; i < filas; i++){
 			for(int j = 0; j < columnas; j++){
 				this.mapa[i][j] = new Celda( i, j);
+				this.mapa[i][j].setElemento(null);
 			}
 		}
 		objetosMapa= new LinkedList();
@@ -133,5 +134,8 @@ public class Mapa {
 		o.getCelda().setElemento(null);
 	}
 
+	public LinkedList getLista() {
+		return objetosMapa;
+	}
 }
 
