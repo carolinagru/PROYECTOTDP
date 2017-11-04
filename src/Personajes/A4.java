@@ -18,4 +18,7 @@ public class A4 extends Alien{
 		
 	}
 
+	
+	
+	
 }

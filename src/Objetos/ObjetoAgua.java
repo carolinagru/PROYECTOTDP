@@ -2,7 +2,6 @@ package Objetos;
 
 import Graficos.ObjetoAguaGrafico;
 import Principal.Celda;
-
 import Visitor.Visitor;
 
 public class ObjetoAgua extends ObjetoTemporal{
@@ -12,8 +11,8 @@ public class ObjetoAgua extends ObjetoTemporal{
 		grafico = new ObjetoAguaGrafico(c.getFila(), c.getColumna());
 	}
 	
-	public boolean accept(Visitor v) {
-		return false;
+	public void accept(Visitor v) {
+		v.visit(this);
 	}
 	
 }

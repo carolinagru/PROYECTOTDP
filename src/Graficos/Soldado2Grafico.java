@@ -7,10 +7,10 @@ public class Soldado2Grafico extends PersonajeGrafico{
 
 	public  Soldado2Grafico(int x, int y) {
 			super(x, y);
-			
-			image = new ImageIcon(this.getClass().getResource("/Sprites/SpriteSoldado/Soldado2Ataque.png"));
-		 
+			image[0] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S2.gif"));
+		    image[1] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S2.gif"));
+		    image[2] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S2.gif"));
+		    image[3] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S2.gif"));
 	}
 	
-
 }

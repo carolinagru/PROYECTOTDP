@@ -17,6 +17,9 @@ public class A2 extends Alien{
 		grafico = new Alien2Grafico(pos.getFila(), pos.getColumna());
 		
 	}
+
+	 
+	
 	
 	
 }
