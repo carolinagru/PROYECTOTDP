@@ -26,6 +26,12 @@ public class ObjetoVida extends Obstaculo {
 		return vida;
 	}
 
+
+	@Override
+	public boolean dejoPasar(Visitor v) {
+		return false;
+	}
+
 	 
 
 }

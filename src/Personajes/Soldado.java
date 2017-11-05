@@ -27,5 +27,10 @@ public int getVida() {
 }
 
 
+public boolean dejoPasar(Visitor v) {
+	return v.puedoPasar(this);
+}
+
+
 	
 }

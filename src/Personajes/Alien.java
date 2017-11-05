@@ -27,6 +27,10 @@ public  class Alien extends Personaje {
 		return vida;
 	}
 
+	public boolean dejoPasar(Visitor v) {
+	   return v.puedoPasar(this);
+	}
+
    
      
      

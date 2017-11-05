@@ -43,6 +43,6 @@ public abstract class Obstaculo {
 
 	public abstract void accept(Visitor v);
 	
-	
+	public abstract boolean dejoPasar(Visitor v);
 	
 }

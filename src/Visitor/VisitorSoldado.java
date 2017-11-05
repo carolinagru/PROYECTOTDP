@@ -55,5 +55,20 @@ public void visit(ObjetoFuente a) {
 public void visit(ObjetoPiedra a) {
 	 
 }
+@Override
+public boolean puedoPasar(Bala a) {
+	// TODO Auto-generated method stub
+	return false;
+}
+@Override
+public boolean puedoPasar(Alien a) {
+	// TODO Auto-generated method stub
+	return false;
+}
+@Override
+public boolean puedoPasar(Soldado a) {
+	// TODO Auto-generated method stub
+	return false;
+}
 
 }

@@ -14,6 +14,11 @@ public class ObjetoTemporal extends Obstaculo{
 	public void accept(Visitor v) {
 		v.visit(this);
 	}
+
+
+	public boolean dejoPasar(Visitor v) {
+		return true;
+	}
  
 	
 }

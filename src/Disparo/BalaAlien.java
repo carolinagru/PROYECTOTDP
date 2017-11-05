@@ -3,12 +3,10 @@ package Disparo;
 import Graficos.DisparoGrafico;
 import Principal.Celda;
 import Visitor.Visitor;
-import Visitor.VisitorDisparo;
 
-public class DisparoSoldado extends Bala {
-	protected VisitorDisparo miVisitor;
+public class BalaAlien extends Bala {
 	
-	public DisparoSoldado (Celda pos,float f){
+	public BalaAlien(Celda pos,float f){
 		super(pos, f);
 		grafico = new DisparoGrafico (pos.getFila(),pos.getColumna());
 		
@@ -19,6 +17,12 @@ public class DisparoSoldado extends Bala {
 		 v.visit(this);
 	}
 
+
+	public boolean dejoPasar(Visitor v) {
+		return true;
+	}
+
  
 	
 }
+

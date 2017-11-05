@@ -1,7 +1,7 @@
 package Visitor;
 
 import Disparo.Bala;
-import Disparo.DisparoSoldado;
+import Disparo.BalaSoldado;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
@@ -11,10 +11,10 @@ import Objetos.ObjetoVida;
 import Personajes.Alien;
 import Personajes.Soldado;
 
-public class VisitorDisparo implements Visitor{
-	protected DisparoSoldado myDisparoSoldado;
+public class VisitorBalaSoldado implements Visitor{
+	protected Bala myDisparoSoldado;
 	
-	public void setBala (DisparoSoldado b){
+	public void setBala (Bala b){
 		  myDisparoSoldado = b;
 	}
 	 
@@ -64,6 +64,19 @@ public class VisitorDisparo implements Visitor{
 	public void visit(ObjetoPiedra a) {
 	 
 	}
+
+	public boolean puedoPasar(Bala a) {
+		return true;
+	}
+
+	public boolean puedoPasar(Alien a) {
+		return false;
+	}
+
+	public boolean puedoPasar(Soldado a) {
+		return true;
+	}
+
 	
 	
 
