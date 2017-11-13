@@ -18,6 +18,7 @@ public class S4 extends Soldado {
 	public S4(Celda pos) {
 		super(pos);
 		this.vida = 100;
+		this.fuerza = (float) 0.5;
 		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
 

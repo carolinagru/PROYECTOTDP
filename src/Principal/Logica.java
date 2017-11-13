@@ -247,14 +247,14 @@ public class Logica {
 	}
 	
 	public void iniciarDisparoSoldado() {
-		t2 = new Timer (1000,new ActionListener (){
+		t3 = new Timer (1000,new ActionListener (){
 			public void actionPerformed(ActionEvent e){
 				moverDisparo();
 				destruirSoldado();
 				limpiarBalas();
 			}
 		});
-		t2.start();
+		t3.start();
 	}
 	
 	public void crearBalasSoldados(Personaje s) {

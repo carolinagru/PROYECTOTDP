@@ -29,7 +29,7 @@ public class DisparoGrafico extends ObstaculoGrafico {
 		}
 		
 		public void actualizarGrafico(int dir){		
-
+		  System.out.println("entro a actualizar grafico con pos x y pos y "+pos.x+" "+pos.y);
 		  ImageIcon aux=(ImageIcon) image[dir];
 		  Icon icono = new ImageIcon(aux.getImage().getScaledInstance(10, 10, Image.SCALE_DEFAULT));
 		  label.setIcon(icono);

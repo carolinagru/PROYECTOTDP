@@ -128,13 +128,13 @@ public class Mapa {
 	
 	
 	public void eliminar(Obstaculo o) {
-		panel.remove(o.getGrafico(2));
+		o.getCelda().setElemento(null);
+		panel.remove(o.getGrafico(0));
 		panel.revalidate();
 		panel.repaint();
-		o.getCelda().setElemento(null);
 	}
 
-	public LinkedList getLista() {
+	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
 }
