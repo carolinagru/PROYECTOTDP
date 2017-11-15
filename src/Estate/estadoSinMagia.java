@@ -14,6 +14,6 @@ public class estadoSinMagia extends Estado {
 		float vida = p.getVida() * i;
 		p.setVida(vida);
 		
-	}
+	} 
 
 }
