@@ -14,9 +14,10 @@ import javax.swing.Timer;
 import Disparo.Bala;
 import Disparo.BalaSoldado;
 import Factory.A1factory;
+import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
-import Factory.PersonajesFactoryMethod;
+import Factory.SoldadosFactoryMethod;
 import Factory.S1factory;
 import Factory.S2factory;
 import Factory.S3factory;
@@ -35,21 +36,21 @@ public class Logica {
 	protected int puntos;
 	protected Timer t1,t2,t3;
 	protected LinkedList<Obstaculo> a_eliminarObstaculo;
-	protected LinkedList<Obstaculo> a_eliminarBala;
-	protected LinkedList<Personaje> aliensMapa;
-	protected LinkedList<Personaje> soldadosMapa;
+	protected LinkedList<Alien> aliensMapa;
+	protected LinkedList<Soldado> soldadosMapa;
 	protected LinkedList<Bala> balasSoldado;
 	protected LinkedList<Bala> balasAlien;
 	protected JPanel panelMapa;
 	protected Mapa mapaCombate;
 	private static int tamanioCelda = 80;
-	protected PersonajesFactoryMethod factory;
+	protected SoldadosFactoryMethod factorySoldado;
+	protected AlienFactoryMethod factoryAlien; 
 	protected BalasFactoryMethod factoryBala;
 	protected static int height = 500;
 	protected static int width= 1000;
 	protected JLabel l;
-    protected int columnas;
-    protected int filas;
+    protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
+    protected static int filas = ((height - 40) / tamanioCelda)+1;
 
 	public Logica(JPanel p){
 		panelMapa=p;
@@ -59,19 +60,14 @@ public class Logica {
 		aliensMapa=new LinkedList();
 		soldadosMapa= new LinkedList();
 		a_eliminarObstaculo= new LinkedList();
-		a_eliminarBala= new LinkedList();
 		balasSoldado = new LinkedList();
 		balasAlien = new LinkedList();
 		
-	    columnas = ((width - 80 ) / tamanioCelda)+2;
-	    filas = ((height - 40) / tamanioCelda)+1;
-	    
-	    mapaCombate = new Mapa(filas,columnas,p);
+		mapaCombate = new Mapa(filas,columnas,p);
 	}
 	
 	public void insertarObjetos() {
 		mapaCombate.insertarObjetos();
-		
 	}
 	
 	public void limpiarMuertos (){
@@ -81,15 +77,13 @@ public class Logica {
 				aliensMapa.remove(o);
 				soldadosMapa.remove(o);
 				mapaCombate.getLista().remove(o);
-				//balasSoldado.remove(o);
-				//mapaCombate.eliminar(o);
 			}
 		}
 	}
 			
 	public void insertarEnemigos() {
 	   	while(aliensMapa.size() < 4){
-	   		aliensMapa.addLast(mapaCombate.insertarEnemigo(factory));	 
+	   		aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));	 
 	   	}
 	}
 	
@@ -111,7 +105,6 @@ public class Logica {
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(0);				
 			}	
-			
 		}
 		else
 			System.out.println("Entre manao");
@@ -123,7 +116,6 @@ public class Logica {
 		}
 	}
 	
-
 	public void ataqueAlien (Personaje p){
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(c);
@@ -148,12 +140,10 @@ public class Logica {
 	
 	/**Ataque de soldado cuerpo a cuerpo **/
 	public void inicioAtaqueSoldados () {
-		
 		for (Personaje p : soldadosMapa){
 			ataqueSoldado(p);
 		}
 	}
-	
 	
 	public void ataqueSoldado (Personaje p ) {
 		Celda c = p.getCelda();	
@@ -161,7 +151,6 @@ public class Logica {
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
-				
 				if ( o.getVida() > 0){
 					p.actualizarGrafico(1);
 					VisitorSoldado v = new VisitorSoldado();
@@ -174,7 +163,6 @@ public class Logica {
 					a_eliminarObstaculo.addLast(o);
 					siguiente.setElemento(null);
 					limpiarMuertos();
-					 
 				}
 			}
 		}
@@ -194,17 +182,14 @@ public class Logica {
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(1);
-				
-				
 			}	
 		}
 		else {
-			balasSoldado.removeLast();
+			balasSoldado.remove(p);
 			mapaCombate.eliminar(p);
 		}
 	}
 	
-	 
 	public void moverDisparo() {
 		
 		for (Bala p :balasSoldado){	
@@ -213,130 +198,42 @@ public class Logica {
 		}
 	}
 	 
- 
 	public void balaSoldado(Bala b) {
 		Celda c = b.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
 		
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
-			if ( o != null) {
+			if ( o != null){
 				if ( o.getVida() > 0){ 
 					VisitorBalaSoldado v = new VisitorBalaSoldado();
 					v.setBala(b);
-					if (!o.dejoPasar(v)){
+					if (!o.dejoPasar(v)) 
 						o.accept(v);
-						//a_eliminarBala.addLast(b);
-						
-					}
-					else {
+					else 
 						b.setCelda(siguiente.getFila(), siguiente.getColumna());
-						}						 
 				}
-				else{	//eliminamos el grafico del obstaculo del panel
-						o.actualizarGrafico(2); 
-						//mapaCombate.eliminar(o);
-						a_eliminarObstaculo.addLast(b); //lo agregamos a la lista de eliminados de obstaculos
-						//eliminamos el grafico de la bala
-						//mapaCombate.eliminar(b);
-						//a_eliminarBala.addLast(b); //lo agregamos a la lista de eliminamos de balas
-					}
+				else {
+						o.actualizarGrafico(2);
+						a_eliminarObstaculo.add(o);
+				}
 				balasSoldado.remove(b);
 				mapaCombate.eliminar(b);
 			}
 		}
 	}
 	
- 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public void accionBalaSoldado() {
 		for (Bala p : balasSoldado) {
 			balaSoldado(p);
 		}
 	}
-	
-	public void limpiarBalas() {
-		if ( a_eliminarBala != null){
-			while (a_eliminarBala.size() > 0){
-				Obstaculo o = a_eliminarBala.removeFirst();
-				balasSoldado.remove(o);
-			}
-		}	
-	}
-	 
-	 /*
-	public void iniciarDisparoSoldado() {
-		t2 = new Timer (1000,new ActionListener (){
-			public void actionPerformed(ActionEvent e){
-				moverDisparo();
-				accionBalaSoldado();
-				limpiarBalas();
-			}
-		});
-		t2.start();
-	}
-	 
-	/**
-	public void crearBalasSoldados(Personaje s) {
-		factoryBala = new BalaSoldadoFactory(panelMapa);
-		Celda celdaDisparo = mapaCombate.siguienteCeldaDer(s.getCelda());
-		balasSoldado.addLast(factoryBala.crearBalas(celdaDisparo, s));
-	}
-	**/
-	
- 
+
 	public void crearBalasSoldados(Personaje s) {
 		Celda celdaDisparo = mapaCombate.siguienteCeldaDer(s.getCelda());
 		balasSoldado.addLast(mapaCombate.insertarBalasMapa(factoryBala,celdaDisparo,s));	
 	}
- 
-	
-	
+ 	
 	public boolean crearS1(int x, int y) {
 		boolean toReturn = false;
 		if ( monedas >= 25) {
@@ -346,7 +243,6 @@ public class Logica {
 			Soldado s = sf.createPersonaje(c);
 			soldadosMapa.addLast(s);
 			monedas-=25;
-			//crearBalasSoldados(soldadosMapa.getLast());
 		}
 		return toReturn;
 	}
@@ -356,8 +252,8 @@ public class Logica {
 		if (monedas > 25 ) {
 			toReturn = true;
 			Celda c = mapaCombate.getCelda(x, y);	
-			factory = new S2factory(panelMapa);
-			soldadosMapa.addLast(factory.createPersonaje(c));	
+			factorySoldado = new S2factory(panelMapa);
+			soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
 			VisitorSoldado v = new VisitorSoldado ();
 			monedas -=25;
 		}
@@ -365,24 +261,24 @@ public class Logica {
 	
 	public void crearS3(int x, int y) {
 		Celda c = mapaCombate.getCelda(x, y);
-		factory = new S3factory(panelMapa);
-		soldadosMapa.addLast(factory.createPersonaje(c));
+		factorySoldado = new S3factory(panelMapa);
+		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
 		VisitorSoldado v = new VisitorSoldado ();
 		v.setSoldado(soldadosMapa.getLast());
 	}
 	
 	public void crearS4(int x, int y) {
 		Celda c = mapaCombate.getCelda(x, y);
-		factory = new S4factory(panelMapa);
-		soldadosMapa.addLast(factory.createPersonaje(c));
+		factorySoldado = new S4factory(panelMapa);
+		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
 		VisitorSoldado v = new VisitorSoldado ();
 		v.setSoldado(soldadosMapa.getLast());
 	}
 	
 	public void crearS5(int x, int y) {
 		Celda c = mapaCombate.getCelda(x, y);
-		factory = new S5factory(panelMapa);
-		soldadosMapa.addLast(factory.createPersonaje(c));
+		factorySoldado = new S5factory(panelMapa);
+		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
 		//VisitorSoldado v = new VisitorSoldado ();
 		//v.setSoldado(soldadosMapa.getLast());
 		crearBalasSoldados(soldadosMapa.getLast());
@@ -432,11 +328,6 @@ public class Logica {
 
 	public void setPanel(JPanel frame) {
 		panelMapa = frame;		
-	}
-	
-	
-	
-	
-	
+	}	
 	
 }

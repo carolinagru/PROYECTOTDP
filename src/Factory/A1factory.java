@@ -11,15 +11,15 @@ import Principal.Celda;
 import Principal.Logica;
 import Visitor.VisitorSoldado;
 
-public class A1factory implements PersonajesFactoryMethod {
+public class A1factory implements AlienFactoryMethod {
 	protected JPanel panel;
 	protected JLabel l;
 	
 	public A1factory(JPanel p) {
 		panel= p;
 	}
-	public Personaje createPersonaje (Celda c) {
-		Personaje p = new A1(c);
+	public Alien createPersonaje (Celda c) {
+		Alien p = new A1(c);
 		c.setElemento(p);
 		l = p.getGrafico(0);
 		panel.add(l);

@@ -1,26 +1,22 @@
 package Principal;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import Disparo.Bala;
 import Factory.A1factory;
+import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
-import Factory.PersonajesFactoryMethod;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
 import Objetos.Obstaculo;
-import Personajes.A1;
 import Personajes.Alien;
 import Personajes.Personaje;
 
@@ -41,7 +37,6 @@ public class Mapa {
 			for(int j = 0; j < columnas; j++){
 				this.mapa[i][j] = new Celda( i, j);
 				this.mapa[i][j].setElemento(null);
-				
 			}
 		}
 		objetosMapa= new LinkedList();
@@ -90,8 +85,6 @@ public class Mapa {
 		                		       obs= new ObjetoFuente(c);
 		                		       else if(d == 'p')
 		                				     obs= new ObjetoPiedra(c);
-		                			        
-		                   
 		             if (obs != null){
 		            	 objetosMapa.addLast(obs); 
 		            	 obs.getCelda().setElemento(obs);
@@ -108,32 +101,31 @@ public class Mapa {
    catch (IOException e) {
 	 System.out.println("Error en objeto - leerArchivo. ");
    }	 
-	}
+}
 	
 	public void insertar(JLabel l) {
 		panel.add(l);
 		panel.repaint();
 	}
 	
-	public Personaje insertarEnemigo(PersonajesFactoryMethod factory) {
+	public Alien insertarEnemigo(AlienFactoryMethod factory) {
 		Random r = new Random();
 		int x = (int ) (Math.random() * 5);
 		Celda c = getCelda(x,11);
+		while (c.getElemento() != null) {
+			x = (int ) (Math.random() * 5);
+			c = getCelda(x,11);
+		}
 		factory = new A1factory(panel);
-		Personaje p = factory.createPersonaje(c);
+		Alien p = factory.createPersonaje(c);
 		
 	  return p;
 	}
-	
-
-	
 	
 	public Bala insertarBalasMapa(BalasFactoryMethod factory,Celda c, Personaje p) {
 		factory = new BalaSoldadoFactory(panel);
 		Bala b = factory.crearBalas(c, p);
 		return b;
-		
-		
 	}
 
 	public Celda siguienteCeldaIzq(Celda c) {
@@ -146,15 +138,14 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
-	
 	public void eliminar(Obstaculo o) {
+		o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();
-		o.getCelda().setElemento(null);
 	}
 
-	public LinkedList getLista() {
+	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
 }

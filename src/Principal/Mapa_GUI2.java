@@ -46,8 +46,8 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel_2;
 	private JPanel panel_3; 
 	private final Action action = new SwingAction();
-	/**
-	 * Launch the application.
+	
+	 /**Launch the application.
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -65,7 +65,7 @@ public class Mapa_GUI2 extends JFrame {
 			}
 		});
 	}
- */
+ **/
 	/**
 	 * Create the frame.
 	 */

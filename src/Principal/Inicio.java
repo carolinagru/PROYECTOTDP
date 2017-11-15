@@ -12,12 +12,7 @@ public class Inicio {
 		
 		Hilos h = new Hilos(l);
 		h.run();
-		
 	
-	
-		
-		
-		
 	}
 
 }

@@ -10,7 +10,7 @@ import Personajes.Soldado;
 import Principal.Celda;
 import Principal.Logica;
 
-public class S1factory  implements PersonajesFactoryMethod {
+public class S1factory  implements SoldadosFactoryMethod {
 protected JPanel panel;
 protected JLabel l;
 

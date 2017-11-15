@@ -3,14 +3,11 @@ package Factory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Personajes.A1;
-import Personajes.Personaje;
-import Personajes.S1;
 import Personajes.S4;
+import Personajes.Soldado;
 import Principal.Celda;
-import Principal.Logica;
 
-public class S4factory implements PersonajesFactoryMethod {
+public class S4factory implements SoldadosFactoryMethod {
 protected JPanel panel;
 protected JLabel l;
 
@@ -18,8 +15,8 @@ protected JLabel l;
 		panel= p;
 	}
 	
-	public Personaje createPersonaje (Celda c) {
-		Personaje p = new S4(c);
+	public Soldado createPersonaje (Celda c) {
+		Soldado p = new S4(c);
 		c.setElemento(p);
 		l = p.getGrafico(0);
 		panel.add(l);

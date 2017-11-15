@@ -5,20 +5,21 @@ import javax.swing.JPanel;
 
 import Personajes.A1;
 import Personajes.A6;
+import Personajes.Alien;
 import Personajes.Personaje;
 import Personajes.S1;
 import Principal.Celda;
 import Principal.Logica;
 
-public class A6factory  implements PersonajesFactoryMethod {
+public class A6factory  implements AlienFactoryMethod {
 protected JPanel panel;
 protected JLabel l;
 
 	public A6factory(JPanel p) {
 		panel= p;
 	}
-	public Personaje createPersonaje (Celda c) {
-		Personaje p = new A6(c);
+	public Alien createPersonaje (Celda c) {
+		Alien p = new A6(c);
 		c.setElemento(p);
 		l = p.getGrafico(0);
 		panel.add(l);
