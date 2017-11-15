@@ -31,7 +31,7 @@ public class VisitorAlien implements Visitor {
 		 
 	}
 	
-	public void visit(Bala b){
+	public void visit(Bala b){  
 		 
 	}
  
