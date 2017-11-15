@@ -8,6 +8,8 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
+ 
+import Estate.estadoSinMagia;
 import Factory.A1factory;
 import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
@@ -118,7 +120,6 @@ public class Mapa {
 		}
 		factory = new A1factory(panel);
 		Alien p = factory.createPersonaje(c);
-		
 	  return p;
 	}
 	

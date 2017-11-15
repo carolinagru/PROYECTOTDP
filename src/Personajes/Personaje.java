@@ -2,16 +2,13 @@ package Personajes;
 
 
 import Principal.Celda;
-import Visitor.*;
-
-import javax.swing.JLabel;
-
-import Graficos.ObstaculoGrafico;
+import Estate.Estado;
 import Objetos.Obstaculo;
 
 public abstract class Personaje extends Obstaculo{
- 
-	public float fuerza;
+	
+	protected float fuerza;
+	protected Estado myEstado;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
 	
@@ -20,18 +17,23 @@ public abstract class Personaje extends Obstaculo{
 		grafico = null;
 	}
 	
+	public void setFuerza (int f ) {
+		fuerza = f;
+	}
 	public float getFuerza (){
 		return fuerza;
 	}
 	
 	public void setVida(float f) {
-		vida-=f;
+		vida -=f;
 	}
 	
 	public int getVida() {
 		return vida;
 	}
 	
+	 
+	 
 	 
 	 
 

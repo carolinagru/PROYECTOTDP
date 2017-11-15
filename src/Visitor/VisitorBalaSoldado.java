@@ -14,14 +14,15 @@ import Personajes.Soldado;
 public class VisitorBalaSoldado implements Visitor{
 	protected Bala myDisparoSoldado;
 	
+	
 	public void setBala (Bala b){
 		  myDisparoSoldado = b;
 	}
 	 
 	public void visit(Alien a) {
 		System.out.println("-------VISIT DISPARO  Fuerza de impacto: "+myDisparoSoldado.getFuerzaImpacto()+" Alien vida :"+a.getVida());
-		a.setVida(myDisparoSoldado.getFuerzaImpacto()*a.getVida());
-		System.out.println("-----------VISIT DISPARO   Alien vida :"+a.getVida());
+		//a.getEstadoNivel().disminuirVida(myDisparoSoldado.getFuerzaImpacto(),a);
+		 
 
 	}
 

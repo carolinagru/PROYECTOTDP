@@ -1,11 +1,12 @@
 package Personajes;
  
-import javax.swing.ImageIcon;
+ 
 
+ 
 import Graficos.Alien2Grafico;
-import Graficos.Alien3Grafico;
+ 
 import Principal.Celda;
-import Visitor.Visitor;
+ 
 
 public class A2 extends Alien{
 	
@@ -14,6 +15,7 @@ public class A2 extends Alien{
 
 	public A2( Celda pos ) {		
 		super(pos);
+ 
 		this.vida = 100;
 		grafico = new Alien2Grafico(pos.getFila(), pos.getColumna());
 		

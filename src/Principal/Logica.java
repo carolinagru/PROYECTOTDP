@@ -1,8 +1,7 @@
 package Principal;
 
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+ 
 
 import Personajes.*;
 import java.util.LinkedList;
@@ -12,10 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Disparo.Bala;
-import Disparo.BalaSoldado;
-import Factory.A1factory;
+ 
+import Estate.Estado;
+ 
+import Estate.estadoCampo;
+ 
 import Factory.AlienFactoryMethod;
-import Factory.BalaSoldadoFactory;
+ 
 import Factory.BalasFactoryMethod;
 import Factory.SoldadosFactoryMethod;
 import Factory.S1factory;
@@ -42,6 +44,7 @@ public class Logica {
 	protected LinkedList<Bala> balasAlien;
 	protected JPanel panelMapa;
 	protected Mapa mapaCombate;
+	protected Estado estadoMagia;
 	private static int tamanioCelda = 80;
 	protected SoldadosFactoryMethod factorySoldado;
 	protected AlienFactoryMethod factoryAlien; 
@@ -57,15 +60,21 @@ public class Logica {
 		puntos=100;
 		monedas = 100;
 		
-		aliensMapa=new LinkedList();
-		soldadosMapa= new LinkedList();
-		a_eliminarObstaculo= new LinkedList();
-		balasSoldado = new LinkedList();
-		balasAlien = new LinkedList();
+		aliensMapa=new LinkedList<Alien>();
+		soldadosMapa= new LinkedList<Soldado>();
+		a_eliminarObstaculo= new LinkedList<Obstaculo>();
+		balasSoldado = new LinkedList<Bala>();
+		balasAlien = new LinkedList<Bala>();
 		
 		mapaCombate = new Mapa(filas,columnas,p);
+		
+		estadoMagia = new estadoCampo();
 	}
 	
+	
+	public LinkedList<Soldado> getSoldados () {
+		return soldadosMapa;
+	}
 	public void insertarObjetos() {
 		mapaCombate.insertarObjetos();
 	}
@@ -82,9 +91,16 @@ public class Logica {
 	}
 			
 	public void insertarEnemigos() {
-	   	while(aliensMapa.size() < 4){
-	   		aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));	 
-	   	}
+		while ( aliensMapa.size()< 1)
+			aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));	 
+	   	
+		if ( aliensMapa.size() == 0) {
+			while ( aliensMapa.size()< 1)
+				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));	 
+		}
+	   	
+	   		
+	   		 
 	}
 	
 	public void inicioMovimientoAliens() {
@@ -96,7 +112,7 @@ public class Logica {
 	public void moverAlien(Personaje p) {	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(p.getCelda());
 		p.getCelda().setElemento(null);
-		
+		 
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
@@ -106,8 +122,7 @@ public class Logica {
 				p.actualizarGrafico(0);				
 			}	
 		}
-		else
-			System.out.println("Entre manao");
+		 
 	}
 	
 	public void inicioAtaqueAlien (){
@@ -126,6 +141,7 @@ public class Logica {
 					p.actualizarGrafico(1);
 					VisitorAlien v = new VisitorAlien();
 					v.setAlien(p);
+					v.setEstado(estadoMagia);
 					o.accept(v);
 				}
 				else{
@@ -155,6 +171,12 @@ public class Logica {
 					p.actualizarGrafico(1);
 					VisitorSoldado v = new VisitorSoldado();
 					v.setSoldado(p);
+					if (o.getEstado() != null) {
+						v.setEstado(o.getEstado());
+					}
+					else {
+						v.setEstado(estadoMagia);
+					}
 					o.accept(v);
 				}
 				else{
@@ -173,8 +195,8 @@ public class Logica {
 		System.out.println("Sigo moviendo disparo ------------");
 		
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
-		p.getCelda().setElemento(null);
-		mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+		//p.getCelda().setElemento(null);
+		//mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
@@ -243,6 +265,7 @@ public class Logica {
 			Soldado s = sf.createPersonaje(c);
 			soldadosMapa.addLast(s);
 			monedas-=25;
+		
 		}
 		return toReturn;
 	}
@@ -304,9 +327,9 @@ public class Logica {
 				while ( p != null && corte ) {
 					if (p.getCelda().equals(c)) {
 						if ( p.getVida() != 100)
-							puntos += p.getVida()*0.5;
+							monedas += p.getVida()*0.5;
 						else
-							puntos += p.getVida();
+							monedas += p.getVida();
 						mapaCombate.eliminar(p);
 						soldadosMapa.remove(p);
 						toReturn = true;
