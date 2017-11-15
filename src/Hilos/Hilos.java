@@ -23,13 +23,14 @@ public class Hilos extends Thread {
 			Thread.sleep(2000);
 			while (execute) {	
 				
-				l.inicioAtaqueAlien();;
-				l.inicioMovimientoAliens();;
-				l.inicioAtaqueSoldados();
-				
 				l.accionBalaSoldado();
 				l.moverDisparo();
 				
+				l.inicioAtaqueAlien();
+				l.inicioMovimientoAliens();
+				l.inicioAtaqueSoldados();
+				
+				l.insertarEnemigos();
 				Thread.sleep(1000);
 			}
 			} catch (InterruptedException e2) {

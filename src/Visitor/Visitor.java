@@ -24,6 +24,9 @@ public interface Visitor {
 	public boolean puedoPasar (Alien a );
 	public boolean puedoPasar (Soldado a );
 
+	public boolean puedoAtacar(Alien a);
+	public boolean puedoAtacar(Soldado a);
+	public boolean puedoAtacar(ObjetoVida a);
 	}
 
  

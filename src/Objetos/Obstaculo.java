@@ -25,8 +25,7 @@ public abstract class Obstaculo {
 	
 	public void actualizarGrafico(int n) {
 		  grafico.actualizarGrafico(n);
-		}
-	
+	}
 	
 	public void setCelda(int x, int y) {
 		pos.set(x, y);
@@ -48,5 +47,7 @@ public abstract class Obstaculo {
 	public abstract void accept(Visitor v);
 	
 	public abstract boolean dejoPasar(Visitor v);
+	
+	public abstract boolean puedeAtacar(Visitor v);
 	
 }
