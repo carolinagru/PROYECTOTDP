@@ -30,6 +30,10 @@ public  class Alien extends Personaje {
 	public boolean dejoPasar(Visitor v) {
 	   return v.puedoPasar(this);
 	}
+	
+	public int getPuntos () {
+		return punto;
+	}
 
    
      

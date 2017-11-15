@@ -28,6 +28,7 @@ public class VisitorBalaSoldado implements Visitor{
 	 
 	public void visit(Soldado a) {
 		
+		
 	}
 	
 	public void visit(Bala b){
@@ -76,6 +77,8 @@ public class VisitorBalaSoldado implements Visitor{
 	public boolean puedoPasar(Soldado a) {
 		return true;
 	}
+	
+	
 
 	
 	

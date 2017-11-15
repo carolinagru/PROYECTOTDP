@@ -10,7 +10,7 @@ import Graficos.ObstaculoGrafico;
 import Objetos.Obstaculo;
 
 public abstract class Personaje extends Obstaculo{
-	
+ 
 	public float fuerza;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
@@ -31,6 +31,8 @@ public abstract class Personaje extends Obstaculo{
 	public int getVida() {
 		return vida;
 	}
+	
+	 
 	 
 
 	 

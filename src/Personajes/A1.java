@@ -9,13 +9,13 @@ import Visitor.Visitor;
 import Visitor.VisitorAlien;
 
 public class A1 extends Alien{
-	
-	protected static int moneda=25;
-	protected static int punto=15;
-	 
+
 
 	public A1(Celda pos ) {
 		super(pos);
+		 this.moneda=25;
+		 this.punto=15;
+		 
 		this.vida = 100;
 		this.fuerza = (float) 0.9;
 		this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());		
@@ -27,6 +27,10 @@ public class A1 extends Alien{
 	
 	public int getVida() {
 		return vida;
+	}
+	
+	public int getPuntos () {
+		return punto;
 	}
 	
 }

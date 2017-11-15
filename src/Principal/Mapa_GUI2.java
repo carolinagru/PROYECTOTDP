@@ -27,6 +27,8 @@ import java.awt.Graphics;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.SwingConstants;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 
 
 public class Mapa_GUI2 extends JFrame {
@@ -43,13 +45,15 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JPanel panel_3; 
+	private final Action action = new SwingAction();
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					SplashScreen splash = new SplashScreen(2000);
 					splash.showSplash();
 					Mapa_GUI2 frame = new Mapa_GUI2();
@@ -61,11 +65,12 @@ public class Mapa_GUI2 extends JFrame {
 			}
 		});
 	}
-
+ */
 	/**
 	 * Create the frame.
 	 */
 	public Mapa_GUI2() {
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1350, 700);
@@ -151,7 +156,10 @@ public class Mapa_GUI2 extends JFrame {
 		panel_3.setBounds(334, 84, 1000, 500);
 		contentPane.add(panel_3);
 		
-		logica = new Logica(panel_3);
+		logica = new Logica (panel_3);
+		 //l.setPanel(panel_3);
+		//Hilos h = new Hilos(logica);
+		//h.run();
 
 		
 		// B O T O N E S     O B J E T O S--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -200,18 +208,25 @@ public class Mapa_GUI2 extends JFrame {
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado1.getWidth(), botonSoldado1.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado1.setIcon(iconoBoton);
 		panel_2.add(botonSoldado1);
-		botonSoldado1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mousePressed(MouseEvent e) {
+		ActionListener a1 = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+				boolean estadoBoton1 = true;
+				public void mousePressed(MouseEvent e) {
+					if (estadoBoton1) {
 						int x=e.getX() ;
 						int y=e.getY() ;
 						int filas = y / 80;
 						int columnas = x  / 80;
-					  logica.crearS1(filas,columnas);   
-					}});
-			}});
-		
+					  if (!logica.crearS1(filas,columnas)) {
+						  System.out.println("No pudo comprar jugador 1 ");
+					  }
+					  estadoBoton1 = false;
+					}
+
+				}});
+		}};
+		botonSoldado1.addActionListener(a1);
 		
 		JButton botonSoldado2 = new JButton();
 		botonSoldado2.setBounds(152, 0, 106, 76);
@@ -220,19 +235,26 @@ public class Mapa_GUI2 extends JFrame {
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado2.getWidth(), botonSoldado2.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado2.setIcon(iconoBoton);
 		panel_2.add(botonSoldado2);
-		botonSoldado2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		 
+		ActionListener a2 = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
 				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+					boolean estadoBoton2 = true;
 					public void mousePressed(MouseEvent e) {
-						int x=e.getX() ;
-						int y=e.getY() ;
-						int filas = y / 80;
-						int columnas = x  / 80;
-					  logica.crearS2(filas,columnas);
+						if (estadoBoton2) {
+							int x=e.getX() ;
+							int y=e.getY() ;
+							int filas = y / 80;
+							int columnas = x  / 80;
+						  logica.crearS2(filas,columnas);
+						  estadoBoton2 = false;
+						}
 
 					}});
-			}});
-		
+			}};
+		botonSoldado2.addActionListener(a2);
+			
+			
 		JButton botonSoldado3 = new JButton();
 		botonSoldado3.setBounds(295, 0, 106, 76);
 		botonSoldado3.setBackground(Color.WHITE);
@@ -240,19 +262,23 @@ public class Mapa_GUI2 extends JFrame {
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado3.getWidth(), botonSoldado3.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado3.setIcon(iconoBoton);
 		panel_2.add(botonSoldado3);
-		botonSoldado3.addActionListener(new ActionListener() {
+		ActionListener a3 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mousePressed(MouseEvent e) {
-						int x=e.getX() ;
-						int y=e.getY() ;
-						int filas = y / 80;
-						int columnas = x  / 80;
+					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+						boolean estadoBoton2 = true;
+						public void mousePressed(MouseEvent e) {
+							if (estadoBoton2) {
+								int x=e.getX() ;
+								int y=e.getY() ;
+								int filas = y / 80;
+								int columnas = x  / 80;
+							  logica.crearS3(filas,columnas);
+							  estadoBoton2 = false;
+							}
 
-					  logica.crearS3(filas,columnas);
-
-					}});
-			}});
+						}});
+				}};
+		botonSoldado3.addActionListener(a3);
 		
 		JButton botonSoldado4 = new JButton();
 		botonSoldado4.setBounds(436, 0, 106, 76);
@@ -261,19 +287,24 @@ public class Mapa_GUI2 extends JFrame {
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado4.getWidth(), botonSoldado4.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado4.setIcon(iconoBoton);
 		panel_2.add(botonSoldado4);
-		botonSoldado4.addActionListener(new ActionListener() {
+		ActionListener a4= new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mousePressed(MouseEvent e) {
-						int x=e.getX() ;
-						int y=e.getY() ;
-						int filas = y / 80;
-						int columnas = x  / 80;
+					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+						boolean estadoBoton2 = true;
+						public void mousePressed(MouseEvent e) {
+							if (estadoBoton2) {
+								int x=e.getX() ;
+								int y=e.getY() ;
+								int filas = y / 80;
+								int columnas = x  / 80;
+							  logica.crearS4(filas,columnas);
+							  estadoBoton2 = false;
+							}
 
-					  logica.crearS4(filas,columnas);
-
-					}});
-			}});
+						}});
+				}};
+		botonSoldado4.addActionListener(a4);
+		
 		
 		JButton botonSoldado5 = new JButton();
 		botonSoldado5.setBounds(573, 0, 106, 76);
@@ -283,19 +314,27 @@ public class Mapa_GUI2 extends JFrame {
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado5.getWidth(), botonSoldado5.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado5.setIcon(iconoBoton);
 		panel_2.add(botonSoldado5);
-		botonSoldado5.addActionListener(new ActionListener() {
+		ActionListener a5 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mousePressed(MouseEvent e) {
-						int x=e.getX() ;
-						int y=e.getY() ;
-						int filas = y / 80;
-						int columnas = x  / 80;
-						logica.crearS5(filas,columnas);
-					}});
-			}});
+					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+						boolean estadoBoton2 = true;
+						public void mousePressed(MouseEvent e) {
+							if (estadoBoton2) {
+								int x=e.getX() ;
+								int y=e.getY() ;
+								int filas = y / 80;
+								int columnas = x  / 80;
+							  logica.crearS5(filas,columnas);
+							  estadoBoton2 = false;
+							}
+
+						}});
+				}};
+		botonSoldado5.addActionListener(a5);
 		
+		// B O T O N BORRAR
 			JButton botonBorrar = new JButton();
+			botonBorrar.setAction(action);
 			botonBorrar.setBounds(689, 0, 301, 76);
 			botonBorrar.setContentAreaFilled(false);
 			imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonBorrar.png"));
@@ -305,16 +344,35 @@ public class Mapa_GUI2 extends JFrame {
 				botonBorrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+							boolean estadoBoton = true;
 							public void mousePressed(MouseEvent e) {
-								int x=e.getX() ;
-								int y=e.getY() ;
-								int filas = y / 80;
-								int columnas = x  / 80;
-								logica.verificarPosicion(filas, columnas);
+								if ( estadoBoton) {
+									estadoBoton = false;
+									int x=e.getX() ;
+									int y=e.getY() ;
+									int filas = y / 80;
+									int columnas = x  / 80;
+									if (logica.verificarPosicion(filas, columnas)) {
+										
+										System.out.println("Encontre soldado a eliminar y elimino ");
+									}
+									
+								}
 							 
 							}});
 					}});
 		
-		
+				this.setVisible(true);
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	public Logica dameLogica() {
+		return logica;
 	}
 }

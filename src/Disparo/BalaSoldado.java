@@ -19,7 +19,7 @@ public class BalaSoldado extends Bala {
 
 
 	public boolean dejoPasar(Visitor v) {
-		return true;
+		return v.puedoPasar(this);
 	}
 
  

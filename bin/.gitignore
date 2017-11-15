@@ -1,11 +1,10 @@
 /Logica.java
-/Disparo/
-/Factory/
-/Graficos/
-/Objetos/
-/Personajes/
-/Premios/
 /Principal/
 /Sprites/
-/UML/
+/Graficos/
+/Factory/
+/Personajes/
+/Disparo/
+/Objetos/
 /Visitor/
+/Hilos/

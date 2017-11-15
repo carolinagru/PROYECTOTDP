@@ -10,7 +10,10 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Disparo.Bala;
 import Factory.A1factory;
+import Factory.BalaSoldadoFactory;
+import Factory.BalasFactoryMethod;
 import Factory.PersonajesFactoryMethod;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
@@ -38,6 +41,7 @@ public class Mapa {
 			for(int j = 0; j < columnas; j++){
 				this.mapa[i][j] = new Celda( i, j);
 				this.mapa[i][j].setElemento(null);
+				
 			}
 		}
 		objetosMapa= new LinkedList();
@@ -59,6 +63,10 @@ public class Mapa {
 
 	public int getFila() {
 		return filas;
+	}
+	
+	public void setCeldaMapa(int x , int y , Obstaculo o) {
+		mapa[x][y].setElemento(o);
 	}
 	
 	public void insertarObjetos() {
@@ -113,7 +121,19 @@ public class Mapa {
 		Celda c = getCelda(x,11);
 		factory = new A1factory(panel);
 		Personaje p = factory.createPersonaje(c);
+		
 	  return p;
+	}
+	
+
+	
+	
+	public Bala insertarBalasMapa(BalasFactoryMethod factory,Celda c, Personaje p) {
+		factory = new BalaSoldadoFactory(panel);
+		Bala b = factory.crearBalas(c, p);
+		return b;
+		
+		
 	}
 
 	public Celda siguienteCeldaIzq(Celda c) {

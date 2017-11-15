@@ -14,10 +14,6 @@ public Soldado(Celda pos) {
  }
 	
 
-public void accept(Visitor v) {
- 	 v.visit(this);
- 	}
-
 public void setVida(float f) {
 	vida-=f;
 }
@@ -26,6 +22,13 @@ public int getVida() {
 	return vida;
 }
 
+public int getPrecio () {
+	return precio;
+}
+
+public void accept(Visitor v) {
+	 v.visit(this);
+	}
 
 public boolean dejoPasar(Visitor v) {
 	return v.puedoPasar(this);

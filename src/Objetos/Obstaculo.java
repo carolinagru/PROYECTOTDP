@@ -12,6 +12,7 @@ public abstract class Obstaculo {
 	protected ObstaculoGrafico grafico;
 	protected Celda pos;
 	protected int vida;
+	protected int puntos ;
 
 	
 	public JLabel getGrafico(int n) {	
@@ -40,6 +41,9 @@ public abstract class Obstaculo {
 		return vida;
 	}
 	
+	public int getPuntos () {
+		return puntos;
+	}
 
 	public abstract void accept(Visitor v);
 	

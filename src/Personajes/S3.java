@@ -2,7 +2,8 @@
 package Personajes;
 
  
-import Graficos.Soldado1Grafico;
+ 
+import Graficos.Soldado3Grafico;
 import Principal.Celda;
  
 
@@ -14,7 +15,8 @@ public class S3 extends Soldado {
 	public S3(Celda pos) {
 		super(pos);
 		this.vida = 100;
-		grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
+		this.fuerza = (float) 0.3;
+		grafico = new Soldado3Grafico(pos.getFila(), pos.getColumna());
 	}
 
 
