@@ -74,7 +74,22 @@ public class VisitorBalaAlien implements Visitor{
 		return false;
 	}
 
-	
+	public boolean puedoAtacar(Alien a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoAtacar(Soldado a) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean puedoAtacar(ObjetoVida a) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 
 }

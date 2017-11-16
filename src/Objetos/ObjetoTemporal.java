@@ -20,5 +20,8 @@ public class ObjetoTemporal extends Obstaculo{
 		return true;
 	}
  
-	
+	public boolean puedeAtacar(Visitor v) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

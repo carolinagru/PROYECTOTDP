@@ -22,30 +22,19 @@ public class Hilos extends Thread {
 			this.execute = true;
 			Thread.sleep(2000);
 			while (execute) {	
-				
-				
-				l.insertarEnemigos();
 				l.accionBalaSoldado();
 				l.moverDisparo();
-<<<<<<< HEAD
 				l.limpiarBalasSoldado();
 				l.inicioAtaqueAlien();
 				l.inicioMovimientoAliens();
 				l.inicioAtaqueSoldados();
 				l.limpiarMuertos();
 				l.insertarEnemigos();
-=======
 				
-				l.inicioAtaqueAlien();;
-				l.inicioMovimientoAliens();;
-				l.inicioAtaqueSoldados();
-				
-				
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
 				Thread.sleep(1000);
 			}
-			} catch (InterruptedException e2) {
-				e2.printStackTrace();
-		}
-			}
+		}catch (InterruptedException e2) {
+		 	e2.printStackTrace();
+		 }
 	}
+}

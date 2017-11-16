@@ -1,16 +1,13 @@
 /Logica.java
-<<<<<<< HEAD
-/Hilos/
-/Principal/
-=======
-/Principal/
-/Visitor/
-/Estate/
 /Disparo/
+/Sprites/
+/UML/
+/Estate/
 /Factory/
 /Graficos/
 /Hilos/
 /Objetos/
 /Personajes/
 /Premios/
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
+/Principal/
+/Visitor/

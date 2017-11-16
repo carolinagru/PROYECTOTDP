@@ -61,20 +61,12 @@ public class Logica {
 		puntos=100;
 		monedas = 100;
 		
-<<<<<<< HEAD
 		aliensMapa=new LinkedList();
 		soldadosMapa= new LinkedList();
 		a_eliminarObstaculo= new LinkedList();
 		balasSoldado = new LinkedList();
 		balasAlien = new LinkedList();
 		balasAeliminar = new LinkedList();
-=======
-		aliensMapa=new LinkedList<Alien>();
-		soldadosMapa= new LinkedList<Soldado>();
-		a_eliminarObstaculo= new LinkedList<Obstaculo>();
-		balasSoldado = new LinkedList<Bala>();
-		balasAlien = new LinkedList<Bala>();
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
 		
 		mapaCombate = new Mapa(filas,columnas,p);
 		
@@ -143,18 +135,17 @@ public class Logica {
 	}
 	
 	public void inicioAtaqueAlien (){
-		for (Personaje p : aliensMapa){
+		for (Alien p : aliensMapa){
 			ataqueAlien(p);
 		}
 	}
 	
-	public void ataqueAlien (Personaje p){
+	public void ataqueAlien (Alien p){
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(c);
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
 			if (o != null){
-<<<<<<< HEAD
 				VisitorAlien v = new VisitorAlien();
 				v.setAlien(p);
 				if (!o.dejoPasar(v)){
@@ -169,39 +160,24 @@ public class Logica {
 							siguiente.setElemento(null);
 						}
 					}
-=======
-				if (o.getVida() > 0){
-					p.actualizarGrafico(1);
-					VisitorAlien v = new VisitorAlien();
-					v.setAlien(p);
-					v.setEstado(estadoMagia);
-					o.accept(v);
-				}
-				else{
-					o.actualizarGrafico(2);
-					a_eliminarObstaculo.addLast(o);
-					limpiarMuertos();
-					siguiente.setElemento(null);			
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
 				}
 			}
-		}
+		}		
 	}
 	
 	/**Ataque de soldado cuerpo a cuerpo **/
 	public void inicioAtaqueSoldados () {
-		for (Personaje p : soldadosMapa){
+		for (Soldado p : soldadosMapa){
 			ataqueSoldado(p);
 		}
 	}
 	
-	public void ataqueSoldado (Personaje p ) {
+	public void ataqueSoldado (Soldado p ) {
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
-<<<<<<< HEAD
 				VisitorSoldado v = new VisitorSoldado();
 				v.setSoldado(p);
 				if (!o.dejoPasar(v)){
@@ -216,26 +192,7 @@ public class Logica {
 							mapaCombate.eliminar(o);
 							siguiente.setElemento(null);
 						}
-=======
-				if ( o.getVida() > 0){
-					p.actualizarGrafico(1);
-					VisitorSoldado v = new VisitorSoldado();
-					v.setSoldado(p);
-					if (o.getEstado() != null) {
-						v.setEstado(o.getEstado());
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
 					}
-					else {
-						v.setEstado(estadoMagia);
-					}
-					o.accept(v);
-				}
-				else{
-					puntos += o.getPuntos();
-					o.actualizarGrafico(2); 
-					a_eliminarObstaculo.addLast(o);
-					siguiente.setElemento(null);
-					limpiarMuertos();
 				}
 			}
 		}
@@ -243,30 +200,22 @@ public class Logica {
 	
  
 	public void moverDisparoSoldado(Bala p){
-		System.out.println("Sigo moviendo disparo ------------");
 		
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
-		//p.getCelda().setElemento(null);
-		//mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+		mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
-				mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(1);
 			}	
 		}
 		else {
-<<<<<<< HEAD
 				balasAeliminar.addLast(p);
 				mapaCombate.eliminar(p);
 			}
-=======
-			balasSoldado.remove(p);
-			mapaCombate.eliminar(p);
-		}
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
 	}
 	
 	public void moverDisparo() {
@@ -284,26 +233,21 @@ public class Logica {
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
-				if ( o.getVida() > 0){ 
-					VisitorBalaSoldado v = new VisitorBalaSoldado();
-					v.setBala(b);
-					if (!o.dejoPasar(v)) 
-						o.accept(v);
-					else 
-						b.setCelda(siguiente.getFila(), siguiente.getColumna());
-				}
-				else {
+				VisitorBalaSoldado v = new VisitorBalaSoldado();
+				v.setBala(b);
+				if (!o.dejoPasar(v)) {
+					o.accept(v);
+					if (o.getVida() <= 0){
 						o.actualizarGrafico(2);
 						a_eliminarObstaculo.add(o);
+						mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
+						mapaCombate.eliminar(o);
+					}
 				}
-<<<<<<< HEAD
 				else b.setCelda(siguiente.getFila(), siguiente.getColumna());
 				
 				mapaCombate.setCeldaMapa(b.getCelda().getFila(),b.getCelda().getColumna(), null);
 				balasAeliminar.addLast(b);
-=======
-				balasSoldado.remove(b);
->>>>>>> 2c62ea2ec522af508dae7d32ce479422c36973e9
 				mapaCombate.eliminar(b);
 			}
 		}

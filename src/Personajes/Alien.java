@@ -45,8 +45,9 @@ public  class Alien extends Personaje {
 		return punto;
 	}
 
-   
-     
+	public boolean puedeAtacar(Visitor v) {
+		return v.puedoAtacar(this);
+	}
      
 
 }
