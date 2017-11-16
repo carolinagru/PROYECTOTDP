@@ -34,10 +34,6 @@ public boolean dejoPasar(Visitor v) {
 	return v.puedoPasar(this);
 }
 
-public boolean puedeAtacar(Visitor v) {
-	return v.puedoAtacar(this);
-}
-
 
 	
 }

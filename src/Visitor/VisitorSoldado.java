@@ -1,6 +1,7 @@
 package Visitor;
 
 import Disparo.Bala;
+import Estate.Estado;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
@@ -13,16 +14,19 @@ import Personajes.Soldado;
 
 public class VisitorSoldado implements Visitor {
 	protected Personaje mySoldado;
+	protected Estado myEstado;
 	
 public void setSoldado (Personaje a){
 	mySoldado = a;
 }
 public void visit(Alien a) {
 	System.out.println("VISITOR SOLDADO : Fuerza Soldado"+mySoldado.getFuerza()+" Fuerza Alien:"+a.getFuerza()+" Vida Alien :"+a.getVida()+ " Vida Soldado :"+mySoldado.getVida());
-	a.setVida(mySoldado.getFuerza()*a.getVida());
+	myEstado.disminuirVida(mySoldado.getFuerza(),a);
 	 
 }
-
+public void setEstado (Estado e) {
+	myEstado = e;
+}
 public void visit(Soldado a) {
 	
 }
@@ -67,21 +71,6 @@ public boolean puedoPasar(Alien a) {
 }
 @Override
 public boolean puedoPasar(Soldado a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-@Override
-public boolean puedoAtacar(Alien a) {
-	// TODO Auto-generated method stub
-	return true;
-}
-@Override
-public boolean puedoAtacar(Soldado a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-@Override
-public boolean puedoAtacar(ObjetoVida a) {
 	// TODO Auto-generated method stub
 	return false;
 }

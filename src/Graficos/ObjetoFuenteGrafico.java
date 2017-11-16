@@ -1,4 +1,3 @@
-
 package Graficos;
 
 import javax.swing.ImageIcon;

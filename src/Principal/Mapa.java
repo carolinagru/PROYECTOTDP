@@ -8,6 +8,8 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
+ 
+import Estate.estadoSinMagia;
 import Factory.A1factory;
 import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
@@ -19,7 +21,6 @@ import Objetos.ObjetoPiedra;
 import Objetos.Obstaculo;
 import Personajes.Alien;
 import Personajes.Personaje;
-import Personajes.Soldado;
 
 public class Mapa {
 	private Celda mapa[][];
@@ -119,11 +120,10 @@ public class Mapa {
 		}
 		factory = new A1factory(panel);
 		Alien p = factory.createPersonaje(c);
-		
 	  return p;
 	}
 	
-	public Bala insertarBalasMapa(BalasFactoryMethod factory,Celda c, Soldado p) {
+	public Bala insertarBalasMapa(BalasFactoryMethod factory,Celda c, Personaje p) {
 		factory = new BalaSoldadoFactory(panel);
 		Bala b = factory.crearBalas(c, p);
 		return b;

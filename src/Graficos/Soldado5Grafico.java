@@ -15,5 +15,12 @@ public class Soldado5Grafico extends ObstaculoGrafico{
 	    image[3] = new ImageIcon(getClass().getResource("/Sprites/Sprite Soldado/GIF's/S5.gif"));
 }
 	
-
+	public void actualizarGrafico(int dir){		
+		System.out.println("Entre a actualizar Grafico Muerte------asd ---------------------------");
+		  ImageIcon aux=(ImageIcon) image[dir];
+		  Icon icono = new ImageIcon(aux.getImage().getScaledInstance(label.getWidth(), label.getWidth(), Image.SCALE_DEFAULT));
+		  label.setIcon(icono);
+		  label.setBounds(pos.y, pos.x, width, height);
+			
+		}
 }

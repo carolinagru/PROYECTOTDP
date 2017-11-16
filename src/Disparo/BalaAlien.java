@@ -22,9 +22,6 @@ public class BalaAlien extends Bala {
 		return true;
 	}
 
-	public boolean puedeAtacar(Visitor v) {
-		return false;
-	}
  
 	
 }

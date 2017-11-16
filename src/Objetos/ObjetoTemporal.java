@@ -19,13 +19,6 @@ public class ObjetoTemporal extends Obstaculo{
 	public boolean dejoPasar(Visitor v) {
 		return true;
 	}
-
-
-	@Override
-	public boolean puedeAtacar(Visitor v) {
-		// TODO Auto-generated method stub
-		return false;
-	}
  
 	
 }

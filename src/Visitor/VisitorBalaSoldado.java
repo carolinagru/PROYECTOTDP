@@ -14,13 +14,15 @@ import Personajes.Soldado;
 public class VisitorBalaSoldado implements Visitor{
 	protected Bala myDisparoSoldado;
 	
+	
 	public void setBala (Bala b){
 		  myDisparoSoldado = b;
 	}
 	 
 	public void visit(Alien a) {
-		a.setVida(20);
-		System.out.println("-----------VISIT DISPARO   Alien vida :"+a.getVida());
+		System.out.println("-------VISIT DISPARO  Fuerza de impacto: "+myDisparoSoldado.getFuerzaImpacto()+" Alien vida :"+a.getVida());
+		//a.getEstadoNivel().disminuirVida(myDisparoSoldado.getFuerzaImpacto(),a);
+		 
 
 	}
 
@@ -75,24 +77,6 @@ public class VisitorBalaSoldado implements Visitor{
 
 	public boolean puedoPasar(Soldado a) {
 		return true;
-	}
-
-	@Override
-	public boolean puedoAtacar(Alien a) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean puedoAtacar(Soldado a) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean puedoAtacar(ObjetoVida a) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 	

@@ -32,13 +32,6 @@ public class ObjetoVida extends Obstaculo {
 		return false;
 	}
 
-
-	@Override
-	public boolean puedeAtacar(Visitor v) {
-		// TODO Auto-generated method stub
-		return v.puedoAtacar(this);
-	}
-
 	 
 
 }

@@ -17,5 +17,13 @@ public class Soldado3Grafico extends ObstaculoGrafico{
 		 
 	}
 	
+	public void actualizarGrafico(int dir){		
+		System.out.println("Entre a actualizar Grafico Muerte---------------------------------");
+		  ImageIcon aux=(ImageIcon) image[dir];
+		  Icon icono = new ImageIcon(aux.getImage().getScaledInstance(label.getWidth(), label.getWidth(), Image.SCALE_DEFAULT));
+		  label.setIcon(icono);
+		  label.setBounds(pos.y, pos.x, width, height);
+			
+		}
 	
 }
