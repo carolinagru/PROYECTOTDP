@@ -40,6 +40,7 @@ public class Logica {
 	protected LinkedList<Soldado> soldadosMapa;
 	protected LinkedList<Bala> balasSoldado;
 	protected LinkedList<Bala> balasAlien;
+	protected LinkedList<Bala> balasAeliminar;
 	protected JPanel panelMapa;
 	protected Mapa mapaCombate;
 	private static int tamanioCelda = 80;
@@ -62,12 +63,20 @@ public class Logica {
 		a_eliminarObstaculo= new LinkedList();
 		balasSoldado = new LinkedList();
 		balasAlien = new LinkedList();
+		balasAeliminar = new LinkedList();
 		
 		mapaCombate = new Mapa(filas,columnas,p);
 	}
 	
 	public void insertarObjetos() {
 		mapaCombate.insertarObjetos();
+	}
+	
+	public void limpiarBalasSoldado() {
+		while (balasAeliminar.size() > 0) {
+			Bala b = balasAeliminar.removeFirst();
+			balasSoldado.remove(b);
+		}
 	}
 	
 	public void limpiarMuertos (){
@@ -128,7 +137,6 @@ public class Logica {
 							a_eliminarObstaculo.addLast(o);
 							mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
 							mapaCombate.eliminar(o);
-							limpiarMuertos();
 							siguiente.setElemento(null);
 						}
 					}
@@ -162,7 +170,6 @@ public class Logica {
 							mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
 							mapaCombate.eliminar(o);
 							siguiente.setElemento(null);
-							limpiarMuertos();
 						}
 					}
 				}
@@ -184,7 +191,7 @@ public class Logica {
 			}	
 		}
 		else {
-				balasSoldado.remove(p);
+				balasAeliminar.addLast(p);
 				mapaCombate.eliminar(p);
 			}
 	}
@@ -212,10 +219,10 @@ public class Logica {
 						mapaCombate.eliminar(o);
 					}
 				}
-				else 
-				   b.setCelda(siguiente.getFila(), siguiente.getColumna());
+				else b.setCelda(siguiente.getFila(), siguiente.getColumna());
+				
 				mapaCombate.setCeldaMapa(b.getCelda().getFila(),b.getCelda().getColumna(), null);
-				balasSoldado.remove(b);
+				balasAeliminar.addLast(b);
 				mapaCombate.eliminar(b);
 			}
 		}

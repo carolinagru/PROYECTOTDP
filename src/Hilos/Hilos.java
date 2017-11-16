@@ -25,11 +25,11 @@ public class Hilos extends Thread {
 				
 				l.accionBalaSoldado();
 				l.moverDisparo();
-				
+				l.limpiarBalasSoldado();
 				l.inicioAtaqueAlien();
 				l.inicioMovimientoAliens();
 				l.inicioAtaqueSoldados();
-				
+				l.limpiarMuertos();
 				l.insertarEnemigos();
 				Thread.sleep(1000);
 			}
