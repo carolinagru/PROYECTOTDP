@@ -5,7 +5,7 @@ import PowerUps.MagiaTemporal;
 import Principal.Celda;
 import Visitor.*;
 
-public  class Alien extends Personaje {
+public class Alien extends Personaje {
 	
 	protected int moneda;
     protected int punto;
@@ -66,10 +66,17 @@ public  class Alien extends Personaje {
 	public boolean puedoAtacar (Visitor v) {
 		return v.Atacar(this);
 	}
+<<<<<<< HEAD
 	
 	
    
      
+=======
+
+	public boolean puedeAtacar(Visitor v) {
+		return v.puedoAtacar(this);
+	}
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
      
 
 }

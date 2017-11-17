@@ -79,6 +79,11 @@ public abstract class Obstaculo {
 	
 	public abstract boolean dejoPasar(Visitor v);
 	
+<<<<<<< HEAD
 	public abstract boolean puedoAtacar (Visitor v);
 	
+=======
+	public abstract boolean puedeAtacar(Visitor v);
+
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 }

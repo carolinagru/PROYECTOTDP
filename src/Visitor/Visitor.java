@@ -11,12 +11,16 @@ import Personajes.*;
 import PowerUps.MagiaTemporal;
 
 public interface Visitor {
+<<<<<<< HEAD
 	public void visit (ObjetoTemporal o);
 	public void visit (MagiaTemporal m);
 	public void visit (ObjetoAgua a);
 	public void visit (ObjetoFuego a);
 	public void visit (ObjetoFuente a);
 	public void visit (ObjetoPiedra a);
+=======
+	public void visit (ObjetoTemporal a);
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	public void visit (Bala a);
 	public void visit (Alien a );
 	public void visit (Soldado a );
@@ -45,6 +49,9 @@ public interface Visitor {
 	public boolean Atacar (ObjetoVida a );
 	public boolean Atacar (MagiaTemporal m);
 
-	}
+	public boolean puedoAtacar(Alien a);
+	public boolean puedoAtacar(Soldado a);
+	public boolean puedoAtacar(ObjetoVida a);
+}
 
  

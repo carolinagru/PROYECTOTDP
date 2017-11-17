@@ -11,9 +11,6 @@ public class ObjetoFuego extends ObjetoTemporal{
 		grafico = new ObjetoFuegoGrafico(c.getFila(), c.getColumna());
 	}
 	
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
 	
 	
 }

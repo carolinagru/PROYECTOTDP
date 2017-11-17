@@ -2,12 +2,12 @@ package Estate;
 
 import Personajes.Personaje;
 
-public class estadoCampo extends Estado  {
+public class EstadoCampo extends Estado  {
 	//Si el personaje se encuentra en estadoCampo , la cantidad de vida que se le extrae al mismo es:
 		// (El total de vida del Personaje )
 	
 	
-	public estadoCampo () {
+	public EstadoCampo () {
 		
 	}
 	/*

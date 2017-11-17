@@ -15,22 +15,14 @@ import Visitor.Visitor;
 
 public class S2 extends Soldado{
 	
-	protected static int precio = 25;
 	
 	
 	public S2(Celda pos) {
-		super(pos);  
+		super(pos); 
+		this.precio = 25;
 		this.vida = 100;
 		this.fuerza = (float) 0.5;
 		grafico = new Soldado2Grafico(pos.getFila(), pos.getColumna());
-	}
-
-	public void setVida(float f) {
-		vida-=f;
-	}
-	
-	public int getVida() {
-		return vida;
 	}
 
 }

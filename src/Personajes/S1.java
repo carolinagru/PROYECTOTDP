@@ -17,23 +17,4 @@ public class S1 extends Soldado {
 		this.grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
 
-	public void setVida(float f) {
-		vida-=f;
-	}
-	
-	public int getVida() {
-		return vida;
-	}
-	
-	public int getPrecio () {
-		return precio;
-	}
-	
- 
-
- 
-	
-	
-
-
 }

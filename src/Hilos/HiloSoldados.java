@@ -1,5 +1,5 @@
 package Hilos;
-
+/***
 import Principal.Logica;
 
 public class HiloSoldados  extends Thread{
@@ -32,4 +32,4 @@ public class HiloSoldados  extends Thread{
 		}
 	}
 	 
-}
+}**/

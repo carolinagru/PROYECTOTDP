@@ -8,9 +8,19 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
+<<<<<<< HEAD
 import Estate.estadoCampo;
 import Estate.estadoSinMagia;
+=======
+ 
+import Estate.EstadosinMagia;
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 import Factory.A1factory;
+import Factory.A2factory;
+import Factory.A3factory;
+import Factory.A4factory;
+import Factory.A5factory;
+import Factory.A6factory;
 import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
@@ -114,9 +124,10 @@ public class Mapa {
 		panel.repaint();
 	}
 	
-	public Alien insertarEnemigo(AlienFactoryMethod factory) {
+	public Alien insertarEnemigo(AlienFactoryMethod factory, int nivel) {
 		Random r = new Random();
 		int x = (int ) (Math.random() * 5);
+<<<<<<< HEAD
 		Celda c = new Celda(x,11);
 		//while (c.getElemento() != null) {
 		//	x = (int ) (Math.random() * 5);
@@ -128,12 +139,46 @@ public class Mapa {
 		FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 		p.setMagiaTemporal(f2.crearMagia());
 	  return p;
+=======
+		Celda c = getCelda(x,11);
+		while (c.getElemento() != null) {
+			x = (int ) (Math.random() * 5);
+			c = getCelda(x,11);
+		}
+		
+		return crearEnemigos(c,nivel,factory);
+	}
+	
+	public Alien crearEnemigos(Celda c, int nivel,AlienFactoryMethod factory) {
+		Alien p;
+		
+		if (nivel == 1) {
+			int tipo = (int ) (Math.random() * 3)+1;
+			if (tipo == 1)
+				factory = new A1factory(panel);
+			else if (tipo == 2)
+					factory = new A2factory(panel);
+				 else if (tipo == 3)
+					 	factory = new A3factory(panel);
+		}
+		else {
+			int tipo = (int ) (Math.random()*6)+4;
+			if (tipo == 4)
+				factory = new A4factory(panel);
+			else if (tipo == 5)
+					factory = new A5factory(panel);
+				 else if (tipo == 6)
+					 	factory = new A6factory(panel);
+			
+		}
+	  return p = factory.createPersonaje(c) ;
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	}
 	
 	public Bala insertarBalasMapa(BalasFactoryMethod factory,Celda c, Personaje p) {
 		factory = new BalaSoldadoFactory(panel);
 		Bala b = factory.crearBalas(c, p);
-		return b;
+	 return b;
 	}
 
 	public Celda siguienteCeldaIzq(Celda c) {

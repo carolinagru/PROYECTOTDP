@@ -17,7 +17,7 @@ import Disparo.Bala;
  
 import Estate.Estado;
  
-import Estate.estadoCampo;
+import Estate.EstadoCampo;
  
 import Factory.AlienFactoryMethod;
  
@@ -41,16 +41,19 @@ public class Logica {
 	
 	protected int monedas;
 	protected int puntos;
-	protected Timer t1,t2,t3;
 	protected LinkedList<Obstaculo> a_eliminarObstaculo;
 	protected LinkedList<Obstaculo> a_eliminarObstaculoGrafica;
 	protected LinkedList<Alien> aliensMapa;
 	protected LinkedList<Soldado> soldadosMapa;
 	protected LinkedList<Bala> balasSoldado;
 	protected LinkedList<Bala> balasAlien;
+<<<<<<< HEAD
 	protected LinkedList<MagiaTemporal> listaMagia;
 	protected int cantFuerza;
 	protected int cantCampo;
+=======
+	protected LinkedList<Bala> balasAeliminar;
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	protected JPanel panelMapa;
 	protected Mapa mapaCombate;
 	protected Estado estadoMagia;
@@ -60,16 +63,23 @@ public class Logica {
 	protected BalasFactoryMethod factoryBala;
 	protected static int height = 500;
 	protected static int width= 1000;
-	protected JLabel l;
     protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
     protected static int filas = ((height - 40) / tamanioCelda)+1;
+<<<<<<< HEAD
     protected int cantOrdas;
+=======
+    protected int nivel;
+    protected int cantEnemigos;
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 
 	public Logica(JPanel p){
 		panelMapa=p;
 		puntos=100;
 		monedas = 100;
+		nivel = 1;
+		cantEnemigos = 16;
 		
+<<<<<<< HEAD
 		aliensMapa=new LinkedList<Alien>();
 		soldadosMapa= new LinkedList<Soldado>();
 		a_eliminarObstaculo= new LinkedList<Obstaculo>();
@@ -84,16 +94,45 @@ public class Logica {
 		
 		estadoMagia = new estadoCampo();
 		cantOrdas = 4;
+=======
+		aliensMapa=new LinkedList();
+		soldadosMapa= new LinkedList();
+		a_eliminarObstaculo= new LinkedList();
+		balasSoldado = new LinkedList();
+		balasAlien = new LinkedList();
+		balasAeliminar = new LinkedList();
+		
+		mapaCombate = new Mapa(filas,columnas,p);
+		
+		estadoMagia = new EstadoCampo();
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	}
 	
+	public int getNivel() {
+		return nivel;
+	}
+	
+	public void setNivel(int n) {
+		nivel = n;
+	}
 	
 	public LinkedList<Soldado> getSoldados () {
 		return soldadosMapa;
 	}
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	public void insertarObjetos() {
 			mapaCombate.insertarObjetos();
+	}
+	
+	public void limpiarBalasSoldado() {
+		while (balasAeliminar.size() > 0) {
+			Bala b = balasAeliminar.removeFirst();
+			balasSoldado.remove(b);
+		}
 	}
 	
 	public void limpiarMuertos (){
@@ -108,25 +147,41 @@ public class Logica {
 			}
 		}
 	}
+<<<<<<< HEAD
 	
 	
 	
 	public void insertarEnemigos() {
 			aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));;
 		 
+=======
+			
+	public void insertarEnemigos(int n) {
+		if ( aliensMapa.size() == 0) {
+			while ( aliensMapa.size() < 4)
+				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel));	 
+		}
+		cantEnemigos-= 4;
+		if (cantEnemigos == 0)
+			setNivel(2);
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	}
 	 
 	   		 
 	 
 	
 	public void inicioMovimientoAliens() {
-		for (Personaje p :aliensMapa){				
+		for (Alien p :aliensMapa){				
 			moverAlien(p);	
 		}
 	}
 	 	
+<<<<<<< HEAD
 	public void moverAlien(Personaje p) {	
 		
+=======
+	public void moverAlien(Alien p) {	
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(p.getCelda());
 		p.getCelda().setElemento(null);
 		
@@ -155,12 +210,12 @@ public class Logica {
 	}
 	
 	public void inicioAtaqueAlien (){
-		for (Personaje p : aliensMapa){
+		for (Alien p : aliensMapa){
 			ataqueAlien(p);
 		}
 	}
 	
-	public void ataqueAlien (Personaje p){
+	public void ataqueAlien (Alien p){
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(c);
 		if (siguiente != null ){
@@ -168,6 +223,7 @@ public class Logica {
 			if (o != null){
 				VisitorAlien v = new VisitorAlien();
 				v.setAlien(p);
+<<<<<<< HEAD
 				v.setEstado(estadoMagia);
 				if ( o.puedoAtacar(v)) {
 					if (o.getVida() > 0){
@@ -183,20 +239,41 @@ public class Logica {
 				}
 		   }
 	   }
+=======
+				if (!o.dejoPasar(v)){
+					if (o.puedeAtacar(v)) {
+						o.accept(v);
+						p.actualizarGrafico(1);
+						if (o.getVida() <= 0){
+							o.actualizarGrafico(2);
+							a_eliminarObstaculo.addLast(o);
+							mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
+							mapaCombate.eliminar(o);
+							siguiente.setElemento(null);
+						}
+					}
+				}
+			}
+		}		
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	}
 	
 	/**Ataque de soldado cuerpo a cuerpo **/
 	public void inicioAtaqueSoldados () {
-		for (Personaje p : soldadosMapa){
+		for (Soldado p : soldadosMapa){
 			ataqueSoldado(p);
 		}
 	}
 	
+<<<<<<< HEAD
 	public void setEstado_MTLogica (Estado e) {
 		estadoMagia = e;
 	}
 	
 	public void ataqueSoldado (Personaje p ) {
+=======
+	public void ataqueSoldado (Soldado p ) {
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 		Celda c = p.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
 		if (siguiente != null ){
@@ -204,6 +281,7 @@ public class Logica {
 			if ( o != null){
 				VisitorSoldado v = new VisitorSoldado();
 				v.setSoldado(p);
+<<<<<<< HEAD
 				v.setEstado(estadoMagia);
 				if(o.puedoAtacar(v)) {				 
 					if ( o.getVida() > 0){
@@ -229,30 +307,44 @@ public class Logica {
 						limpiarMuertos();
 				  }   
 			  }
+=======
+				if (!o.dejoPasar(v)){
+					if (o.puedeAtacar(v)) {
+						o.accept(v);
+						p.actualizarGrafico(1);
+						if ( o.getVida() <= 0){
+							puntos += o.getPuntos();
+							o.actualizarGrafico(2); 
+							a_eliminarObstaculo.addLast(o);
+							mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
+							mapaCombate.eliminar(o);
+							siguiente.setElemento(null);
+						}
+					}
+				}
+			}
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 		}
 	 }
 	}
-	
  
 	public void moverDisparoSoldado(Bala p){
-		System.out.println("Sigo moviendo disparo ------------");
 		
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
-		//p.getCelda().setElemento(null);
-		//mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+		mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
-				mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(1);
 			}	
 		}
 		else {
-			balasSoldado.remove(p);
-			mapaCombate.eliminar(p);
-		}
+				balasAeliminar.addLast(p);
+				mapaCombate.eliminar(p);
+			}
 	}
 	
 	public void moverDisparo() {
@@ -270,19 +362,21 @@ public class Logica {
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
 			if ( o != null){
-				if ( o.getVida() > 0){ 
-					VisitorBalaSoldado v = new VisitorBalaSoldado();
-					v.setBala(b);
-					if (!o.dejoPasar(v)) 
-						o.accept(v);
-					else 
-						b.setCelda(siguiente.getFila(), siguiente.getColumna());
-				}
-				else {
+				VisitorBalaSoldado v = new VisitorBalaSoldado();
+				v.setBala(b);
+				if (!o.dejoPasar(v)) {
+					o.accept(v);
+					if (o.getVida() <= 0){
 						o.actualizarGrafico(2);
 						a_eliminarObstaculo.add(o);
+						mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
+						mapaCombate.eliminar(o);
+					}
 				}
-				balasSoldado.remove(b);
+				else b.setCelda(siguiente.getFila(), siguiente.getColumna());
+				
+				mapaCombate.setCeldaMapa(b.getCelda().getFila(),b.getCelda().getColumna(), null);
+				balasAeliminar.addLast(b);
 				mapaCombate.eliminar(b);
 			}
 		}
@@ -311,56 +405,76 @@ public class Logica {
 	
 	public boolean crearS1(int x, int y) {
 		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
 		if ( monedas >= 25) {
-			toReturn = true;
-			Celda c = mapaCombate.getCelda(x, y);
-			S1factory sf = new S1factory(panelMapa);
-			Soldado s = sf.createPersonaje(c);
-			soldadosMapa.addLast(s);
-			monedas-=25;
-		
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S1factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));
+				monedas-=25;
+			}
 		}
 		return toReturn;
 	}
 		
-	public void crearS2(int x, int y) {
+	public boolean crearS2(int x, int y) {
 		boolean toReturn = false;
-		if (monedas > 25 ) {
-			toReturn = true;
-			Celda c = mapaCombate.getCelda(x, y);	
-			factorySoldado = new S2factory(panelMapa);
-			soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
-			VisitorSoldado v = new VisitorSoldado ();
-			monedas -=25;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S2factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				monedas -=25;
+			}
 		}
+	 return toReturn;
 	}
 	
-	public void crearS3(int x, int y) {
-		Celda c = mapaCombate.getCelda(x, y);
-		factorySoldado = new S3factory(panelMapa);
-		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
-		VisitorSoldado v = new VisitorSoldado ();
-		v.setSoldado(soldadosMapa.getLast());
+	public boolean crearS3(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S3factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				monedas -=25;
+			}
+		}
+	 return toReturn;
 	}
 	
-	public void crearS4(int x, int y) {
-		Celda c = mapaCombate.getCelda(x, y);
-		factorySoldado = new S4factory(panelMapa);
-		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
-		VisitorSoldado v = new VisitorSoldado ();
-		v.setSoldado(soldadosMapa.getLast());
+	public boolean crearS4(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S4factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				monedas -=25;
+			}
+		}
+	 return toReturn;
 	}
 	
-	public void crearS5(int x, int y) {
-		Celda c = mapaCombate.getCelda(x, y);
-		factorySoldado = new S5factory(panelMapa);
-		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
-		//VisitorSoldado v = new VisitorSoldado ();
-		//v.setSoldado(soldadosMapa.getLast());
-		crearBalasSoldados(soldadosMapa.getLast());
-		//iniciarDisparoSoldado();	
+	public boolean crearS5(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S5factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				crearBalasSoldados(soldadosMapa.getLast());
+				monedas -=25;
+			}
+		}
+	 return toReturn;
 	}
 	
+<<<<<<< HEAD
 	
 	public void activarMagia_Fuerza () {
 		 
@@ -395,6 +509,8 @@ public class Logica {
 	
 
 	
+=======
+>>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 	/**Verifica si la posicion corresonde al panel de combate 
 	 * 
 	 * @param x Fila del elemento a verificar
