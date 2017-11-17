@@ -53,11 +53,15 @@ public class Logica {
 	protected static int width= 1000;
     protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
     protected static int filas = ((height - 40) / tamanioCelda)+1;
+    protected int nivel;
+    protected int cantEnemigos;
 
 	public Logica(JPanel p){
 		panelMapa=p;
 		puntos=100;
 		monedas = 100;
+		nivel = 1;
+		cantEnemigos = 16;
 		
 		aliensMapa=new LinkedList();
 		soldadosMapa= new LinkedList();
@@ -71,10 +75,18 @@ public class Logica {
 		estadoMagia = new EstadoCampo();
 	}
 	
+	public int getNivel() {
+		return nivel;
+	}
+	
+	public void setNivel(int n) {
+		nivel = n;
+	}
 	
 	public LinkedList<Soldado> getSoldados () {
 		return soldadosMapa;
 	}
+	
 	public void insertarObjetos() {
 		mapaCombate.insertarObjetos();
 	}
@@ -97,17 +109,14 @@ public class Logica {
 		}
 	}
 			
-	public void insertarEnemigos() {
-		while ( aliensMapa.size()< 1)
-			aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));	 
-	   	
+	public void insertarEnemigos(int n) {
 		if ( aliensMapa.size() == 0) {
-			while ( aliensMapa.size()< 1)
-				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien));	 
+			while ( aliensMapa.size() < 4)
+				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel));	 
 		}
-	   	
-	   		
-	   		 
+		cantEnemigos-= 4;
+		if (cantEnemigos == 0)
+			setNivel(2);
 	}
 	
 	public void inicioMovimientoAliens() {
@@ -195,7 +204,6 @@ public class Logica {
 			}
 		}
 	}
-	
  
 	public void moverDisparoSoldado(Bala p){
 		
@@ -332,7 +340,6 @@ public class Logica {
 		}
 	 return toReturn;
 	}
-
 	
 	/**Verifica si la posicion corresonde al panel de combate 
 	 * 

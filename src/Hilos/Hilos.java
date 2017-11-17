@@ -16,12 +16,14 @@ public class Hilos extends Thread {
 	
 	
 	public void run () {
-		try {				
+		try {		
+			int niv;
 			Thread.sleep(3000);
-			l.insertarEnemigos();
+			l.insertarEnemigos(1);
 			this.execute = true;
 			Thread.sleep(2000);
 			while (execute) {	
+				niv = l.getNivel();
 				l.accionBalaSoldado();
 				l.moverDisparo();
 				l.limpiarBalasSoldado();
@@ -29,7 +31,7 @@ public class Hilos extends Thread {
 				l.inicioMovimientoAliens();
 				l.inicioAtaqueSoldados();
 				l.limpiarMuertos();
-				l.insertarEnemigos();
+				l.insertarEnemigos(niv);
 				
 				Thread.sleep(1000);
 			}
