@@ -1,7 +1,7 @@
 package Hilos;
 
-import Estate.estadoCampo;
-import Estate.estadoSinMagia;
+import Estate.EstadoCampo;
+import Estate.EstadosinMagia;
 import Principal.Logica;
 
 public class HiloMagiaTemporaCampo  extends Thread{
@@ -26,9 +26,9 @@ public class HiloMagiaTemporaCampo  extends Thread{
 			this.execute = true;
 			 
 			while (execute) {			
-				l.setEstado_MTLogica(new estadoCampo());
+				l.setEstado_MTLogica(new EstadoCampo());
 				Thread.sleep(5000);
-				l.setEstado_MTLogica(new estadoSinMagia());
+				l.setEstado_MTLogica(new EstadosinMagia());
 				execute = false;
 			}
 			} catch (InterruptedException e2) {

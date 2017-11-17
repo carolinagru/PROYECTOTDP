@@ -22,7 +22,6 @@ public class BalaSoldado extends Bala {
 		return v.puedoPasar(this);
 	}
 	public boolean puedoAtacar(Visitor v) {
-		v.Atacar(this);
 		return false;
 	}
 

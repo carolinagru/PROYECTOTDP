@@ -1,8 +1,8 @@
 package Hilos;
 
  
-import Estate.estadoFuerza;
-import Estate.estadoSinMagia;
+import Estate.EstadoFuerza;
+import Estate.EstadosinMagia;
 import Principal.Logica;
 
 public class HiloMagiaTemporalFuerza extends Thread {
@@ -28,10 +28,10 @@ public class HiloMagiaTemporalFuerza extends Thread {
 			 
 			while (execute) {			
 				System.out.println("Entre en magia temporal tiempo de espera---------------------- ");
-				l.setEstado_MTLogica(new estadoFuerza());
+				l.setEstado_MTLogica(new EstadoFuerza());
 				Thread.sleep(10000);
 				System.out.println("Espere 5 temporal tiempo de espera---------------------- ");
-				l.setEstado_MTLogica(new estadoSinMagia());
+				l.setEstado_MTLogica(new EstadosinMagia());
 				execute = false;
 			}
 			} catch (InterruptedException e2) {

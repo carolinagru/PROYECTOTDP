@@ -48,6 +48,26 @@ public class VisitorBalaSoldado implements Visitor{
 		
 	}
 
+	 
+	public void visit(ObjetoAgua a) {
+		 
+	}
+
+	 
+	public void visit(ObjetoFuego a) {
+	 
+	}
+
+	 
+	public void visit(ObjetoFuente a) {
+	 
+	}
+
+	 
+	public void visit(ObjetoPiedra a) {
+	 
+	}
+
 	public boolean puedoPasar(Bala a) {
 		return true;
 	}
@@ -60,7 +80,6 @@ public class VisitorBalaSoldado implements Visitor{
 		return true;
 	}
 	
-<<<<<<< HEAD
 	@Override
 	public void visit(MagiaTemporal m) {
 		// TODO Auto-generated method stub
@@ -99,21 +118,11 @@ public class VisitorBalaSoldado implements Visitor{
 
 	@Override
 	public boolean puedoPasar(ObjetoVida a) {
-=======
-	public boolean puedoAtacar(Alien a) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean puedoAtacar(Soldado a) {
->>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-<<<<<<< HEAD
 	public boolean puedoPasar(MagiaTemporal m) {
 		// TODO Auto-generated method stub
 		return false;
@@ -189,12 +198,6 @@ public class VisitorBalaSoldado implements Visitor{
 
 	
 	
-=======
-	public boolean puedoAtacar(ObjetoVida a) {
-		// TODO Auto-generated method stub
-		return false;
-	}
->>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
 
 	
 	

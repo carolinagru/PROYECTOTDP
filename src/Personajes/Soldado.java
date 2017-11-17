@@ -10,7 +10,7 @@
 		
 		
 	public Soldado(Celda pos) {
-	 		super(pos);
+	 	super(pos);
 	 }
 		
 	
@@ -38,20 +38,5 @@
 		return v.Atacar(this);
 	}
 	
-	
-		
-	}
-<<<<<<< HEAD
-=======
-
-public boolean dejoPasar(Visitor v) {
-	return v.puedoPasar(this);
 }
 
-public boolean puedeAtacar(Visitor v) {
-	return v.puedoAtacar(this);
-}
-
-	
-}
->>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f

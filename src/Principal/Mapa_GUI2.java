@@ -46,8 +46,7 @@ public class Mapa_GUI2 extends JFrame {
 	private JPanel panel_2;
 	private JPanel panel_3; 
 	private final Action action = new SwingAction();
-	
-	 /**Launch the application.
+
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -65,7 +64,7 @@ public class Mapa_GUI2 extends JFrame {
 			}
 		});
 	}
- **/
+ 
 	/**
 	 * Create the frame.
 	 */
@@ -261,9 +260,6 @@ public class Mapa_GUI2 extends JFrame {
 		contentPane.add(panel_3);
 		
 		logica = new Logica (panel_3);
-		 //l.setPanel(panel_3);
-		//Hilos h = new Hilos(logica);
-		//h.run();
 
 		
 		// B O T O N E S     O B J E T O S--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -322,12 +318,8 @@ public class Mapa_GUI2 extends JFrame {
 						int y=e.getY() ;
 						int filas = y / 80;
 						int columnas = x  / 80;
-						
-						if ( logica.puedoInsertar(x, y)) {
-							System.out.println(" Pude insertar W");
-							if (!logica.crearS1(filas,columnas)) {
-								System.out.println("No pudo comprar jugador 1 ");
-							}
+						if (!logica.crearS1(filas,columnas)) {
+							System.out.println("No pudo comprar jugador 1 ");
 						}
 					  estadoBoton1 = false;
 					}
@@ -354,7 +346,9 @@ public class Mapa_GUI2 extends JFrame {
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-						  logica.crearS2(filas,columnas);
+							if (!logica.crearS2(filas,columnas)) {
+								System.out.println("No pudo comprar jugador 2 ");
+							}
 						  estadoBoton2 = false;
 						}
 
@@ -373,15 +367,17 @@ public class Mapa_GUI2 extends JFrame {
 		ActionListener a3 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-						boolean estadoBoton2 = true;
+						boolean estadoBoton3 = true;
 						public void mousePressed(MouseEvent e) {
-							if (estadoBoton2) {
+							if (estadoBoton3) {
 								int x=e.getX() ;
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-							  logica.crearS3(filas,columnas);
-							  estadoBoton2 = false;
+								if (!logica.crearS3(filas,columnas)) {
+									System.out.println("No pudo comprar jugador 3 ");
+								}
+							  estadoBoton3 = false;
 							}
 
 						}});
@@ -398,15 +394,17 @@ public class Mapa_GUI2 extends JFrame {
 		ActionListener a4= new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-						boolean estadoBoton2 = true;
+						boolean estadoBoton4 = true;
 						public void mousePressed(MouseEvent e) {
-							if (estadoBoton2) {
+							if (estadoBoton4) {
 								int x=e.getX() ;
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-							  logica.crearS4(filas,columnas);
-							  estadoBoton2 = false;
+								if (!logica.crearS4(filas,columnas)) {
+									System.out.println("No pudo comprar jugador 4 ");
+								}
+							  estadoBoton4 = false;
 							}
 
 						}});
@@ -425,17 +423,18 @@ public class Mapa_GUI2 extends JFrame {
 		ActionListener a5 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-						boolean estadoBoton2 = true;
+						boolean estadoBoton5 = true;
 						public void mousePressed(MouseEvent e) {
-							if (estadoBoton2) {
+							if (estadoBoton5) {
 								int x=e.getX() ;
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-								if (logica.puedoInsertar(x, y)) {
-									logica.crearS5(filas,columnas);
-									estadoBoton2 = false;
+								if (!logica.crearS5(filas,columnas)) {
+									System.out.println("No pudo comprar jugador 5 ");
 								}
+								estadoBoton5 = false;
+								
 							}
 
 						}});

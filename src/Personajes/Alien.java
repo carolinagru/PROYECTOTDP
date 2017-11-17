@@ -16,12 +16,7 @@ public class Alien extends Personaje {
  		myEstado = null;
  	
  	}
-     
-     public Alien () {
-    	 
-     }
- 
-     
+   
      
      //Ver si es necesario
      public void setMagiaTemporal (MagiaTemporal m) {
@@ -53,7 +48,6 @@ public class Alien extends Personaje {
 	public int getPuntos () {
 		return punto;
 	}
-
 	
 	 public void accept(Visitor v) {
   		 v.visit(this);
@@ -66,17 +60,6 @@ public class Alien extends Personaje {
 	public boolean puedoAtacar (Visitor v) {
 		return v.Atacar(this);
 	}
-<<<<<<< HEAD
-	
-	
-   
-     
-=======
 
-	public boolean puedeAtacar(Visitor v) {
-		return v.puedoAtacar(this);
-	}
->>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f
-     
 
 }

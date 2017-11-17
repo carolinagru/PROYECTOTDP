@@ -16,14 +16,6 @@ public class Alien1Grafico extends ObstaculoGrafico{
 		    image[3] = new ImageIcon(getClass().getResource("/Sprites/Sprite Alien/GIF 's/A1.gif"));
 	}
 	
-	public void actualizarGrafico(int dir){		
-	       
-		  ImageIcon aux=(ImageIcon) image[dir];
-		  Icon icono = new ImageIcon(aux.getImage().getScaledInstance(label.getWidth(), label.getWidth(), Image.SCALE_DEFAULT));
-		  label.setIcon(icono);
-		  label.setBounds(pos.y, pos.x, width, height);
-			
-		}
-
+	
 
 }

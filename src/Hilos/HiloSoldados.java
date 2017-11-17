@@ -1,5 +1,5 @@
 package Hilos;
-/***
+
 import Principal.Logica;
 
 public class HiloSoldados  extends Thread{
@@ -17,13 +17,11 @@ public class HiloSoldados  extends Thread{
 	
 	public void run () {
 		try {
-			//Thread.sleep(3000);
 			this.execute = true;
 			 
 			while (execute) {			
 				 
 				l.inicioAtaqueSoldados();
-				//l.limpiarMuertos();
 				 
 				Thread.sleep(1000);
 			}
@@ -32,4 +30,4 @@ public class HiloSoldados  extends Thread{
 		}
 	}
 	 
-}**/
+}

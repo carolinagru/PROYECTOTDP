@@ -36,10 +36,5 @@ public class ObjetoVida extends Obstaculo {
 		return v.Atacar(this);
 	}
 
-	public boolean puedeAtacar(Visitor v) {
-		// TODO Auto-generated method stub
-		return v.puedoAtacar(this);
-	}
-	 
-
+	
 }

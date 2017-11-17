@@ -45,6 +45,24 @@ public class VisitorAlien implements Visitor {
 	public void visit(ObjetoTemporal a) {
 		 
 	}
+	 
+	public void visit(ObjetoAgua a) {
+	
+		
+	}
+
+	public void visit(ObjetoFuego a) {
+	 
+		
+	}
+ 
+	public void visit(ObjetoFuente a) {
+	 a.setVida(20);
+	}
+ 
+	public void visit(ObjetoPiedra a) {
+	 
+	}
 
 	public boolean puedoPasar(Bala a) {
 		return false;
@@ -174,18 +192,5 @@ public class VisitorAlien implements Visitor {
 	}
 
 
-	public boolean puedoAtacar(Alien a) {
-		return false;
-	}
-
-	public boolean puedoAtacar(Soldado a) {
-		return true;
-	}
-
-	@Override
-	public boolean puedoAtacar(ObjetoVida a) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 	
 }

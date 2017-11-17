@@ -1,4 +1,4 @@
-	package Visitor;
+package Visitor;
 	
 	import Disparo.Bala;
 	import Estate.Estado;
@@ -13,7 +13,6 @@
 	import Personajes.Soldado;
 	import PowerUps.MagiaTemporal;
 	
-<<<<<<< HEAD
 	public class VisitorSoldado implements Visitor {
 		protected Personaje mySoldado;
 		protected Estado myEstado;
@@ -72,7 +71,6 @@
 		return false;
 	}
 	
-	
 	public boolean puedoPasar(Soldado a) {
 	 
 		return false;
@@ -119,11 +117,6 @@
 		return false;
 	}
 	
-	
-	
-	
-	
-	 
 	public boolean Atacar(ObjetoTemporal a) {
 		 
 		return false;
@@ -175,50 +168,3 @@
 	
 	
 	}
-=======
-}
-
-public void visit(ObjetoVida a) {
-	 
-}
-
-public void visit(Bala b){
-	 
-}
- 
-public void visit(ObjetoTemporal a) {
-	 
-}
- 
-@Override
-public boolean puedoPasar(Bala a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-@Override
-public boolean puedoPasar(Alien a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-@Override
-public boolean puedoPasar(Soldado a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-public boolean puedoAtacar(Alien a) {
-	// TODO Auto-generated method stub
-	return true;
-}
-@Override
-public boolean puedoAtacar(Soldado a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-@Override
-public boolean puedoAtacar(ObjetoVida a) {
-	// TODO Auto-generated method stub
-	return false;
-}
-}
->>>>>>> 32787b521ced229c87f564e56dd02640b5a3bc1f

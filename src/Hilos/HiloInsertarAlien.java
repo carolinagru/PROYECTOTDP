@@ -9,16 +9,12 @@ public class HiloInsertarAlien  extends Thread{
 		
 	public  HiloInsertarAlien (Logica l ) {
 		this.l = l;
+		this.execute = l.getjuegoActivo(); 
 	}
-	
-	public void terminate () {
-		this.execute = false;
-	}
-	
-	
+		
 	public void run () {
 		try {	
-			execute = true;
+			
 			Thread.sleep(1500);
 			System.out.println("Entre a insertar");
 			 
@@ -26,11 +22,12 @@ public class HiloInsertarAlien  extends Thread{
 				System.out.println("Entre a insertar");
 			
 				l.insertarEnemigos();
+				execute = l.getjuegoActivo();
 				Thread.sleep(5000);
 			}
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
-		}
-			}
+				}
 	}
+}
 

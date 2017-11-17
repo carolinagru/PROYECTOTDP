@@ -23,7 +23,6 @@ public class BalaAlien extends Bala {
 	}
 
  	public boolean puedoAtacar(Visitor v) {
-		v.Atacar(this);
 		return false;
 	}
 
