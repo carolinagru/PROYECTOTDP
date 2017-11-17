@@ -10,6 +10,7 @@ import Objetos.ObjetoTemporal;
 import Objetos.ObjetoVida;
 import Personajes.Alien;
 import Personajes.Soldado;
+import PowerUps.MagiaTemporal;
 
 public class VisitorBalaSoldado implements Visitor{
 	protected Bala myDisparoSoldado;
@@ -20,7 +21,7 @@ public class VisitorBalaSoldado implements Visitor{
 	}
 	 
 	public void visit(Alien a) {
-		System.out.println("-------VISIT DISPARO  Fuerza de impacto: "+myDisparoSoldado.getFuerzaImpacto()+" Alien vida :"+a.getVida());
+		//System.out.println("-------VISIT DISPARO  Fuerza de impacto: "+myDisparoSoldado.getFuerzaImpacto()+" Alien vida :"+a.getVida());
 		//a.getEstadoNivel().disminuirVida(myDisparoSoldado.getFuerzaImpacto(),a);
 		 
 
@@ -78,6 +79,123 @@ public class VisitorBalaSoldado implements Visitor{
 	public boolean puedoPasar(Soldado a) {
 		return true;
 	}
+	
+	@Override
+	public void visit(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoTemporal a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoAgua a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoFuego a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoFuente a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoPiedra a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoVida a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
+	
+
+	
+	
+	
+	 
+	public boolean Atacar(ObjetoTemporal a) {
+		 
+		return false;
+	}
+
+	 
+	public boolean Atacar(ObjetoAgua a) {
+	 
+		return false;
+	}
+
+	 
+	public boolean Atacar(ObjetoFuego a) {
+	 
+		return false;
+	}
+
+	 
+	public boolean Atacar(ObjetoFuente a) {
+		 
+		return false;
+	}
+
+	 
+	public boolean Atacar(ObjetoPiedra a) {
+		 
+		return false;
+	}
+
+	 
+	public boolean Atacar(Bala a) {
+		 
+		return false;
+	}
+
+	 
+	public boolean Atacar(Alien a) {
+		 
+		return true;
+	}
+
+	 
+	public boolean Atacar(Soldado a) {
+		 
+		return false;
+	}
+
+	 
+	public boolean Atacar(ObjetoVida a) {
+	 
+		return false;
+	}
+
+	 
+	public boolean Atacar(MagiaTemporal m) {
+	 
+		return false;
+	}
+
+
 	
 	
 

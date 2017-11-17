@@ -101,6 +101,8 @@ public class Mapa_GUI2 extends JFrame {
 		        super.paint(g);
 		    }
 		};
+		 
+		
 		panel_1.setLayout(null);
 		panel_1.setBorder(null);
 		panel_1.setBounds(10, 11, 325, 649);
@@ -125,6 +127,108 @@ public class Mapa_GUI2 extends JFrame {
 		JLabel label_1 = new JLabel();
 		label_1.setBounds(151, 0, 154, 62);
 		panel_4.add(label_1);
+		
+		
+		
+		
+		// B O T O N E S    P O W E R   U P S-------------------------------------------------------------
+		
+		JButton btnObtenerMagiaFuerza = new JButton("Obtener Fuerza");
+		btnObtenerMagiaFuerza.setAction(action);
+		btnObtenerMagiaFuerza.setBounds(0, 447, 131, 191);
+		btnObtenerMagiaFuerza.setContentAreaFilled(true);
+		//imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonBorrar.png"));
+		//iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(btnObtenerMagia.getWidth(), btnObtenerMagia.getHeight(), Image.SCALE_SMOOTH));
+		//btnObtenerMagia.setIcon(iconoBoton);
+		panel_1.add(btnObtenerMagiaFuerza);
+		btnObtenerMagiaFuerza.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+						boolean estadoBoton = true;
+						public void mousePressed(MouseEvent e) {
+							if ( estadoBoton) {
+								estadoBoton = false;
+								int x=e.getX() ;
+								int y=e.getY() ;
+								int filas = y / 80;
+								int columnas = x  / 80;
+								if (logica.verificarMagiaFuerza(filas, columnas)) {
+									
+									System.out.println("Encontre magia a eliminar y elimino ");
+								}
+								
+							}
+						 
+						}});
+				}});
+	
+			//this.setVisible(true);
+		
+		
+		
+		
+		
+		JButton btnFuerza = new JButton("ACTIVAR FUERZA" );
+		btnFuerza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if ( logica.puedeActivarFuerza()) {
+					System.out.println("Puede activar fuerza");
+					logica.activarMagia_Fuerza();
+				}
+			}
+		});
+		btnFuerza.setBounds(141, 447, 131, 191);
+		panel_1.add(btnFuerza);
+		
+		
+		
+		
+		
+		
+		JButton btnObtenerMagiaCampo = new JButton("Obtener Campo Protecccion");
+		btnObtenerMagiaCampo.setBounds(-17, 275, 140, 160);
+		panel_1.add(btnObtenerMagiaCampo);
+		btnObtenerMagiaCampo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+						boolean estadoBoton = true;
+						public void mousePressed(MouseEvent e) {
+							if ( estadoBoton) {
+								estadoBoton = false;
+								int x=e.getX() ;
+								int y=e.getY() ;
+								int filas = y / 80;
+								int columnas = x  / 80;
+								if (logica.verificarMagiaCampo(filas, columnas)) {
+									
+									System.out.println("Encontre magia Campo a eliminar y elimino ");
+								}
+								
+							}
+						 
+						}});
+				}});
+	
+		
+		
+		JButton btnCampo = new JButton("ACTIVAR CAMPO");
+		btnCampo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (logica.puedeActivarCampo()) {
+					logica.activarMagia_Campo();
+					
+				}
+			}
+		});
+		btnCampo.setBounds(146, 275, 140, 160);
+		panel_1.add(btnCampo);
+		
+		
+		
+		
+		
+		
+		
 		/**
 		 * --------------------------------------------------------------------------------------------------------------------------
 		 */
@@ -218,9 +322,13 @@ public class Mapa_GUI2 extends JFrame {
 						int y=e.getY() ;
 						int filas = y / 80;
 						int columnas = x  / 80;
-					  if (!logica.crearS1(filas,columnas)) {
-						  System.out.println("No pudo comprar jugador 1 ");
-					  }
+						
+						if ( logica.puedoInsertar(x, y)) {
+							System.out.println(" Pude insertar W");
+							if (!logica.crearS1(filas,columnas)) {
+								System.out.println("No pudo comprar jugador 1 ");
+							}
+						}
 					  estadoBoton1 = false;
 					}
 
@@ -324,8 +432,10 @@ public class Mapa_GUI2 extends JFrame {
 								int y=e.getY() ;
 								int filas = y / 80;
 								int columnas = x  / 80;
-							  logica.crearS5(filas,columnas);
-							  estadoBoton2 = false;
+								if (logica.puedoInsertar(x, y)) {
+									logica.crearS5(filas,columnas);
+									estadoBoton2 = false;
+								}
 							}
 
 						}});

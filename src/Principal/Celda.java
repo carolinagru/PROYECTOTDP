@@ -10,6 +10,7 @@ public class Celda {
 	public Celda(int f, int c) {
 		fila=f;
 		columna=c;
+		elemento = null;
 		
 	}
 	public Obstaculo getElemento() {

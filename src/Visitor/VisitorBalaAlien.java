@@ -9,6 +9,7 @@ import Objetos.ObjetoTemporal;
 import Objetos.ObjetoVida;
 import Personajes.Alien;
 import Personajes.Soldado;
+import PowerUps.MagiaTemporal;
 
 public class VisitorBalaAlien implements Visitor{
 	protected Bala myDisparoAlien;
@@ -61,6 +62,122 @@ public class VisitorBalaAlien implements Visitor{
 	public void visit(ObjetoPiedra a) {
 	 
 	}
+	
+	
+	@Override
+	public boolean Atacar(ObjetoTemporal a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(ObjetoAgua a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(ObjetoFuego a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(ObjetoFuente a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(ObjetoPiedra a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(Bala a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(Alien a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(Soldado a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(ObjetoVida a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void visit(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoTemporal a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoAgua a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoFuego a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoFuente a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoPiedra a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoVida a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean puedoPasar(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	public boolean puedoPasar(Bala a) {
 		return true;
@@ -73,6 +190,8 @@ public class VisitorBalaAlien implements Visitor{
 	public boolean puedoPasar(Soldado a) {
 		return false;
 	}
+
+	
 
 	
 	

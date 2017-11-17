@@ -3,12 +3,12 @@ package Factory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Personajes.A1;
+ 
 import Personajes.A2;
 import Personajes.Alien;
-import Personajes.S1;
+ 
 import Principal.Celda;
-import Principal.Logica;
+ 
 
 public class A2factory implements AlienFactoryMethod {
 protected JPanel panel;
@@ -26,5 +26,7 @@ protected JLabel l;
 		l.repaint();
 	 return p;	
 	}
+
+	 
 
 }

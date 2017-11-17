@@ -11,14 +11,19 @@ public class ObstaculoGrafico {
 
 	protected JLabel label; 
 	protected Icon image[];
-	protected static int width = 80;
-	protected static int height = 80;
+	protected  int width = 80;
+	protected  int height = 80;
 	protected Point pos;
 
 	
 	public ObstaculoGrafico( int fila, int columna ) {
 		pos = new Point(fila * width, columna * height);
 		image = new Icon[4];
+	}
+	
+	public ObstaculoGrafico () {
+		image = new Icon[1];
+		
 	}
 		
 	public void setPoint(int x, int y) {

@@ -8,12 +8,13 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
- 
+import Estate.estadoCampo;
 import Estate.estadoSinMagia;
 import Factory.A1factory;
 import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
+import Factory.FactoryCampoProteccion;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
@@ -21,6 +22,7 @@ import Objetos.ObjetoPiedra;
 import Objetos.Obstaculo;
 import Personajes.Alien;
 import Personajes.Personaje;
+import PowerUps.Fuerza;
 
 public class Mapa {
 	private Celda mapa[][];
@@ -45,8 +47,10 @@ public class Mapa {
 	}
 	
 	public Celda getCelda(int x, int y){
-		if((x < this.filas) && (x >= 0) && (y < this.columnas) && (y >= 0))
+		if((x < this.filas) && (x >= 0) && (y < this.columnas) && (y >= 0)) {
+			System.out.println("Encontre ");
 			return this.mapa[x][y];
+		}
 		return null;
 	}
 	
@@ -113,13 +117,16 @@ public class Mapa {
 	public Alien insertarEnemigo(AlienFactoryMethod factory) {
 		Random r = new Random();
 		int x = (int ) (Math.random() * 5);
-		Celda c = getCelda(x,11);
-		while (c.getElemento() != null) {
-			x = (int ) (Math.random() * 5);
-			c = getCelda(x,11);
-		}
+		Celda c = new Celda(x,11);
+		//while (c.getElemento() != null) {
+		//	x = (int ) (Math.random() * 5);
+			//c = getCelda(x,11);
+		//}
+		//System.out.println("--- Se creo un nuevo alien en la celda : Fila "+c.getFila() + " columna :"+c.getColumna());
 		factory = new A1factory(panel);
 		Alien p = factory.createPersonaje(c);
+		FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
+		p.setMagiaTemporal(f2.crearMagia());
 	  return p;
 	}
 	
@@ -145,6 +152,13 @@ public class Mapa {
 		panel.revalidate();
 		panel.repaint();
 	}
+	
+	public void eliminarMagia(Obstaculo o) {
+		panel.remove(o.getGrafico(2));
+		panel.revalidate();
+		panel.repaint();
+	}
+	 
 
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;

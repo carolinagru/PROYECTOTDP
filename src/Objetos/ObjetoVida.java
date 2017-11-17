@@ -13,10 +13,7 @@ public class ObjetoVida extends Obstaculo {
 		
 	}
 
-	 
-	public void accept(Visitor v) {
-		 v.visit(this);
-	}
+	
 
 	public void setVida(float f) {
 		vida-=f;
@@ -26,10 +23,17 @@ public class ObjetoVida extends Obstaculo {
 		return vida;
 	}
 
-
-	@Override
+	 
+	public void accept(Visitor v) {
+		 v.visit(this);
+	}
+	 
 	public boolean dejoPasar(Visitor v) {
-		return false;
+		return v.puedoPasar(this);
+	}
+	
+	public boolean puedoAtacar (Visitor v) {
+		return v.Atacar(this);
 	}
 
 	 

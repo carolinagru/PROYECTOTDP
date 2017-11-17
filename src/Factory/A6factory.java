@@ -2,14 +2,13 @@ package Factory;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import Personajes.A1;
+ 
 import Personajes.A6;
 import Personajes.Alien;
-import Personajes.Personaje;
-import Personajes.S1;
+ 
+ 
 import Principal.Celda;
-import Principal.Logica;
+ 
 
 public class A6factory  implements AlienFactoryMethod {
 protected JPanel panel;
@@ -27,4 +26,5 @@ protected JLabel l;
 		
 	 return p;	
 	}
+	 
 }

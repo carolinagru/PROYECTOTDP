@@ -2,11 +2,11 @@ package Hilos;
 
 import Principal.Logica;
 
-public class Hilos extends Thread {
+public class HiloAliens extends Thread {
 	private Logica l;
 	private volatile boolean execute;
 	
-	public Hilos (Logica l ) {
+	public  HiloAliens (Logica l ) {
 		this.l = l;
 	}
 	
@@ -17,23 +17,18 @@ public class Hilos extends Thread {
 	
 	public void run () {
 		try {				
-			Thread.sleep(3000);
-			l.insertarEnemigos();
+			
+			//l.insertarEnemigos();
 			this.execute = true;
-			Thread.sleep(2000);
+			Thread.sleep(3000);
+			 
 			while (execute) {	
-				
-				
-				l.insertarEnemigos();
-				l.accionBalaSoldado();
-				l.moverDisparo();
-				
+				Thread.sleep(500);
 				l.inicioAtaqueAlien();;
-				l.inicioMovimientoAliens();;
-				l.inicioAtaqueSoldados();
-				
-				
 				Thread.sleep(1000);
+				 
+				l.inicioMovimientoAliens();;
+				 		
 			}
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();

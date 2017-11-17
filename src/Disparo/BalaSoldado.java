@@ -21,6 +21,11 @@ public class BalaSoldado extends Bala {
 	public boolean dejoPasar(Visitor v) {
 		return v.puedoPasar(this);
 	}
+	public boolean puedoAtacar(Visitor v) {
+		v.Atacar(this);
+		return false;
+	}
+
 
  
 	

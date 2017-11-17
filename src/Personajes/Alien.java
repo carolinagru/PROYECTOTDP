@@ -1,8 +1,7 @@
 package Personajes;
 
 import Estate.Estado;
-import Premios.MagiaTemporal;
-import Premios.Premio;
+import PowerUps.MagiaTemporal;
 import Principal.Celda;
 import Visitor.*;
 
@@ -17,6 +16,22 @@ public  class Alien extends Personaje {
  		myEstado = null;
  	
  	}
+     
+     public Alien () {
+    	 
+     }
+ 
+     
+     
+     //Ver si es necesario
+     public void setMagiaTemporal (MagiaTemporal m) {
+ 		magiaT = m;
+ 	}
+ 	
+ 	public MagiaTemporal getMagiaTemporal () {
+ 		return magiaT;
+ 	}
+ 	
    
      public void setEstado (Estado e ) {
     	this.myEstado = e;
@@ -25,9 +40,7 @@ public  class Alien extends Personaje {
      public Estado getEstado () {
     	 return this.myEstado;
      }
-     public void accept(Visitor v) {
-  		 v.visit(this);
-  	}
+    
      
  	public void setVida(float f) {
 		vida-=f;
@@ -36,15 +49,25 @@ public  class Alien extends Personaje {
 	public int getVida() {
 		return vida;
 	}
-
-	public boolean dejoPasar(Visitor v) {
-	   return v.puedoPasar(this);
-	}
 	
 	public int getPuntos () {
 		return punto;
 	}
 
+	
+	 public void accept(Visitor v) {
+  		 v.visit(this);
+  	}
+	 
+	public boolean dejoPasar(Visitor v) {
+	   return v.puedoPasar(this);
+	}
+	
+	public boolean puedoAtacar (Visitor v) {
+		return v.Atacar(this);
+	}
+	
+	
    
      
      

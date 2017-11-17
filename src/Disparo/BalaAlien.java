@@ -22,6 +22,11 @@ public class BalaAlien extends Bala {
 		return true;
 	}
 
+ 	public boolean puedoAtacar(Visitor v) {
+		v.Atacar(this);
+		return false;
+	}
+
  
 	
 }

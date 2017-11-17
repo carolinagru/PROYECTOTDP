@@ -26,5 +26,7 @@ public class A1factory implements AlienFactoryMethod {
 		l.repaint();
 	 return p;	
 	}
+	
+ 
 
 }

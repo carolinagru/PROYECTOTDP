@@ -19,6 +19,10 @@ public class ObjetoTemporal extends Obstaculo{
 	public boolean dejoPasar(Visitor v) {
 		return true;
 	}
+	
+	public boolean puedoAtacar (Visitor v) {
+		return v.Atacar(this);
+	}
  
 	
 }

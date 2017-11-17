@@ -14,12 +14,24 @@ public class A1 extends Alien{
 		super(pos);
 		 this.moneda=25;
 		 this.punto=15;
- 
-		this.vida = 100;
+ 		this.vida = 100;
 		this.fuerza = (float) 0.9;
 		this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());		
 		
 	}
+	
+	public A1 () {
+		this.moneda=25;
+		 this.punto=15;
+		this.vida = 100;
+		this.fuerza = (float) 0.9;
+		//this.grafico = new Alien1Grafico(pos.getFila(), pos.getColumna());	
+		
+	}
+	
+	
+	
+	
 	public void setVida(float f) {
 		vida-=f;
 	}
@@ -31,5 +43,7 @@ public class A1 extends Alien{
 	public int getPuntos () {
 		return punto;
 	}
+	
+
 	
 }
