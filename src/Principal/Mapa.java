@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
  
-import Estate.estadoSinMagia;
+import Estate.EstadosinMagia;
 import Factory.A1factory;
 import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;

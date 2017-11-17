@@ -47,26 +47,6 @@ public class VisitorBalaSoldado implements Visitor{
 		
 	}
 
-	 
-	public void visit(ObjetoAgua a) {
-		 
-	}
-
-	 
-	public void visit(ObjetoFuego a) {
-	 
-	}
-
-	 
-	public void visit(ObjetoFuente a) {
-	 
-	}
-
-	 
-	public void visit(ObjetoPiedra a) {
-	 
-	}
-
 	public boolean puedoPasar(Bala a) {
 		return true;
 	}

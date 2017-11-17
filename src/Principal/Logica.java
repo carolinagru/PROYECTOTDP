@@ -14,7 +14,7 @@ import Disparo.Bala;
  
 import Estate.Estado;
  
-import Estate.estadoCampo;
+import Estate.EstadoCampo;
  
 import Factory.AlienFactoryMethod;
  
@@ -36,7 +36,6 @@ public class Logica {
 	
 	protected int monedas;
 	protected int puntos;
-	protected Timer t1,t2,t3;
 	protected LinkedList<Obstaculo> a_eliminarObstaculo;
 	protected LinkedList<Alien> aliensMapa;
 	protected LinkedList<Soldado> soldadosMapa;
@@ -52,7 +51,6 @@ public class Logica {
 	protected BalasFactoryMethod factoryBala;
 	protected static int height = 500;
 	protected static int width= 1000;
-	protected JLabel l;
     protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
     protected static int filas = ((height - 40) / tamanioCelda)+1;
 
@@ -70,7 +68,7 @@ public class Logica {
 		
 		mapaCombate = new Mapa(filas,columnas,p);
 		
-		estadoMagia = new estadoCampo();
+		estadoMagia = new EstadoCampo();
 	}
 	
 	
@@ -113,12 +111,12 @@ public class Logica {
 	}
 	
 	public void inicioMovimientoAliens() {
-		for (Personaje p :aliensMapa){				
+		for (Alien p :aliensMapa){				
 			moverAlien(p);	
 		}
 	}
 	 	
-	public void moverAlien(Personaje p) {	
+	public void moverAlien(Alien p) {	
 		Celda siguiente = mapaCombate.siguienteCeldaIzq(p.getCelda());
 		p.getCelda().setElemento(null);
 		 
@@ -266,56 +264,74 @@ public class Logica {
  	
 	public boolean crearS1(int x, int y) {
 		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
 		if ( monedas >= 25) {
-			toReturn = true;
-			Celda c = mapaCombate.getCelda(x, y);
-			S1factory sf = new S1factory(panelMapa);
-			Soldado s = sf.createPersonaje(c);
-			soldadosMapa.addLast(s);
-			monedas-=25;
-		
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S1factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));
+				monedas-=25;
+			}
 		}
 		return toReturn;
 	}
 		
-	public void crearS2(int x, int y) {
+	public boolean crearS2(int x, int y) {
 		boolean toReturn = false;
-		if (monedas > 25 ) {
-			toReturn = true;
-			Celda c = mapaCombate.getCelda(x, y);	
-			factorySoldado = new S2factory(panelMapa);
-			soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
-			VisitorSoldado v = new VisitorSoldado ();
-			monedas -=25;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S2factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				monedas -=25;
+			}
 		}
+	 return toReturn;
 	}
 	
-	public void crearS3(int x, int y) {
-		Celda c = mapaCombate.getCelda(x, y);
-		factorySoldado = new S3factory(panelMapa);
-		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
-		VisitorSoldado v = new VisitorSoldado ();
-		v.setSoldado(soldadosMapa.getLast());
+	public boolean crearS3(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S3factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				monedas -=25;
+			}
+		}
+	 return toReturn;
 	}
 	
-	public void crearS4(int x, int y) {
-		Celda c = mapaCombate.getCelda(x, y);
-		factorySoldado = new S4factory(panelMapa);
-		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
-		VisitorSoldado v = new VisitorSoldado ();
-		v.setSoldado(soldadosMapa.getLast());
+	public boolean crearS4(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S4factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				monedas -=25;
+			}
+		}
+	 return toReturn;
 	}
 	
-	public void crearS5(int x, int y) {
-		Celda c = mapaCombate.getCelda(x, y);
-		factorySoldado = new S5factory(panelMapa);
-		soldadosMapa.addLast(factorySoldado.createPersonaje(c));
-		//VisitorSoldado v = new VisitorSoldado ();
-		//v.setSoldado(soldadosMapa.getLast());
-		crearBalasSoldados(soldadosMapa.getLast());
-		//iniciarDisparoSoldado();	
+	public boolean crearS5(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 25 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				factorySoldado = new S5factory(panelMapa);
+				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				crearBalasSoldados(soldadosMapa.getLast());
+				monedas -=25;
+			}
+		}
+	 return toReturn;
 	}
-	
 
 	
 	/**Verifica si la posicion corresonde al panel de combate 

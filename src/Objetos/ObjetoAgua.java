@@ -11,8 +11,6 @@ public class ObjetoAgua extends ObjetoTemporal{
 		grafico = new ObjetoAguaGrafico(c.getFila(), c.getColumna());
 	}
 	
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
+	
 	
 }

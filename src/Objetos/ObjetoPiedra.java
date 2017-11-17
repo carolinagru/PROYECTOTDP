@@ -14,9 +14,6 @@ public class ObjetoPiedra extends ObjetoVida{
 		grafico = new ObjetoPiedraGrafico(c.getFila(), c.getColumna());
 	}
 	
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
-
+	
 
 }

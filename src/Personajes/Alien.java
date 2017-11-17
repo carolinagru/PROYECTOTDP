@@ -6,7 +6,7 @@ import Premios.Premio;
 import Principal.Celda;
 import Visitor.*;
 
-public  class Alien extends Personaje {
+public class Alien extends Personaje {
 	
 	protected int moneda;
     protected int punto;

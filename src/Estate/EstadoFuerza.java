@@ -2,7 +2,7 @@ package Estate;
 
 import Personajes.Personaje;
 
-public class estadoFuerza extends Estado {
+public class EstadoFuerza extends Estado {
 	//Si el personaje se encuentra en estadoNivel 2, la cantidad de vida que se le extrae al mismo es:
 	// (El total de vida del Personaje X el porcentaje de fuerza del contrincante ) X 0.3, 
 	// que en este caso es de 0.4
@@ -13,7 +13,7 @@ public class estadoFuerza extends Estado {
  *  
  */
 	
-public estadoFuerza () {
+public EstadoFuerza () {
 	
 }
 public void disminuirVida (float i, Personaje p ) {

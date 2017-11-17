@@ -13,8 +13,5 @@ public class ObjetoFuente extends ObjetoVida{
 		grafico = new ObjetoFuenteGrafico(c.getFila(), c.getColumna());
 	}
 	
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
 
 }

@@ -11,10 +11,6 @@ import Personajes.*;
 
 public interface Visitor {
 	public void visit (ObjetoTemporal a);
-	public void visit (ObjetoAgua a);
-	public void visit (ObjetoFuego a);
-	public void visit (ObjetoFuente a);
-	public void visit (ObjetoPiedra a);
 	public void visit (Bala a);
 	public void visit (Alien a );
 	public void visit (Soldado a );

@@ -43,22 +43,6 @@ public void visit(ObjetoTemporal a) {
 	 
 }
  
-public void visit(ObjetoAgua a) {
- 
-}
- 
-public void visit(ObjetoFuego a) {
-	 
-}
- 
-public void visit(ObjetoFuente a) {
-	 
-	
-}
- 
-public void visit(ObjetoPiedra a) {
-	 
-}
 @Override
 public boolean puedoPasar(Bala a) {
 	// TODO Auto-generated method stub
