@@ -18,7 +18,7 @@ import Disparo.Bala;
 import Estate.Estado;
  
 import Estate.EstadoCampo;
- 
+import Estate.EstadosinMagia;
 import Factory.AlienFactoryMethod;
  
 import Factory.BalasFactoryMethod;
@@ -71,15 +71,18 @@ public class Logica {
     protected int nivel;
     protected int cantEnemigos;
     protected boolean juegoActivo;
+    protected Mapa_GUI2 gui;
     
 
-	public Logica(JPanel p){
+	public Logica(JPanel p, Mapa_GUI2 gui){
+		this.gui = gui;
 		panelMapa=p;
 		puntos = 100;
-		monedas = 100;
+		monedas = 1000;
 		nivel = 1;
 		cantEnemigos = 12;
 		juegoActivo = true;
+		gui.setMonedasGUI(monedas);
 		
 		aliensMapa=new LinkedList<Alien>();
 		soldadosMapa= new LinkedList<Soldado>();
@@ -95,13 +98,14 @@ public class Logica {
 	 
 		mapaCombate = new Mapa(filas,columnas,p);
 		
-		estadoMagia = new EstadoCampo();
+		estadoMagia = new EstadosinMagia();
 		cantOrdas = 1;
 		
 		ejecutarHilos(juegoActivo);
 	
 	}
 	
+	 
 	public void ejecutarHilos(boolean resultado) {
 		
 		if (resultado) {
@@ -201,7 +205,7 @@ public class Logica {
 		p.getCelda().setElemento(null);
 		
 		if (siguiente != null) {
-			System.out.println("Muevo alien------------------");
+			//System.out.println("Muevo alien------------------");
 			VisitorAlien v = new VisitorAlien();
 			v.setAlien(p);
 			v.setEstado(null);
@@ -290,6 +294,10 @@ public class Logica {
 						siguiente.setElemento(null);
 					}
 					puntos += o.getPuntos();
+					monedas += o.getMonedas();
+					gui.setMonedasGUI(monedas);
+					gui.setPuntosGUI(puntos);
+					System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
 					o.actualizarGrafico(2); 
 					a_eliminarObstaculo.addLast(o);
 					limpiarMuertos();
@@ -373,6 +381,7 @@ public class Logica {
 				factorySoldado = new S1factory(panelMapa);
 				soldadosMapa.addLast(factorySoldado.createPersonaje(c));
 				monedas-=25;
+				gui.setMonedasGUI(monedas);
 			}
 		}
 		return toReturn;
@@ -387,6 +396,7 @@ public class Logica {
 				factorySoldado = new S2factory(panelMapa);
 				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
 				monedas -=25;
+				gui.setMonedasGUI(monedas);
 			}
 		}
 	 return toReturn;
@@ -401,6 +411,7 @@ public class Logica {
 				factorySoldado = new S3factory(panelMapa);
 				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
 				monedas -=25;
+				gui.setMonedasGUI(monedas);
 			}
 		}
 	 return toReturn;
@@ -415,6 +426,7 @@ public class Logica {
 				factorySoldado = new S4factory(panelMapa);
 				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
 				monedas -=25;
+				gui.setMonedasGUI(monedas);
 			}
 		}
 	 return toReturn;
@@ -430,6 +442,7 @@ public class Logica {
 				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
 				crearBalasSoldados(soldadosMapa.getLast());
 				monedas -=25;
+				gui.setMonedasGUI(monedas);
 			}
 		}
 	 return toReturn;
@@ -442,28 +455,14 @@ public class Logica {
 		h1.start();	
 	}
 	
-	public boolean puedeActivarFuerza () {
-		if ( cantFuerza > 0) {
-			cantFuerza--;
-			return true;
-		}
-		else
-			return false;
-	}
+	 
 	
 	public void activarMagia_Campo () {
 		HiloMagiaTemporaCampo h1 = new HiloMagiaTemporaCampo (this);
 		h1.start();	
 	}
 	
-	public boolean puedeActivarCampo () {
-		if ( cantCampo > 0) {
-			cantCampo--;
-			return true;
-		}
-		else
-			return false;
-	}
+	 
 	
 	/**Verifica si la posicion corresonde al panel de combate 
 	 * 
@@ -546,9 +545,9 @@ public class Logica {
 					
 					if (m.equals(c.getElemento())) {
 						cantCampo++;
-						mapaCombate.eliminar(m);
-						mapaCombate.setCeldaMapa(x, y, null);
-						listaMagia.remove(m);
+						mapaCombate.eliminarMagia(m);
+						//mapaCombate.setCeldaMapa(x, y, null);
+						//listaMagia.remove(m);
 						toReturn = true;
 						corte = false;
 					}
@@ -576,6 +575,14 @@ public class Logica {
 	
 	public Mapa getMapaCombate () {
 		return mapaCombate;
+	}
+	
+	public int getMonedas () {
+		return monedas;
+	}
+	
+	public int getPuntos () {
+		return puntos;
 	}
 	
 }

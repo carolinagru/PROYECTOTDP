@@ -20,6 +20,7 @@ import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
 import Factory.FactoryCampoProteccion;
+import Factory.FactoryFuerza;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
@@ -125,7 +126,7 @@ public class Mapa {
 			x = (int ) (Math.random() * 5);
 			c.set(x, 11);;
 		}
-		//vkhjygiu
+
 		return crearEnemigos(c,nivel,factory,orda);
 	}
 	
@@ -150,12 +151,20 @@ public class Mapa {
 			
 		}
 		p = factory.createPersonaje(c);
-		int r = (int) (Math.random() * 1);
-		if (r == 1) {
+		/**
+		int r = (int) (Math.random() * 3)+1;
+		 if (r == 1) {
+			System.out.print("pude crear magiaW");
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
 		}
-		
+		 else {
+			 if ( r == 2) {
+				 FactoryFuerza f3 = new FactoryFuerza();
+				 p.setMagiaTemporal(f3.crearMagia());
+			 }
+		 }
+		 **/
 	  return  p;
 	}
 	
@@ -177,6 +186,13 @@ public class Mapa {
 	
 	public void eliminar(Obstaculo o) {
 		o.getCelda().setElemento(null);
+		panel.remove(o.getGrafico(2));
+		panel.revalidate();
+		panel.repaint();
+	}
+	
+	public void eliminarMagia(Obstaculo o) {
+		//o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();

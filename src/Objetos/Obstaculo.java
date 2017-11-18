@@ -16,6 +16,7 @@ public abstract class Obstaculo {
 	protected Celda pos;
 	protected int vida;
 	protected int puntos ;
+	protected int monedas;
 	protected Estado myEstado;
 	protected MagiaTemporal magiaT;
 	
@@ -70,6 +71,10 @@ public abstract class Obstaculo {
 	
 	public int getPuntos () {
 		return puntos;
+	}
+	
+	public int getMonedas () {
+		return monedas;
 	}
 
 	public abstract void accept(Visitor v);

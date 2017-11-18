@@ -49,6 +49,10 @@ public class Alien extends Personaje {
 		return punto;
 	}
 	
+	public int getMonedas () {
+		return moneda;
+	}
+	
 	 public void accept(Visitor v) {
   		 v.visit(this);
   	}

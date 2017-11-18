@@ -5,6 +5,7 @@
 		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Emanuel\OneDrive\Documentos"/>
 			<item value="C:\Users\NSC_7\OneDrive\Documents\GitHub\TDP2017GOT"/>
 			<item value="C:\Users\NSC_7\OneDrive\Documents\GitHub\TDP2017GOT\PROYECTOTDP"/>
 		</list>

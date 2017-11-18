@@ -1,8 +1,6 @@
 package Graficos;
 
-import java.awt.Image;
-
-import javax.swing.Icon;
+ 
 import javax.swing.ImageIcon;
 
 public class Alien1Grafico extends ObstaculoGrafico{

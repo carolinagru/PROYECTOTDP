@@ -16,11 +16,10 @@ public class HiloInsertarAlien  extends Thread{
 		try {	
 			
 			Thread.sleep(1500);
-			System.out.println("Entre a insertar");
+			 
 			 
 			while (execute) {	
-				System.out.println("Entre a insertar");
-			
+					
 				l.insertarEnemigos();
 				execute = l.getjuegoActivo();
 				Thread.sleep(5000);
