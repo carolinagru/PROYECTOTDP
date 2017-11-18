@@ -21,10 +21,7 @@ public class VisitorBalaSoldado implements Visitor{
 	}
 	 
 	public void visit(Alien a) {
-		//System.out.println("-------VISIT DISPARO  Fuerza de impacto: "+myDisparoSoldado.getFuerzaImpacto()+" Alien vida :"+a.getVida());
-		//a.getEstadoNivel().disminuirVida(myDisparoSoldado.getFuerzaImpacto(),a);
-		 
-
+		a.setVida(20);
 	}
 
 	 

@@ -1,6 +1,7 @@
 	package Personajes;
 	
-	import Principal.Celda;
+	import Disparo.Bala;
+import Principal.Celda;
 	 
 	import Visitor.Visitor;
 	import Visitor.VisitorSoldado;
@@ -38,5 +39,8 @@
 		return v.Atacar(this);
 	}
 	
+	
 }
+	
+	
 

@@ -463,7 +463,7 @@ public class Mapa_GUI2 extends JFrame {
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold4.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado4.getWidth(), botonSoldado4.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado4.setIcon(iconoBoton);
-		botonSoldado4.setEnabled(false);
+		botonSoldado4.setEnabled(true);
 		panel_2.add(botonSoldado4);
 		ActionListener a4= new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -495,7 +495,7 @@ public class Mapa_GUI2 extends JFrame {
 		imagenBoton = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botSold5.png"));
 		iconoBoton = new ImageIcon(imagenBoton.getImage().getScaledInstance(botonSoldado5.getWidth(), botonSoldado5.getHeight(), Image.SCALE_SMOOTH));
 		botonSoldado5.setIcon(iconoBoton);
-		botonSoldado5.setEnabled(false);
+		botonSoldado5.setEnabled(true);
 		panel_2.add(botonSoldado5);
 		ActionListener a5 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

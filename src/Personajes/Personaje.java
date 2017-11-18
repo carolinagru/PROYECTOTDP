@@ -2,6 +2,7 @@ package Personajes;
 
 
 import Principal.Celda;
+import Disparo.Bala;
 import Estate.Estado;
 import Objetos.Obstaculo;
 import PowerUps.MagiaTemporal;
@@ -53,7 +54,6 @@ public abstract class Personaje extends Obstaculo{
 		return vida;
 	}
 	
-	 
 	 
 	 
 	 

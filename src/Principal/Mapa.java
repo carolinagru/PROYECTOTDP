@@ -28,6 +28,8 @@ import Objetos.ObjetoPiedra;
 import Objetos.Obstaculo;
 import Personajes.Alien;
 import Personajes.Personaje;
+import Personajes.S5;
+import Personajes.Soldado;
 
 public class Mapa {
 	private Celda mapa[][];
@@ -126,7 +128,6 @@ public class Mapa {
 			x = (int ) (Math.random() * 5);
 			c.set(x, 11);;
 		}
-
 		return crearEnemigos(c,nivel,factory,orda);
 	}
 	
@@ -154,7 +155,6 @@ public class Mapa {
 		/**
 		int r = (int) (Math.random() * 3)+1;
 		 if (r == 1) {
-			System.out.print("pude crear magiaW");
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
 		}
@@ -168,15 +168,16 @@ public class Mapa {
 	  return  p;
 	}
 	
-	public Bala insertarBalasMapa(BalasFactoryMethod factory,Celda c, Personaje p) {
+	public Bala insertarBalasMapa(BalasFactoryMethod factory, Soldado p) {
+		Celda c = siguienteCeldaDer(p.getCelda());
 		factory = new BalaSoldadoFactory(panel);
-		Bala b = factory.crearBalas(c, p);
+		Bala b = factory.crearBalas(c,p);
 	 return b;
 	}
 
 	public Celda siguienteCeldaIzq(Celda c) {
 		int col = c.getColumna()-1;		
-		return getCelda(c.getFila(),col);
+		return  getCelda(c.getFila(),col);
 	}
 	
 	public Celda siguienteCeldaDer(Celda c) {
@@ -186,13 +187,6 @@ public class Mapa {
 	
 	public void eliminar(Obstaculo o) {
 		o.getCelda().setElemento(null);
-		panel.remove(o.getGrafico(2));
-		panel.revalidate();
-		panel.repaint();
-	}
-	
-	public void eliminarMagia(Obstaculo o) {
-		//o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();

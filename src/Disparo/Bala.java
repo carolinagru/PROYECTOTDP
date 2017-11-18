@@ -1,6 +1,8 @@
 package Disparo;
 
 import Objetos.Obstaculo;
+import Personajes.Personaje;
+import Personajes.Soldado;
 import Principal.Celda;
 
 public abstract class Bala extends Obstaculo{
@@ -17,6 +19,6 @@ public abstract class Bala extends Obstaculo{
 		return fuerzaDeImpacto;
 	}
 
- 
+
 
 }
