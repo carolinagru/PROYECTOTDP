@@ -8,6 +8,7 @@ import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
 import Objetos.ObjetoTemporal;
 import Objetos.ObjetoVida;
+import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Soldado;
 import PowerUps.MagiaTemporal;
@@ -192,11 +193,22 @@ public class VisitorBalaSoldado implements Visitor{
 		return false;
 	}
 
+ 
+	public void visit(ObjetoVidaComprar a) {
+	 
+		
+	}
 
-	
-	
+	 
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+		 
+		return false;
+	}
 
-	
-	
-
+	 
+	public boolean Atacar(ObjetoVidaComprar a) {
+	 
+		return false;
+	}
+ 
 }
