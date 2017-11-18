@@ -22,7 +22,13 @@ import Estate.EstadosinMagia;
 import Factory.AlienFactoryMethod;
  
 import Factory.BalasFactoryMethod;
+import Factory.FactoryRobot;
+import Factory.ObjTemporalFactoryMethod;
+import Factory.ObjVidaComprarFactoryMethod;
+import Factory.ParedFactory;
 import Factory.SoldadosFactoryMethod;
+import Factory.TanqueFactory;
+import Hilos.HiloActivarObjetoTemporal;
 import Hilos.HiloAliens;
 import Hilos.HiloDisparo;
 import Hilos.HiloInsertarAlien;
@@ -35,7 +41,8 @@ import Factory.S2factory;
 import Factory.S3factory;
 import Factory.S4factory;
 import Factory.S5factory;
-
+import Objetos.ObjetoTemporal;
+import Objetos.ObjetoVidaComprar;
 import Objetos.Obstaculo;
 import Visitor.VisitorAlien;
 import Visitor.VisitorBalaSoldado;
@@ -53,6 +60,8 @@ public class Logica {
 	protected LinkedList<Bala> balasSoldado;
 	protected LinkedList<Bala> balasAlien;
 	protected LinkedList<MagiaTemporal> listaMagia;
+	protected LinkedList<ObjetoTemporal> listaObjetosTemporales;
+	protected LinkedList<ObjetoVidaComprar> listaObjetosComprarVida;
 	protected int cantFuerza;
 	protected int cantCampo;
 	protected LinkedList<Bala> balasAeliminar;
@@ -63,6 +72,8 @@ public class Logica {
 	protected SoldadosFactoryMethod factorySoldado;
 	protected AlienFactoryMethod factoryAlien; 
 	protected BalasFactoryMethod factoryBala;
+	protected ObjTemporalFactoryMethod fabricaObjetoTemporales;
+	protected ObjVidaComprarFactoryMethod fabricaObjetoVidaComprar;
 	protected static int height = 500;
 	protected static int width= 1000;
     protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
@@ -78,7 +89,7 @@ public class Logica {
 		this.gui = gui;
 		panelMapa=p;
 		puntos = 100;
-		monedas = 1000;
+		monedas = 500;
 		nivel = 1;
 		cantEnemigos = 12;
 		juegoActivo = true;
@@ -92,6 +103,9 @@ public class Logica {
 		balasAlien = new LinkedList<Bala>();
 		listaMagia = new LinkedList<MagiaTemporal>();
 		balasAeliminar = new LinkedList<Bala>();
+		listaMagia = new LinkedList<MagiaTemporal>();
+		listaObjetosTemporales = new LinkedList<ObjetoTemporal>();
+		listaObjetosComprarVida = new LinkedList<ObjetoVidaComprar>();
 
 		cantFuerza = 0;
 		cantCampo = 0;
@@ -109,6 +123,7 @@ public class Logica {
 	public void ejecutarHilos(boolean resultado) {
 		
 		if (resultado) {
+			
 			HiloInsertarAlien h5 = new HiloInsertarAlien (this);
 			h5.start();
 			
@@ -148,8 +163,10 @@ public class Logica {
 	}
 
 	public void insertarObjetos() {
-			mapaCombate.insertarObjetos();
+			mapaCombate.insertarObjetos(this);
 	}
+	
+	
 	
 	public void limpiarBalasSoldado() {
 		while (balasAeliminar.size() > 0) {
@@ -169,6 +186,7 @@ public class Logica {
 			}
 		}
 	}
+	
 	public void insertarEnemigos() {
 	 if (cantEnemigos != 0) {
 		if ( aliensMapa.size() == 0) {
@@ -462,6 +480,8 @@ public class Logica {
 		h1.start();	
 	}
 	
+	
+	
 	 
 	
 	/**Verifica si la posicion corresonde al panel de combate 
@@ -480,10 +500,14 @@ public class Logica {
 				boolean corte = true;
 				while ( p != null && corte ) {
 					if (p.getCelda().equals(c)) {
-						if ( p.getVida() != 100)
+						if ( p.getVida() != 100) {
 							monedas += p.getVida()*0.5;
-						else
+							gui.setMonedasGUI(monedas);
+						}
+						else {
 							monedas += p.getVida();
+							gui.setMonedasGUI(monedas);
+						}
 						mapaCombate.eliminar(p);
 						soldadosMapa.remove(p);
 						toReturn = true;
@@ -514,7 +538,7 @@ public class Logica {
 					
 					if (m.equals(c.getElemento())) {
 						cantFuerza++;
-						mapaCombate.eliminar(m);
+						mapaCombate.eliminarMagia(m);
 						mapaCombate.setCeldaMapa(x, y, null);
 						listaMagia.remove(m);
 						toReturn = true;
@@ -565,6 +589,64 @@ public class Logica {
   }
 
 
+	public boolean comprarPared (int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 50 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				fabricaObjetoVidaComprar = new ParedFactory(panelMapa);
+				listaObjetosComprarVida.addLast(fabricaObjetoVidaComprar.createObjeto(c));	
+				monedas -=50;
+				gui.setMonedasGUI(monedas);
+			}
+		}
+	 return toReturn;
+	}
+	
+	public boolean comprarRobot(int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 50 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				fabricaObjetoVidaComprar = new FactoryRobot(panelMapa);
+				listaObjetosComprarVida.addLast(fabricaObjetoVidaComprar.createObjeto(c));	
+				monedas -=200;
+				gui.setMonedasGUI(monedas);
+			}
+		}
+	 return toReturn;
+	}
+	
+	
+	public boolean comprarTanque (int x, int y) {
+		boolean toReturn = false;
+		Celda c = mapaCombate.getCelda(x, y);	
+		if (monedas >= 100 ) {
+			if (c.getElemento() == null) {
+				toReturn = true;
+				fabricaObjetoTemporales = new TanqueFactory(panelMapa);
+				listaObjetosTemporales.addLast(fabricaObjetoTemporales.createObjetoTemporal(c));	
+				monedas -=100;
+				gui.setMonedasGUI(monedas);
+				HiloActivarObjetoTemporal h = new HiloActivarObjetoTemporal (this,listaObjetosTemporales.getLast());
+				h.start();
+				
+			}
+		}
+	 return toReturn;
+	}
+	
+	
+	public boolean puedeComprar(ObjetoTemporal o) {
+		if (o.getPrecio() < monedas)
+			return true;
+		else
+			return false;
+	}
+	
+	
 	public void setPanel(JPanel frame) {
 		panelMapa = frame;		
 	}	

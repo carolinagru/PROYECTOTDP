@@ -8,6 +8,7 @@ import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
 import Objetos.ObjetoTemporal;
 import Objetos.ObjetoVida;
+import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Personaje;
 import Personajes.Soldado;
@@ -35,6 +36,7 @@ public class VisitorAlien implements Visitor {
  	}
 
 	public void visit(ObjetoVida a) {
+		a.setVida(a.getVida()*myAlien.getFuerza());
 		 
 	}
 	
@@ -77,58 +79,56 @@ public class VisitorAlien implements Visitor {
 	}
 	
 
-	@Override
+
 	public boolean Atacar(MagiaTemporal m) {
 	 
 		return false;
 	}
 
-	@Override
+ 
 	public void visit(MagiaTemporal m) {
-		// TODO Auto-generated method stub
+		 
 		
 	}
 
-	@Override
+ 
 	public boolean puedoPasar(ObjetoTemporal a) {
-		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
+ 
 	public boolean puedoPasar(ObjetoAgua a) {
-		// TODO Auto-generated method stub
+		 
 		return false;
 	}
 
-	@Override
+	 
 	public boolean puedoPasar(ObjetoFuego a) {
-		// TODO Auto-generated method stub
+		 
 		return false;
 	}
 
-	@Override
+ 
 	public boolean puedoPasar(ObjetoFuente a) {
-		// TODO Auto-generated method stub
+	 
 		return false;
 	}
 
-	@Override
+ 
 	public boolean puedoPasar(ObjetoPiedra a) {
-		// TODO Auto-generated method stub
+	 
 		return false;
 	}
 
-	@Override
+ 
 	public boolean puedoPasar(ObjetoVida a) {
-		// TODO Auto-generated method stub
+		 
 		return false;
 	}
 
-	@Override
+	 
 	public boolean puedoPasar(MagiaTemporal m) {
-		// TODO Auto-generated method stub
-		return false;
+		 
+		return true;
 	}
 	
 	
@@ -164,7 +164,7 @@ public class VisitorAlien implements Visitor {
 	 
 	public boolean Atacar(ObjetoPiedra a) {
 	 
-		return false;
+		return true;
 	}
 
 	 
@@ -188,7 +188,23 @@ public class VisitorAlien implements Visitor {
 	 
 	public boolean Atacar(ObjetoVida a) {
 		 
+		return true;
+	}
+
+	 //Alien le saca vida a objeto comprado
+	public void visit(ObjetoVidaComprar a) {
+		a.setVida(a.getVida()*myAlien.getFuerza());
+	}
+
+ 
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+		 
 		return false;
+	}
+
+	 
+	public boolean Atacar(ObjetoVidaComprar a) {
+		return true;
 	}
 
 

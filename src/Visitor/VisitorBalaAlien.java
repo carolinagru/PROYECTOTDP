@@ -7,6 +7,7 @@ import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
 import Objetos.ObjetoTemporal;
 import Objetos.ObjetoVida;
+import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Soldado;
 import PowerUps.MagiaTemporal;
@@ -188,6 +189,24 @@ public class VisitorBalaAlien implements Visitor{
 	}
 
 	public boolean puedoPasar(Soldado a) {
+		return false;
+	}
+
+	@Override
+	public void visit(ObjetoVidaComprar a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean Atacar(ObjetoVidaComprar a) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

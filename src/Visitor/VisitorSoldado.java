@@ -8,7 +8,8 @@ package Visitor;
 	import Objetos.ObjetoPiedra;
 	import Objetos.ObjetoTemporal;
 	import Objetos.ObjetoVida;
-	import Personajes.Alien;
+import Objetos.ObjetoVidaComprar;
+import Personajes.Alien;
 	import Personajes.Personaje;
 	import Personajes.Soldado;
 	import PowerUps.MagiaTemporal;
@@ -163,6 +164,21 @@ package Visitor;
 	}
 	 
 	public boolean Atacar(MagiaTemporal m) {
+		return false;
+	}
+	 
+	public void visit(ObjetoVidaComprar a) {
+		 
+		
+	}
+	 
+	public boolean puedoPasar(ObjetoVidaComprar a) {
+	 
+		return false;
+	}
+	 
+	public boolean Atacar(ObjetoVidaComprar a) {
+		 
 		return false;
 	}
 	

@@ -21,6 +21,7 @@ import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
 import Factory.FactoryCampoProteccion;
 import Factory.FactoryFuerza;
+import Hilos.HiloActivarObjetoTemporal;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
@@ -74,7 +75,8 @@ public class Mapa {
 		mapa[x][y].setElemento(o);
 	}
 	
-	public void insertarObjetos() {
+	public void insertarObjetos(Logica l) {
+
 		 try {	
 			FileReader f = new FileReader(getClass().getResource("/Archivos/mapa1.txt").getFile());
 	        BufferedReader b = new BufferedReader(f);
@@ -87,8 +89,11 @@ public class Mapa {
 		        	for (int i = 0; i < cadena.length(); i++){
 		      		   d = cadena.charAt(i);
 		      		   Celda c = getCelda(y,x);
-		                if (d == 'f')
-		                  obs= new ObjetoFuego(c);
+		                if (d == 'f') {
+		                	obs= new ObjetoFuego(c);
+		                	HiloActivarObjetoTemporal h = new HiloActivarObjetoTemporal (l,obs);
+		                	h.start();
+		                }
 		                	else if (d == 'a')
 		                	   obs=new ObjetoAgua(c);
 		                	      else if(d == 'u')
@@ -119,7 +124,6 @@ public class Mapa {
 	}
 	
 	public Alien insertarEnemigo(AlienFactoryMethod factory, int nivel, int orda) {
-		Random r = new Random();
 		int x = (int ) (Math.random() * 5);
 		Celda c = new Celda(x,11);
 		while (c.getElemento() != null) {
@@ -151,8 +155,8 @@ public class Mapa {
 			
 		}
 		p = factory.createPersonaje(c);
-		/**
-		int r = (int) (Math.random() * 3)+1;
+		 
+		int r = (int) (Math.random() * 7)+1;
 		 if (r == 1) {
 			System.out.print("pude crear magiaW");
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
@@ -164,7 +168,7 @@ public class Mapa {
 				 p.setMagiaTemporal(f3.crearMagia());
 			 }
 		 }
-		 **/
+		 
 	  return  p;
 	}
 	
