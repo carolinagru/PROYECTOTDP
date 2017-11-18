@@ -23,7 +23,8 @@ public class HiloInsertarBala extends Thread {
 			//Thread.sleep(150);
 			this.execute = true;
 			 
-			while (execute) {			
+			while (execute) {		
+				//l.soldadosBala(); 
 				Thread.sleep(3000);
 				
 			}

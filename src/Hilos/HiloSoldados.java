@@ -9,20 +9,17 @@ public class HiloSoldados  extends Thread{
 	
 	public HiloSoldados (Logica l ) {
 		this.l = l;
+		execute = l.getjuegoActivo();
 	}
 	
-	public void terminate () {
-		this.execute = false;
-	}
 	
 	public void run () {
 		try {
-			this.execute = true;
 			 
 			while (execute) {			
 				 
 				l.inicioAtaqueSoldados();
-				 
+				execute = l.getjuegoActivo();
 				Thread.sleep(1000);
 			}
 			} catch (InterruptedException e2) {

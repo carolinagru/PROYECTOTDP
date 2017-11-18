@@ -12,23 +12,19 @@ public class ObjetoTemporal extends Obstaculo{
 		this.precio = 0;
 	}
 
-	 public int getPrecio () {
+	public int getPrecio () {
 		 return precio;
-	 }
+	}
+	 
 	public void accept(Visitor v) {
 		v.visit(this);
 	}
 
-
 	public boolean dejoPasar(Visitor v) {
 		return v.puedoPasar(this);
 	}
-	
-	public boolean puedoAtacar (Visitor v) {
-		return v.Atacar(this);
-	}
  
-	public boolean puedeAtacar(Visitor v) { // TODO Auto-generated method stub
+	public boolean puedoAtacar(Visitor v) { 
 		return false;
 	}
 }

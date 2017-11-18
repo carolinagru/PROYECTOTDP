@@ -9,24 +9,20 @@ public class HiloDisparo  extends Thread{
 	
 	public HiloDisparo (Logica l ) {
 		this.l = l;
+		execute = l.getjuegoActivo();
 	}
 	
-	public void terminate () {
-		this.execute = false;
-	}
 	
 	public void run () {
 		try {
 			Thread.sleep(1000);
-
-			this.execute = true;
 			 
-			while (execute) {		
+			while (execute) {	
 				l.soldadosBala(); 
 				l.accionBalaSoldado();
 				l.moverDisparo();
 				l.limpiarBalasSoldado();
-				
+				execute = l.getjuegoActivo();
 				Thread.sleep(1000);
 			}
 			

@@ -8,26 +8,24 @@ public class HiloAliens extends Thread {
 	
 	public  HiloAliens (Logica l ) {
 		this.l = l;
+		execute = l.getjuegoActivo();
 	}
 	
-	public void terminate () {
-		this.execute = false;
-	}
+	
 	
 	
 	public void run () {
 		try {				
 			
-			this.execute = true;
 			Thread.sleep(3000);
 			 
 			while (execute) {	
 				Thread.sleep(500);
-				l.inicioAtaqueAlien();;
+				l.inicioAtaqueAlien();
 				Thread.sleep(1000);
 				 
-				l.inicioMovimientoAliens();;
-				 		
+				l.inicioMovimientoAliens();
+				execute = l.getjuegoActivo();		
 			}
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();

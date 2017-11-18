@@ -17,7 +17,7 @@ public class HiloInsertarAlien  extends Thread{
 			
 			Thread.sleep(1500);
 			 
-			 l.insertarObjetos();
+			l.insertarObjetos();
 			while (execute) {	
 					
 				l.insertarEnemigos();

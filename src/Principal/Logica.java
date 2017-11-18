@@ -171,9 +171,7 @@ public class Logica {
 	public void insertarObjetos() {
 			mapaCombate.insertarObjetos(this);
 	}
-	
-	
-	
+		
 	public void limpiarBalasSoldado() {
 		while (balasAeliminar.size() > 0) {
 			Bala b = balasAeliminar.removeFirst();
@@ -221,7 +219,43 @@ public class Logica {
 	}
 	
 	public void gameOver() {
+		juegoActivo = false;
+		liberarPanel();
 		
+	}
+	
+	
+	public void liberarPanel(){
+		
+	LinkedList<Obstaculo> objetosMapa = mapaCombate.getLista();
+		while (objetosMapa.size() > 0) {
+			Obstaculo b = objetosMapa.removeFirst();
+			mapaCombate.eliminar(b);
+		}
+		
+		while (soldadosMapa.size() > 0) {
+			Soldado b = soldadosMapa.removeFirst();
+			mapaCombate.eliminar(b);
+		}
+		
+		while (aliensMapa.size() > 0) {
+			Alien b = aliensMapa.removeFirst();
+			mapaCombate.eliminar(b);
+		}
+		
+		while (balasSoldado.size() > 0) {
+			Bala b = balasSoldado.removeFirst();
+			mapaCombate.eliminar(b);
+		}
+		while (balasAlien.size() > 0) {
+			Bala b = balasAlien.removeFirst();
+			mapaCombate.eliminar(b);
+		}
+		while (soldadosS5.size() > 0) {
+			Soldado b = soldadosS5.removeFirst();
+			mapaCombate.eliminar(b);
+		}
+	   			
 	}
 	
 	public void moverAlien(Personaje p) {	
@@ -258,7 +292,7 @@ public class Logica {
 				VisitorAlien v = new VisitorAlien();
 				v.setAlien(p);
 				v.setEstado(estadoMagia);
-				if ( o.puedoAtacar(v)) {
+				if (o.puedoAtacar(v)) {
 					if (o.getVida() > 0){
 						p.actualizarGrafico(1);
 						o.accept(v);
@@ -366,6 +400,7 @@ public class Logica {
 	public void balaSoldado(Bala b) {
 		Celda c = b.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
+		mapaCombate.setCeldaMapa(b.getCelda().getFila(),b.getCelda().getColumna(), null);
 		
 		if (siguiente != null ){
 			Obstaculo o = siguiente.getElemento();
@@ -374,15 +409,14 @@ public class Logica {
 				v.setBala(b);
 				if (!o.dejoPasar(v)) {
 					o.accept(v);
+					balasAeliminar.addLast(b);
+					mapaCombate.eliminar(b);
 					if (o.getVida() <= 0){
 						o.actualizarGrafico(2);
 						a_eliminarObstaculo.add(o);
 						mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
 						mapaCombate.eliminar(o);
 					}
-					mapaCombate.setCeldaMapa(b.getCelda().getFila(),b.getCelda().getColumna(), null);
-					balasAeliminar.addLast(b);
-					mapaCombate.eliminar(b);
 				}
 				else b.setCelda(siguiente.getFila(), siguiente.getColumna());
 			}
@@ -543,7 +577,7 @@ public class Logica {
 					
 					if (m.equals(c.getElemento())) {
 						cantFuerza++;
-						mapaCombate.eliminarMagia(m);
+						mapaCombate.eliminar(m);
 						mapaCombate.setCeldaMapa(x, y, null);
 						listaMagia.remove(m);
 						toReturn = true;
