@@ -591,7 +591,6 @@ public class Mapa_GUI2 extends JFrame {
 								int filas = y / 80;
 								int columnas = x  / 80;
 								if (logica.verificarPosicion(filas, columnas)) {
-									
 									System.out.println("Encontre soldado a eliminar y elimino ");
 								}
 							}

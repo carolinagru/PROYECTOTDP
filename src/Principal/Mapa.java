@@ -77,8 +77,6 @@ public class Mapa {
 		mapa[x][y].setElemento(o);
 	}
 	
-	
-	
 	public void insertarObjetos(Logica l) {
 
 		 try {	
