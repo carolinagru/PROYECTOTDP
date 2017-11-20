@@ -1,8 +1,5 @@
 package Principal;
 
-
- 
-
 import Personajes.*;
  
 import PowerUps.MagiaTemporal;
@@ -38,6 +35,7 @@ import Hilos.HiloLimpieza;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
 import Hilos.HiloSoldados;
+import InterfazGrafica.panelGameOver;
 import Factory.S1factory;
 import Factory.S2factory;
 import Factory.S3factory;
@@ -49,7 +47,6 @@ import Objetos.Obstaculo;
 import Visitor.VisitorAlien;
 import Visitor.VisitorBalaSoldado;
 import Visitor.VisitorSoldado;
-
 
 public class Logica {
 	
@@ -221,7 +218,9 @@ public class Logica {
 	public void gameOver() {
 		juegoActivo = false;
 		liberarPanel();
-		
+		panelGameOver panelPerdio = new panelGameOver();
+		panelPerdio.setVisible(true);
+		gui.setVisible(false);
 	}
 	
 	

@@ -30,13 +30,13 @@ public class MenuInicio extends JFrame{
 		menu = this;	
 		botonIniciar = new JButton("");
 		botonIniciar.setBounds(790, 551, 194, 49);
-		imagenBotonIniciar = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonJugar.png"));
+		imagenBotonIniciar = new ImageIcon(getClass().getResource("/Sprites/botones/botonJugar.png"));
 		iconoBotonIniciar = new ImageIcon(imagenBotonIniciar.getImage().getScaledInstance(botonIniciar.getWidth(), botonIniciar.getHeight(), Image.SCALE_SMOOTH));
 		botonIniciar.setIcon(iconoBotonIniciar);
 		
 		botonSalir = new JButton("");
 		botonSalir.setBounds(790, 611, 194, 49);
-		imagenBotonSalir = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonSalirMenu.png"));
+		imagenBotonSalir = new ImageIcon(getClass().getResource("/Sprites/botones/botonSalirMenu.png"));
 		iconoBotonSalir = new ImageIcon(imagenBotonSalir.getImage().getScaledInstance(botonSalir.getWidth(), botonSalir.getHeight(), Image.SCALE_SMOOTH));
 		botonSalir.setIcon(iconoBotonSalir);
 		iniciar();
@@ -55,8 +55,8 @@ public class MenuInicio extends JFrame{
 		
 		botonIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Mapa_GUI2 imagenPanelPrincipal = new Mapa_GUI2();
-				imagenPanelPrincipal.iniciar();
+				PanelNivel1 panel = new PanelNivel1();
+				panel.setVisible(true);
 				setVisible(false);
 			}
 		});

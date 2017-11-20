@@ -34,6 +34,7 @@ public class Mapa_GUI2 extends JFrame {
 	protected Image image2;
 	protected Image image3;
 	protected Image image4;
+	private ImageIcon imagenBotonBomba;
 	private ImageIcon imagenBotonGuardarBomba;
 	private ImageIcon imagenBotonGuardarFuerza;
 	private ImageIcon imagenBotonGuardarCampo;
@@ -44,6 +45,7 @@ public class Mapa_GUI2 extends JFrame {
 	private ImageIcon imagenCampo;
 	private ImageIcon imagenBoton;
 	private ImageIcon imagenBomba;
+	private Icon iconoBotonBomba;
 	private Icon iconoBotonGuardarBomba;
 	private Icon iconoBotonGuardarFuerza;
 	private Icon iconoBotonGuardarCampo;
@@ -165,8 +167,8 @@ public class Mapa_GUI2 extends JFrame {
 		
 		JButton botonRobot = new JButton("");
 		 
-			botonRobot.setBounds(365, 0, 151, 76);
-		imagenBomba = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonBomba.png"));
+		botonRobot.setBounds(365, 0, 151, 76);
+		imagenBomba = new ImageIcon(Mapa_GUI2.class.getResource("/Sprites/botones/botonRobot.png"));
 		iconoBomba = new ImageIcon(imagenBomba.getImage().getScaledInstance(botonRobot.getWidth(), botonRobot.getHeight(), Image.SCALE_SMOOTH));
 		botonRobot.setIcon(iconoBomba);
 		panel.add(botonRobot);
@@ -238,7 +240,7 @@ public class Mapa_GUI2 extends JFrame {
 		//------- Boton activar campo
 		JButton button = new JButton();
 		button.setBounds(106, 480, 106, 90);
-		imagenBotonPunio = new ImageIcon(getClass().getResource("/Sprites/botones/botonPuño.jpg"));
+		imagenBotonPunio = new ImageIcon(getClass().getResource("/Sprites/botones/escudo.png"));
 		iconoBotonPunio = new ImageIcon(imagenBotonPunio.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH));
 		button.setIcon(iconoBotonPunio);
 		button.addActionListener(new ActionListener() {
@@ -358,7 +360,14 @@ public class Mapa_GUI2 extends JFrame {
 		panel_1.add(button_5);
 		
 		JButton button_6 = new JButton("");
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		button_6.setBounds(211, 480, 104, 90);
+		imagenBotonBomba = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
+		iconoBotonBomba = new ImageIcon(imagenBotonBomba.getImage().getScaledInstance(button_6.getWidth(), button_6.getHeight(), Image.SCALE_SMOOTH));
+		button_6.setIcon(iconoBotonBomba);
 		panel_1.add(button_6);
 		ImageIcon imagen = new ImageIcon(getClass().getResource("/Sprites/FondosYmenus/puntaje.png"));
 		/**
@@ -585,14 +594,9 @@ public class Mapa_GUI2 extends JFrame {
 									
 									System.out.println("Encontre soldado a eliminar y elimino ");
 								}
-								
 							}
-						 
 						}});
-				}});
-			
-			
-			 
+				}}); 
 	}
 	
 	public void setMonedasGUI(int m ) {

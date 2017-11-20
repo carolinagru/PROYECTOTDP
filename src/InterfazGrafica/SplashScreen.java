@@ -21,10 +21,10 @@ public class SplashScreen extends JWindow
 		getContentPane().setLayout(null);
 		getContentPane().add(panel);
 		JLabel label = new JLabel();
-		this.setBounds(300,100, 980, 620);
-		panel.setBounds(-20, -30, 1000, 720);
+		this.setBounds(300,100, 700, 350);
+		panel.setBounds(-20, -30, 800, 450);
 		panel.add(label);
-		label.setIcon(new ImageIcon(getClass().getResource("/Sprites/fondo/ImagenMenu.gif")));
+		label.setIcon(new ImageIcon(getClass().getResource("/Sprites/FondosYmenus/ImagenSplash.jpg")));
 		label.setBounds(0,0,1100,1100);
 		setVisible(true);
 		
