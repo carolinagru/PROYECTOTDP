@@ -12,9 +12,11 @@ import Principal.Celda;
 public class S5 extends Soldado {
 	
 protected Bala bala;
+protected Celda celdaVecina;
 		
 	public S5(Celda pos) {
 		super(pos);
+		
 		this.bala = null;
 		this.precio = 60;
 		this.vida = 100;

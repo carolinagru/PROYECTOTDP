@@ -77,8 +77,6 @@ public class Mapa {
 		mapa[x][y].setElemento(o);
 	}
 	
-	
-	
 	public void insertarObjetos(Logica l) {
 
 		 try {	
@@ -136,8 +134,6 @@ public class Mapa {
 		return toReturn;
 	}
 	
-	
-	
 	public void insertar(JLabel l) {
 		panel.add(l);
 		panel.repaint();
@@ -192,8 +188,9 @@ public class Mapa {
 	
 	public Bala insertarBalasMapa(BalasFactoryMethod factory, Soldado p) {
 		Celda c = siguienteCeldaDer(p.getCelda());
+		Celda nueva = new Celda(c.getFila(),c.getColumna());
 		factory = new BalaSoldadoFactory(panel);
-		Bala b = factory.crearBalas(c,p);
+		Bala b = factory.crearBalas(nueva,p);
 	 return b;
 	}
 

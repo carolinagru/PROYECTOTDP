@@ -9,23 +9,19 @@ public class HiloInsertarBala extends Thread {
 		
 	public HiloInsertarBala  (Logica l ) {
 		this.l = l;
- 	 
+		this.execute = l.getjuegoActivo();  	 
 	}	
-	
-	public void terminate () {
-		this.execute = false;
-		 
-	}
+
 	
 	public void run () {
 		try {
 			
-			//Thread.sleep(150);
-			this.execute = true;
+			Thread.sleep(150);
 			 
 			while (execute) {		
-				//l.soldadosBala(); 
-				Thread.sleep(3000);
+				l.soldadosBala(); 
+				execute = l.getjuegoActivo();
+				Thread.sleep(500);
 				
 			}
 			} catch (InterruptedException e2) {
