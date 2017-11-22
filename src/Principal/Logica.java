@@ -26,12 +26,12 @@ import Factory.ParedFactory;
 import Factory.SoldadosFactoryMethod;
 import Factory.TanqueFactory;
 import Hilos.HiloActivarObjetoTemporal;
-import Hilos.HiloAliens;
 import Hilos.HiloDisparo;
 import Hilos.HiloInsertarAlien;
 import Hilos.HiloInsertarBala;
 //import Hilos.HiloInsertarBalaSoldado;
 import Hilos.HiloLimpieza;
+import Hilos.HiloLogico;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
 import Hilos.HiloSoldados;
@@ -122,7 +122,12 @@ public class Logica {
 	
 	 
 	public void ejecutarHilos(boolean resultado) {
+		HiloLogico h = new HiloLogico(this);
+		h.start();
+		System.out.println("Entre al hilo ");
 		
+		
+		/*
 		if (resultado) {
 			
 			HiloInsertarAlien h5 = new HiloInsertarAlien (this);
@@ -141,9 +146,9 @@ public class Logica {
 			
 			HiloLimpieza h4 = new HiloLimpieza (this);
 			h4.start();
-		}
+		}*/
 	}
-	
+
 	public boolean getjuegoActivo() {
 		return juegoActivo;
 	}
@@ -321,6 +326,12 @@ public class Logica {
 	public LinkedList<Alien> getAliens() {
 		return aliensMapa;
 	}
+	
+	public LinkedList<Bala> getBalas() {
+		return balasSoldado;
+	}
+	 
+	
 
 	public void ataqueSoldado (Personaje p ) {
 	Celda c = p.getCelda();	
@@ -363,12 +374,16 @@ public class Logica {
  }
 	}
 	
-	public void moverDisparo() {
+	public boolean moverDisparo() {
+		boolean toReturn = false;
 		for (Bala p :balasSoldado){	
-			moverDisparoSoldado(p);	
+			moverDisparoSoldado(p);
 		}
+		return toReturn;
 	}
+	
  
+	
 	public void moverDisparoSoldado(Bala p){
 		
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
@@ -379,13 +394,15 @@ public class Logica {
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
+				System.out.println("sigo recorriendo bala");
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(1);
 			}	
 			else {
-				balasAeliminar.addLast(p);
-				mapaCombate.eliminar(p);
+				System.out.println("Encontre algo que no debería estar ");
+				//balasAeliminar.addLast(p);
+				//mapaCombate.eliminar(p);
 			}
 		}
 		else {
