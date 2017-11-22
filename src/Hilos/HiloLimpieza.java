@@ -27,7 +27,7 @@ public class HiloLimpieza  extends Thread{
 				}
 				 
 				 
-				Thread.sleep(2500);
+				Thread.sleep(500);
 			}
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();

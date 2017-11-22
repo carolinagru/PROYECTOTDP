@@ -15,20 +15,24 @@ public class HiloDisparo  extends Thread{
 	
 	public void run () {
 		try {
-			Thread.sleep(1000);
+			
 			 
 			while (execute) {	
+				Thread.sleep(100);
 				l.soldadosBala(); 
+				Thread.sleep(100);
 				l.accionBalaSoldado();
+			//	Thread.sleep(100);
 				l.moverDisparo();
+				//Thread.sleep(100);
 				l.limpiarBalasSoldado();
 				execute = l.getjuegoActivo();
-				Thread.sleep(1000);
+				 
 			}
 			
 		} catch (InterruptedException e2) {
 				e2.printStackTrace();
-		  }
+		}
 	}
 	 
 }

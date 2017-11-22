@@ -362,12 +362,20 @@ public class Logica {
 	}
  }
 	}
+	
+	public void moverDisparo() {
+		for (Bala p :balasSoldado){	
+			moverDisparoSoldado(p);	
+		}
+	}
  
 	public void moverDisparoSoldado(Bala p){
 		
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
-		mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+		//mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+		p.getCelda().setElemento(null);
 
+		  
 		if (siguiente != null) {
 			Obstaculo o = siguiente.getElemento();
 			if (o == null ){
@@ -375,6 +383,10 @@ public class Logica {
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(1);
 			}	
+			else {
+				balasAeliminar.addLast(p);
+				mapaCombate.eliminar(p);
+			}
 		}
 		else {
 				balasAeliminar.addLast(p);
@@ -384,18 +396,24 @@ public class Logica {
 	
 	public void soldadosBala() {
 		for (Soldado p: soldadosS5){
-			Bala b =mapaCombate.insertarBalasMapa(factoryBala, p);	
-			balasSoldado.addLast(b);
-		}
-	}
-	
-	public void moverDisparo() {
-		for (Bala p :balasSoldado){	
-			System.out.println("Entre a mover disparo");
-			moverDisparoSoldado(p);	
+			if (mapaCombate.puedeDisparar(p)) {
+				Bala b = mapaCombate.insertarBalasMapa(factoryBala, p);	
+				balasSoldado.addLast(b);
+			}
 		}
 	}
 	 
+ 
+	
+	
+	 
+	
+	public void accionBalaSoldado() {
+		for (Bala p : balasSoldado) {
+			balaSoldado(p);
+		}
+	}
+	
 	public void balaSoldado(Bala b) {
 		Celda c = b.getCelda();	
 		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
@@ -414,7 +432,8 @@ public class Logica {
 						o.actualizarGrafico(2);
 						a_eliminarObstaculo.add(o);
 						mapaCombate.setCeldaMapa(o.getCelda().getFila(),o.getCelda().getColumna(), null);
-						mapaCombate.eliminar(o);
+						//mapaCombate.eliminar(o);
+						limpiarMuertos();
 					}
 				}
 				else b.setCelda(siguiente.getFila(), siguiente.getColumna());
@@ -422,12 +441,8 @@ public class Logica {
 		}
 	}
 	
-	public void accionBalaSoldado() {
-		for (Bala p : balasSoldado) {
-			balaSoldado(p);
-		}
-	}
 	
+ 
 	public boolean crearS1(int x, int y) {
 		boolean toReturn = false;
 		Celda c = mapaCombate.getCelda(x, y);	

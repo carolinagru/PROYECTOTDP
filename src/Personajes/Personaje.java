@@ -54,6 +54,14 @@ public abstract class Personaje extends Obstaculo{
 		return vida;
 	}
 	
+	public void setDistanciaAtaque(int i ) {
+		distanciaAtaque = i;
+	}
+	
+	public int getDistanciaAtaque () {
+		return distanciaAtaque;
+	}
+	
 	 
 	 
 	 

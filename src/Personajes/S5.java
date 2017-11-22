@@ -19,6 +19,7 @@ protected Bala bala;
 		this.precio = 60;
 		this.vida = 100;
 		this.fuerza = (float) 0.6;
+		this.distanciaAtaque = 4;
 		grafico = new Soldado5Grafico(pos.getFila(), pos.getColumna());
 	}
 

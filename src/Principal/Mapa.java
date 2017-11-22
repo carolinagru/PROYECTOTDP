@@ -121,6 +121,22 @@ public class Mapa {
 	 System.out.println("Error en objeto - leerArchivo. ");
    }	 
 }
+
+	public boolean puedeDisparar (Soldado s) {
+		boolean toReturn = false;
+		int distancia = s.getDistanciaAtaque() + s.getCelda().getColumna();
+		Celda c = siguienteCeldaDer(s.getCelda());
+		for ( int i = c.getColumna(); i <= distancia && toReturn == false ; i++) {
+			if ( mapa[c.getFila()][i].getElemento() != null) {
+				toReturn = true;
+				System.out.println("Entre puede disparar :" +toReturn);
+				System.out.println("Entre " + mapa[c.getFila()][i].getElemento());
+			}
+		}
+		return toReturn;
+	}
+	
+	
 	
 	public void insertar(JLabel l) {
 		panel.add(l);

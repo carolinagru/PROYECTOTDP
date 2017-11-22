@@ -14,6 +14,7 @@ public class S4 extends Soldado {
 		this.precio = 40; 
 		this.vida = 100;
 		this.fuerza = (float) 0.5;
+		this.distanciaAtaque = 4;
 		grafico = new Soldado4Grafico(pos.getFila(), pos.getColumna());
 	}
 

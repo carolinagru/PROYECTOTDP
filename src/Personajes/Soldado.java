@@ -1,10 +1,10 @@
 	package Personajes;
 	
-	import Disparo.Bala;
+ 
 import Principal.Celda;
 	 
 	import Visitor.Visitor;
-	import Visitor.VisitorSoldado;
+ 
 	
 	public  class Soldado extends Personaje {
 		protected int precio;

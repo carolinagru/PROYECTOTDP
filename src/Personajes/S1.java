@@ -13,6 +13,7 @@ public class S1 extends Soldado {
 		this.precio = 20;
 		this.vida = 100;
 		this.fuerza = (float) 0.2;
+		this.distanciaAtaque = 4;
 		this.grafico = new Soldado1Grafico(pos.getFila(), pos.getColumna());
 	}
 

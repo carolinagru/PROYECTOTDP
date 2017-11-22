@@ -17,6 +17,7 @@ public class S3 extends Soldado {
 		this.precio = 30;
 		this.vida = 100;
 		this.fuerza = (float) 0.4;
+		this.distanciaAtaque = 4;
 		grafico = new Soldado3Grafico(pos.getFila(), pos.getColumna());
 	}
 
