@@ -14,6 +14,7 @@ public class A6 extends Alien{
  		this.vida = 100;
 		this.fuerza = (float) 0.6;
 		this.grafico = new Alien6Grafico(pos.getFila(), pos.getColumna());		
+		
 	}
 
  
