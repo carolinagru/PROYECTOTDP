@@ -20,7 +20,7 @@ public class HiloLogico extends Thread {
 		hiloMovAlien = new HiloMovimientoAliens (l,this);
 		hiloAtaqueAlien = new HiloAtaqueAliens (l,this);
 		hiloInsertarAlien = new HiloInsertarAlien(l,this);
-		hiloInsertarBalas = new HiloInsertarBala (l);
+		hiloInsertarBalas = new HiloInsertarBala (l,this);
 		hiloMovBala = new HiloMovimientoBala (l,this);
 		hiloAccionBala = new HiloAccionBala (l,this);
 		hiloAtaqueSoldado = new HiloAtaqueSoldado(l,this);
@@ -76,7 +76,7 @@ public class HiloLogico extends Thread {
 				
 				
 				System.out.println("Enre a hilo Ataque Soldado");
-				hiloAtaqueSoldado.start();
+				hiloAtaqueSoldado.run();
 				while (esperar)
 					Thread.sleep(200);
 				

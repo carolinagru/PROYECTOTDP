@@ -5,25 +5,20 @@ import Principal.Logica;
 
 public class HiloInsertarBala extends Thread {
 	private Logica l;
-	private volatile boolean execute;	
-		
-	public HiloInsertarBala  (Logica l ) {
+private HiloLogico hiloLogico;
+	
+	public  HiloInsertarBala (Logica l, HiloLogico h ) {
 		this.l = l;
-		this.execute = l.getjuegoActivo();  	 
-	}	
-
+		
+		hiloLogico = h;
+	}
 	
 	public void run () {
 		try {
 			
-			Thread.sleep(150);
-			 
-			while (execute) {		
-				l.soldadosBala(); 
-				execute = l.getjuegoActivo();
-				Thread.sleep(500);
+			l.soldadosBala(); 
+			Thread.sleep(500);
 				
-			}
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
 		}
