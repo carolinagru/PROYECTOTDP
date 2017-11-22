@@ -7,7 +7,7 @@ import Personajes.S3;
 import Personajes.Soldado;
 import Principal.Celda;
 
-public class S3factory implements SoldadosFactoryMethod {
+public class S3factory implements S3FactoryMethod {
 protected JPanel panel;
 protected JLabel l;
 
@@ -15,9 +15,10 @@ protected JLabel l;
 		panel= p;
 	}
 	
-	public Soldado createPersonaje (Celda c) {
-		Soldado p = new S3(c);
+	public S3 createPersonaje (Celda c,Celda v) {
+		S3 p = new S3(c,v);
 		c.setElemento(p);
+		v.setElemento(p);
 		l = p.getGrafico(0);
 		panel.add(l);
 		l.repaint();
