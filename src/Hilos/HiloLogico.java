@@ -19,7 +19,7 @@ public class HiloLogico extends Thread {
 		execute = l.getjuegoActivo();
 		hiloMovAlien = new HiloMovimientoAliens (l,this);
 		hiloAtaqueAlien = new HiloAtaqueAliens (l,this);
-		hiloInsertarAlien = new HiloInsertarAlien(l);
+		hiloInsertarAlien = new HiloInsertarAlien(l,this);
 		hiloInsertarBalas = new HiloInsertarBala (l);
 		hiloMovBala = new HiloMovimientoBala (l,this);
 		hiloAccionBala = new HiloAccionBala (l,this);
@@ -35,27 +35,31 @@ public class HiloLogico extends Thread {
 			while (esperar) {
 				Thread.sleep(2000);
 				hiloInsertarAlien.run();
+				while (esperar)
+					Thread.sleep(200);
+				this.setEspera(true);
+				
 				System.out.println("Enre a hilo logico");
 				Thread.sleep(2000);
 				
-				hiloMovAlien.start();
+				hiloMovAlien.run();
 				System.out.println("Enre a hilo mover alien");
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 	
 				System.out.println("Enre a hilo Ataque Alien");
-				hiloAtaqueAlien.start();
+				hiloAtaqueAlien.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 				
 				System.out.println("Enre a hilo Insertar Balas");
-				hiloInsertarBalas.start();
+				hiloInsertarBalas.run();
 				this.setEspera(true);
 				
 				System.out.println("Enre a hilo AccionBala");
-				hiloAccionBala.start();
+				hiloAccionBala.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
@@ -64,7 +68,7 @@ public class HiloLogico extends Thread {
 				
 				
 				System.out.println("Enre a hilo Mover Balas");
-				hiloMovBala.start();
+				hiloMovBala.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);

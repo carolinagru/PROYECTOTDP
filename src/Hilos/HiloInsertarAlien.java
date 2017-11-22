@@ -6,27 +6,24 @@ public class HiloInsertarAlien  extends Thread{
 
 	private Logica l;
 	private volatile boolean execute;
-		
-	public  HiloInsertarAlien (Logica l ) {
+private HiloLogico hiloLogico;
+	
+	public  HiloInsertarAlien (Logica l, HiloLogico h ) {
 		this.l = l;
-		this.execute = l.getjuegoActivo(); 
+		execute = l.getjuegoActivo();
+		hiloLogico = h;
 	}
 		
 	public void run () {
-		try {	
-			
-			Thread.sleep(1500);
-			 
-			l.insertarObjetos();
-			while (execute) {	
-					
-				l.insertarEnemigos();
-				execute = l.getjuegoActivo();
-				Thread.sleep(5000);
-			}
+		try {			 
+			l.insertarObjetos();				
+			l.insertarEnemigos();
+				
+			Thread.sleep(5000);
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
-				}
+			}
+			hiloLogico.setEspera(false);
 	}
 }
 
