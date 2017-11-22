@@ -357,31 +357,18 @@ public class Logica {
 			VisitorBalaSoldado v = new VisitorBalaSoldado();
 			v.setBala(p);
 			Obstaculo o = siguiente.getElemento();
-<<<<<<< HEAD
 			if (o == null || o.dejoPasar(v)){
 				mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
-=======
-			if (o == null ){
-				System.out.println("sigo recorriendo bala");
->>>>>>> ca09208409854acd6094e30ee40185f6b0e0e33b
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(0);	
 			}	
-<<<<<<< HEAD
-=======
-			else {
-				System.out.println("Encontre algo que no debería estar ");
-				//balasAeliminar.addLast(p);
-				//mapaCombate.eliminar(p);
-			}
->>>>>>> ca09208409854acd6094e30ee40185f6b0e0e33b
-		}
 		else {
 				balasAeliminar.addLast(p);
 				mapaCombate.eliminar(p);
 				limpiarBalasSoldado();
 			 }
+		}
 	}
 	
 	public void soldadosBala() {
