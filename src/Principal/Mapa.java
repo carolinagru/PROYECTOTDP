@@ -127,8 +127,7 @@ public class Mapa {
 		for ( int i = c.getColumna(); i <= distancia && toReturn == false ; i++) {
 			if ( mapa[c.getFila()][i].getElemento() != null) {
 				toReturn = true;
-				System.out.println("Entre puede disparar :" +toReturn);
-				System.out.println("Entre " + mapa[c.getFila()][i].getElemento());
+				
 			}
 		}
 		return toReturn;

@@ -23,11 +23,11 @@ import Factory.ParedFactory;
 import Factory.SoldadosFactoryMethod;
 import Factory.TanqueFactory;
 import Hilos.HiloActivarObjetoTemporal;
-import Hilos.HiloAliens;
 import Hilos.HiloDisparo;
 import Hilos.HiloInsertarAlien;
 import Hilos.HiloInsertarBala;
 import Hilos.HiloLimpieza;
+import Hilos.HiloLogico;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
 import Hilos.HiloSoldados;
@@ -118,7 +118,12 @@ public class Logica {
 	
 	 
 	public void ejecutarHilos(boolean resultado) {
+		HiloLogico h = new HiloLogico(this);
+		h.start();
+		System.out.println("Entre al hilo ");
 		
+		
+		/*
 		if (resultado) {
 			
 			HiloInsertarAlien h5 = new HiloInsertarAlien (this);
@@ -139,9 +144,9 @@ public class Logica {
 			
 			HiloLimpieza h4 = new HiloLimpieza (this);
 			h4.start();
-		}
+		}*/
 	}
-	
+
 	public boolean getjuegoActivo() {
 		return juegoActivo;
 	}
@@ -287,6 +292,12 @@ public class Logica {
 	public LinkedList<Alien> getAliens() {
 		return aliensMapa;
 	}
+	
+	public LinkedList<Bala> getBalas() {
+		return balasSoldado;
+	}
+	 
+	
 
 	public void ataqueSoldado (Personaje p ) {
 	Celda c = p.getCelda();	
@@ -328,12 +339,16 @@ public class Logica {
 		}
 	}}
 	
-	public void moverDisparo() {
+	public boolean moverDisparo() {
+		boolean toReturn = false;
 		for (Bala p :balasSoldado){	
-			moverDisparoSoldado(p);	
+			moverDisparoSoldado(p);
 		}
+		return toReturn;
 	}
+	
  
+	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
 		p.getCelda().setElemento(null);
@@ -342,12 +357,25 @@ public class Logica {
 			VisitorBalaSoldado v = new VisitorBalaSoldado();
 			v.setBala(p);
 			Obstaculo o = siguiente.getElemento();
+<<<<<<< HEAD
 			if (o == null || o.dejoPasar(v)){
 				mapaCombate.setCeldaMapa(p.getCelda().getFila(),p.getCelda().getColumna(), null);
+=======
+			if (o == null ){
+				System.out.println("sigo recorriendo bala");
+>>>>>>> ca09208409854acd6094e30ee40185f6b0e0e33b
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(0);	
 			}	
+<<<<<<< HEAD
+=======
+			else {
+				System.out.println("Encontre algo que no debería estar ");
+				//balasAeliminar.addLast(p);
+				//mapaCombate.eliminar(p);
+			}
+>>>>>>> ca09208409854acd6094e30ee40185f6b0e0e33b
 		}
 		else {
 				balasAeliminar.addLast(p);
