@@ -32,6 +32,7 @@ import Hilos.HiloMagiaTemporalFuerza;
 import InterfazGrafica.panelGameOver;
 import Factory.S1factory;
 import Factory.S2factory;
+import Factory.S3FactoryMethod;
 import Factory.S3factory;
 import Factory.S4factory;
 import Factory.S5factory;
@@ -50,6 +51,7 @@ public class Logica {
 	protected LinkedList<Obstaculo> a_eliminarObstaculoGrafica;
 	protected LinkedList<Alien> aliensMapa;
 	protected LinkedList<Soldado> soldadosMapa;
+	protected LinkedList<S3> soldadosMapaS3;
 	protected LinkedList<Soldado> soldados45;
 	protected LinkedList<Bala> balasSoldado;
 	protected LinkedList<Bala> balasAlien;
@@ -64,6 +66,7 @@ public class Logica {
 	protected Estado estadoMagia;
 	private static int tamanioCelda = 80;
 	protected SoldadosFactoryMethod factorySoldado;
+	protected S3FactoryMethod factorySoldadoS3;
 	protected AlienFactoryMethod factoryAlien; 
 	protected BalasFactoryMethod factoryBala;
 	protected ObjTemporalFactoryMethod fabricaObjetoTemporales;
@@ -91,6 +94,7 @@ public class Logica {
 		
 		aliensMapa=new LinkedList<Alien>();
 		soldadosMapa= new LinkedList<Soldado>();
+		soldadosMapaS3= new LinkedList<S3>();
 		soldados45= new LinkedList<Soldado>();
 		a_eliminarObstaculo= new LinkedList<Obstaculo>();
 		a_eliminarObstaculoGrafica= new LinkedList<Obstaculo>();
@@ -173,6 +177,7 @@ public class Logica {
 			while ( aliensMapa.size() < 4)
 				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
 			cantEnemigos-= 4;
+			
 			cantOrdas++;
 		  }
 	 }
@@ -257,6 +262,8 @@ public class Logica {
 		for (Soldado p : soldadosMapa){
 			ataqueSoldado(p);
 		}
+		for (S3 s : soldadosMapaS3)
+			ataqueSoldadoS3(s);
 	}
 	
 	public void setEstado_MTLogica (Estado e) {
@@ -270,8 +277,6 @@ public class Logica {
 	public LinkedList<Bala> getBalas() {
 		return balasSoldado;
 	}
-	 
-	
 
 	public void ataqueSoldado (Personaje p ) {
 	Celda c = p.getCelda();	
@@ -313,8 +318,95 @@ public class Logica {
 		}
 	}}
 	
+<<<<<<< HEAD
  
  
+=======
+	public void ataqueSoldadoS3 (S3 p ) {
+		Celda c = p.getCelda();	
+		Celda cv = p.getCeldaVecina();
+		Celda siguiente = mapaCombate.siguienteCeldaDer(c);
+		Celda siguienteVecina = mapaCombate.siguienteCeldaDer(cv);
+		if (siguiente != null){
+			Obstaculo o = siguiente.getElemento();
+			Obstaculo ov = siguienteVecina.getElemento();
+			if ( o != null ){
+				VisitorSoldado v = new VisitorSoldado();
+				v.setSoldado(p);
+				v.setEstado(estadoMagia);
+				if(o.puedoAtacar(v)) {				 
+					if ( o.getVida() > 0){
+						p.actualizarGrafico(1);
+					 	o.accept(v);
+					}
+					else{
+						if ( o.getMagiaTemporal() != null) {
+							listaMagia.addLast(o.getMagiaTemporal());
+							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
+							siguiente.setElemento(o.getMagiaTemporal());
+							o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
+							panelMapa.add(o.getMagiaTemporal().getGrafico(0));	
+							panelMapa.repaint();
+						}
+						else {
+							mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
+							siguiente.setElemento(null);
+						}
+						puntos += o.getPuntos();
+						monedas += o.getMonedas();
+						gui.setMonedasGUI(monedas);
+						gui.setPuntosGUI(puntos);
+						System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
+						o.actualizarGrafico(2); 
+						a_eliminarObstaculo.addLast(o);
+						limpiarMuertos();
+				  }   
+			   }
+			}
+			if (ov != null) {
+				VisitorSoldado v = new VisitorSoldado();
+				v.setSoldado(p);
+				v.setEstado(estadoMagia);
+				if(ov.puedoAtacar(v)) {				 
+					if ( ov.getVida() > 0){
+						p.actualizarGrafico(1);
+					 	ov.accept(v);
+					}
+					else{
+						if ( ov.getMagiaTemporal() != null) {
+							listaMagia.addLast(ov.getMagiaTemporal());
+							mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getMagiaTemporal());
+							siguiente.setElemento(ov.getMagiaTemporal());
+							ov.getMagiaTemporal().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
+							panelMapa.add(ov.getMagiaTemporal().getGrafico(0));	
+							panelMapa.repaint();
+						}
+						else {
+							mapaCombate.setCeldaMapa(siguienteVecina.getFila(),siguienteVecina.getColumna(), null);
+							siguienteVecina.setElemento(null);
+						}
+						puntos += ov.getPuntos();
+						monedas += ov.getMonedas();
+						gui.setMonedasGUI(monedas);
+						gui.setPuntosGUI(puntos);
+						System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
+						ov.actualizarGrafico(2); 
+						a_eliminarObstaculo.addLast(ov);
+						limpiarMuertos();
+				  }   
+			   }
+			}
+		}}
+	
+	
+	public boolean moverDisparo() {
+		boolean toReturn = false;
+		for (Bala p :balasSoldado){	
+			moverDisparoSoldado(p);
+		}
+		return toReturn;
+	}
+>>>>>>> b1f3f170be0b3c7029ef71e73b6104a8512d3085
 	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
@@ -421,11 +513,12 @@ public class Logica {
 	public boolean crearS3(int x, int y) {
 		boolean toReturn = false;
 		Celda c = mapaCombate.getCelda(x, y);	
+		Celda v = mapaCombate.getCeldaVecina(c);
 		if (monedas >= 25 ) {
 			if (c.getElemento() == null) {
 				toReturn = true;
-				factorySoldado = new S3factory(panelMapa);
-				soldadosMapa.addLast(factorySoldado.createPersonaje(c));	
+				factorySoldadoS3 = new S3factory(panelMapa);
+				soldadosMapaS3.addLast(factorySoldadoS3.createPersonaje(c,v));	
 				monedas -=25;
 				gui.setMonedasGUI(monedas);
 			}

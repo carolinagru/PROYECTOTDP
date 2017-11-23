@@ -214,5 +214,16 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
+	
+	public Celda getCeldaVecina(Celda c) {
+		int fi = c.getFila();
+		int co = c.getColumna();
+		if (fi == 5) 
+			fi = 4;
+		else fi++;
+		
+		Celda v = getCelda(fi,co);
+	 return v;
+	}
 }
 
