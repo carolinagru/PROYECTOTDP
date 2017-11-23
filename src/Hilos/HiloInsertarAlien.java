@@ -19,7 +19,7 @@ private HiloLogico hiloLogico;
 			l.insertarObjetos();				
 			l.insertarEnemigos();
 				
-			Thread.sleep(5000);
+			Thread.sleep(10);
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
 			}

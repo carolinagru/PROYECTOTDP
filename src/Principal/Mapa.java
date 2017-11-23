@@ -126,6 +126,7 @@ public class Mapa {
 		Celda c = siguienteCeldaDer(s.getCelda());
 		for ( int i = c.getColumna(); i <= distancia && toReturn == false ; i++) {
 			if ( mapa[c.getFila()][i].getElemento() != null) {
+				System.out.println("Encontre algo en la celda :"+ mapa[c.getFila()][i].getElemento());
 				toReturn = true;
 				
 			}

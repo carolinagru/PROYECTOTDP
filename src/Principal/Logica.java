@@ -23,14 +23,12 @@ import Factory.ParedFactory;
 import Factory.SoldadosFactoryMethod;
 import Factory.TanqueFactory;
 import Hilos.HiloActivarObjetoTemporal;
-import Hilos.HiloDisparo;
-import Hilos.HiloInsertarAlien;
-import Hilos.HiloInsertarBala;
-import Hilos.HiloLimpieza;
+ 
+ 
 import Hilos.HiloLogico;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
-import Hilos.HiloSoldados;
+ 
 import InterfazGrafica.panelGameOver;
 import Factory.S1factory;
 import Factory.S2factory;
@@ -120,31 +118,7 @@ public class Logica {
 	public void ejecutarHilos(boolean resultado) {
 		HiloLogico h = new HiloLogico(this);
 		h.start();
-		System.out.println("Entre al hilo ");
-		
-		
-		/*
-		if (resultado) {
-			
-			HiloInsertarAlien h5 = new HiloInsertarAlien (this);
-			h5.start();
-			
-			HiloAliens h = new HiloAliens(this);
-			h.start();
-			
-			
-			HiloSoldados h2 = new HiloSoldados(this);	
-			h2.start();
-			HiloInsertarBala h6 = new HiloInsertarBala(this);
-			h6.start();
-			HiloDisparo h3 = new HiloDisparo(this);
-			h3.start();
-			
-			
-			
-			HiloLimpieza h4 = new HiloLimpieza (this);
-			h4.start();
-		}*/
+		 
 	}
 
 	public boolean getjuegoActivo() {
@@ -339,14 +313,7 @@ public class Logica {
 		}
 	}}
 	
-	public boolean moverDisparo() {
-		boolean toReturn = false;
-		for (Bala p :balasSoldado){	
-			moverDisparoSoldado(p);
-		}
-		return toReturn;
-	}
-	
+ 
  
 	
 	public void moverDisparoSoldado(Bala p){
@@ -362,14 +329,22 @@ public class Logica {
 				siguiente.setElemento(p);
 				p.setCelda(siguiente.getFila(), siguiente.getColumna());
 				p.actualizarGrafico(0);	
-			}	
+			}
+			else {
+				//caso en que la celda siguiente tiene algun elemento 
+				balasAeliminar.addLast(p);
+				mapaCombate.eliminar(p);
+				limpiarBalasSoldado();
+			}
+			
+		}
 		else {
 				balasAeliminar.addLast(p);
 				mapaCombate.eliminar(p);
 				limpiarBalasSoldado();
 			 }
-		}
 	}
+	
 	
 	public void soldadosBala() {
 		for (Soldado p: soldados45){

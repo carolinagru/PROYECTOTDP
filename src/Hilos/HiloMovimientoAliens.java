@@ -21,7 +21,7 @@ public class HiloMovimientoAliens extends Thread {
 			for (Alien a : l.getAliens()){	
 				l.moverAlien(a);
 			}
-			Thread.sleep(500);
+			Thread.sleep(10);
 			execute = l.getjuegoActivo();		
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();

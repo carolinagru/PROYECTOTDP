@@ -17,8 +17,7 @@ private HiloLogico hiloLogico;
 		try {
 			
 			l.soldadosBala(); 
-			Thread.sleep(500);
-				
+			Thread.sleep(10);		
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
 		}

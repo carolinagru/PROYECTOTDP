@@ -13,6 +13,7 @@ public class HiloLogico extends Thread {
 	private HiloMovimientoBala hiloMovBala;
 	private HiloAccionBala hiloAccionBala;
 	private HiloAtaqueSoldado hiloAtaqueSoldado;
+	private HiloLimpieza hiloLimpieza;
 	
 	public  HiloLogico (Logica l ) {
 		this.l = l;
@@ -24,6 +25,7 @@ public class HiloLogico extends Thread {
 		hiloMovBala = new HiloMovimientoBala (l,this);
 		hiloAccionBala = new HiloAccionBala (l,this);
 		hiloAtaqueSoldado = new HiloAtaqueSoldado(l,this);
+		hiloLimpieza = new HiloLimpieza (l,this);
 		esperar = true;
 	}
 	
@@ -33,52 +35,51 @@ public class HiloLogico extends Thread {
 	public void run () {
 		try {	
 			while (esperar) {
-				Thread.sleep(2000);
+				//Thread.sleep(2000);
 				hiloInsertarAlien.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 				
-				System.out.println("Enre a hilo logico");
-				Thread.sleep(2000);
+				Thread.sleep(1500);
 				
 				hiloMovAlien.run();
-				System.out.println("Enre a hilo mover alien");
-				while (esperar)
+ 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 	
-				System.out.println("Enre a hilo Ataque Alien");
-				hiloAtaqueAlien.run();
+ 				hiloAtaqueAlien.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 				
-				System.out.println("Enre a hilo Insertar Balas");
-				hiloInsertarBalas.run();
+ 				hiloInsertarBalas.run();
 				this.setEspera(true);
 				
-				System.out.println("Enre a hilo AccionBala");
-				hiloAccionBala.run();
+				
+ 				hiloAccionBala.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
-				
-				
-				
-				
-				System.out.println("Enre a hilo Mover Balas");
+					
 				hiloMovBala.run();
 				while (esperar)
+					Thread.sleep(300);
+				this.setEspera(true);
+				
+ 				
+				
+				
+				
+ 				hiloAtaqueSoldado.run();
+				while (esperar)
+					Thread.sleep(200);
+				
+ 				hiloLimpieza.run();
+				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 				
-				
-				
-				System.out.println("Enre a hilo Ataque Soldado");
-				hiloAtaqueSoldado.run();
-				while (esperar)
-					Thread.sleep(200);
 				
 				this.setEspera(true);
 			}

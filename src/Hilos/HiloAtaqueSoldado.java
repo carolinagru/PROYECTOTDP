@@ -21,7 +21,7 @@ public class HiloAtaqueSoldado  extends Thread {
 			for (Soldado s : l.getSoldados()){	
 				l.ataqueSoldado(s);
 			}
-			Thread.sleep(500);
+			Thread.sleep(10);
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
 			}

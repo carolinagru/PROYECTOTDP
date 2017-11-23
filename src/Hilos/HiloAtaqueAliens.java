@@ -20,7 +20,7 @@ public class HiloAtaqueAliens extends Thread {
 			for (Alien a : l.getAliens()){	
 				l.ataqueAlien(a);
 			}
-			Thread.sleep(500);
+			Thread.sleep(10);
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();
 			}
