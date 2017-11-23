@@ -1,6 +1,7 @@
 package Hilos;
 
 import Disparo.Bala;
+import Personajes.S3;
 import Personajes.Soldado;
 import Principal.Logica;
 
@@ -18,9 +19,11 @@ public class HiloAtaqueSoldado  extends Thread {
 	
 	public void run () {
 		try {				
-			for (Soldado s : l.getSoldados()){	
+			for (Soldado s : l.getSoldados())
 				l.ataqueSoldado(s);
-			}
+			
+			for (S3 p: l.getS3())
+				l.ataqueSoldadoS3(p);
 			Thread.sleep(10);
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();

@@ -191,15 +191,7 @@ public class Mapa_GUI2 extends JFrame {
 					}});
 			}};
 			botonRobot.addActionListener(a52);
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		JButton button_2 = new JButton("");
 		button_2.setBounds(809, 11, 181, 54);
 		imagenBotonSalirJuego = new ImageIcon(getClass().getResource("/Sprites/botones/botonSalirJuego.png"));
@@ -273,15 +265,7 @@ public class Mapa_GUI2 extends JFrame {
 		iconoBotonFuerza = new ImageIcon(imagenBotonFuerza.getImage().getScaledInstance(button_1.getWidth(), button_1.getHeight(), Image.SCALE_SMOOTH));
 		button_1.setIcon(iconoBotonFuerza);
 		panel_1.add(button_1);
-		 
-	
-		
-		
-		
-		
-		
-		
-		
+
 		JButton button_3 = new JButton("");
 		button_3.setBounds(0, 571, 106, 78);
 		imagenBotonGuardarFuerza = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarFuerza.png"));
@@ -309,9 +293,6 @@ public class Mapa_GUI2 extends JFrame {
 					}});
 			}});
  
-		
-		
-		
 		panel_1.add(button_3);
 		
 		// ---------- Boton guardar campo 
@@ -340,7 +321,7 @@ public class Mapa_GUI2 extends JFrame {
 						}
 					 
 					}});
-}});
+			}});
 		
 		
 		 

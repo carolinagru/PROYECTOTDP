@@ -258,12 +258,8 @@ public class Logica {
 	}
 	
 	/**Ataque de soldado cuerpo a cuerpo **/
-	public void inicioAtaqueSoldados () {
-		for (Soldado p : soldadosMapa){
-			ataqueSoldado(p);
-		}
-		for (S3 s : soldadosMapaS3)
-			ataqueSoldadoS3(s);
+	public LinkedList<S3> getS3(){
+		return soldadosMapaS3;
 	}
 	
 	public void setEstado_MTLogica (Estado e) {
@@ -318,10 +314,7 @@ public class Logica {
 		}
 	}}
 	
-<<<<<<< HEAD
- 
- 
-=======
+
 	public void ataqueSoldadoS3 (S3 p ) {
 		Celda c = p.getCelda();	
 		Celda cv = p.getCeldaVecina();
@@ -396,7 +389,8 @@ public class Logica {
 				  }   
 			   }
 			}
-		}}
+		}
+	}
 	
 	
 	public boolean moverDisparo() {
@@ -406,7 +400,6 @@ public class Logica {
 		}
 		return toReturn;
 	}
->>>>>>> b1f3f170be0b3c7029ef71e73b6104a8512d3085
 	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
@@ -428,7 +421,6 @@ public class Logica {
 				mapaCombate.eliminar(p);
 				limpiarBalasSoldado();
 			}
-			
 		}
 		else {
 				balasAeliminar.addLast(p);
@@ -444,12 +436,6 @@ public class Logica {
 				Bala b = mapaCombate.insertarBalasMapa(factoryBala, p);	
 				balasSoldado.addLast(b);
 			}
-		}
-	}
-	 
-	public void accionBalaSoldado() {
-		for (Bala p : balasSoldado) {
-			balaSoldado(p);
 		}
 	}
 	
@@ -557,7 +543,6 @@ public class Logica {
 		}
 	 return toReturn;
 	}
-	
 	
 	public void activarMagia_Fuerza () {
 		 

@@ -26,5 +26,5 @@ public class HiloAccionBala extends Thread {
 				e2.printStackTrace();
 			}
 			hiloLogico.setEspera (false);
-			}
 	}
+}
