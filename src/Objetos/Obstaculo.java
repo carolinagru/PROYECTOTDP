@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import Estate.Estado;
 import Graficos.ObstaculoGrafico;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 import Principal.Celda;
 
 import Visitor.Visitor;
@@ -19,9 +20,18 @@ public abstract class Obstaculo {
 	protected int monedas;
 	protected Estado myEstado;
 	protected MagiaTemporal magiaT;
+	protected ObjetoPrecioso bomba;
 	
 	public void setMagiaTemporal (MagiaTemporal m) {
 		magiaT = m;
+	}
+	
+	public void setBomba(ObjetoPrecioso b) {
+		bomba = b;
+	}
+	
+	public ObjetoPrecioso getBomba() {
+		return bomba;
 	}
 	
 	public MagiaTemporal getMagiaTemporal () {

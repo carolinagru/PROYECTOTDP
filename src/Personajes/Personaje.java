@@ -6,12 +6,14 @@ import Disparo.Bala;
 import Estate.Estado;
 import Objetos.Obstaculo;
 import PowerUps.MagiaTemporal;
+import PowerUps.ObjetoPrecioso;
 
 public abstract class Personaje extends Obstaculo{
 	
 	protected float fuerza;
 	protected Estado myEstado;
 	protected MagiaTemporal magiaT;
+	protected ObjetoPrecioso bomba;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
 	
@@ -19,12 +21,14 @@ public abstract class Personaje extends Obstaculo{
 		this.pos = pos;
 		grafico = null;
 		magiaT = null;
+		bomba = null;
 	}
 	
 	public Personaje () {
 		this.pos = null;
 		grafico = null;
 		magiaT = null;
+		bomba = null;
 	}
 	
 	public void setPosicion (Celda pos) {
@@ -37,6 +41,14 @@ public abstract class Personaje extends Obstaculo{
 	
 	public MagiaTemporal getMagiaTemporal () {
 		return magiaT;
+	}
+	
+	public ObjetoPrecioso getBomba() {
+		return bomba;
+	}
+	
+	public void setBomba(ObjetoPrecioso b) {
+		bomba = b;
 	}
 	
 	public void setFuerza (int f ) {
