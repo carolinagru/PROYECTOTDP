@@ -62,8 +62,7 @@ public class Mapa_GUI2 extends JFrame {
 	protected JPanel panel_3;
 	protected JLabel lblMonedas = new JLabel("0");
 	protected  JLabel lblPuntaje = new JLabel("0");
-	private int cantFuerza = 0;
-	private int cantCampo = 0;
+	private int cantBomba = 0;
 
 	
 	public void iniciar() {
@@ -191,15 +190,7 @@ public class Mapa_GUI2 extends JFrame {
 					}});
 			}};
 			botonRobot.addActionListener(a52);
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		JButton button_2 = new JButton("");
 		button_2.setBounds(809, 11, 181, 54);
 		imagenBotonSalirJuego = new ImageIcon(getClass().getResource("/Sprites/botones/botonSalirJuego.png"));
@@ -226,145 +217,67 @@ public class Mapa_GUI2 extends JFrame {
 		panel_1.setLayout(null);
 		
 		
-		JLabel lblCantFuerza = new JLabel("0");
-		lblCantFuerza.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCantFuerza.setEnabled(false);
-		lblCantFuerza.setBounds(10, 455, 46, 14);
-		panel_1.add(lblCantFuerza);
+		JLabel lblCantBomba = new JLabel("0");
+		lblCantBomba.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantBomba.setEnabled(false);
+		lblCantBomba.setBounds(10, 455, 46, 14);
+		panel_1.add(lblCantBomba);
 		
-		JLabel lblCantCampo = new JLabel("0");
-		lblCantCampo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCantCampo.setBounds(166, 455, 46, 14);
-		panel_1.add(lblCantCampo);
-		
-		//------- Boton activar campo
-		JButton button = new JButton();
-		button.setBounds(106, 480, 106, 90);
-		imagenBotonPunio = new ImageIcon(getClass().getResource("/Sprites/botones/escudo.png"));
-		iconoBotonPunio = new ImageIcon(imagenBotonPunio.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH));
-		button.setIcon(iconoBotonPunio);
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (cantCampo > 0) {
-					System.out.println("Puede activar fuerza");
-					cantCampo--;
-					lblCantCampo.setText(""+cantCampo);
-					logica.activarMagia_Campo();
-				}
-			}
-		});
-		panel_1.add(button);
-		
-		
-		// ------ Boton guardar Fuerza
-		JButton button_1 = new JButton();
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (cantFuerza > 0) {
-					System.out.println("Puede activar fuerza");
-					cantFuerza--;
-					lblCantFuerza.setText(""+cantFuerza);
-					logica.activarMagia_Fuerza();
-				}
-			}
-		});
-		button_1.setBounds(0, 480, 106, 90);
-		imagenBotonFuerza = new ImageIcon(getClass().getResource("/Sprites/botones/botonFuerza.jpg"));
-		iconoBotonFuerza = new ImageIcon(imagenBotonFuerza.getImage().getScaledInstance(button_1.getWidth(), button_1.getHeight(), Image.SCALE_SMOOTH));
-		button_1.setIcon(iconoBotonFuerza);
-		panel_1.add(button_1);
-		 
 	
-		
-		
-		
-		
-		
-		
-		
-		JButton button_3 = new JButton("");
-		button_3.setBounds(0, 571, 106, 78);
+		imagenBotonPunio = new ImageIcon(getClass().getResource("/Sprites/botones/escudo.png"));
+		imagenBotonFuerza = new ImageIcon(getClass().getResource("/Sprites/botones/botonFuerza.jpg"));
 		imagenBotonGuardarFuerza = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarFuerza.png"));
-		iconoBotonGuardarFuerza = new ImageIcon(imagenBotonGuardarFuerza.getImage().getScaledInstance(button_3.getWidth(), button_3.getHeight(), Image.SCALE_SMOOTH));
-		button_3.setIcon(iconoBotonGuardarFuerza);
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-					boolean estadoBoton = true;
-					public void mousePressed(MouseEvent e) {
-						if ( estadoBoton) {
-							estadoBoton = false;
-							int x=e.getX() ;
-							int y=e.getY() ;
-							int filas = y / 80;
-							int columnas = x  / 80;
-							if (logica.verificarMagiaFuerza(filas, columnas)) {
-								cantFuerza++;
-								lblCantFuerza.setText(""+cantFuerza);
-								System.out.println("Encontre magia a eliminar y elimino ");
-							}
-							
-						}
-					 
-					}});
-			}});
- 
-		
-		
-		
-		panel_1.add(button_3);
-		
-		// ---------- Boton guardar campo 
-		JButton button_4 = new JButton("");
-		button_4.setBounds(106, 571, 106, 78);
 		imagenBotonGuardarCampo = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarCampo.png"));
-		iconoBotonGuardarCampo = new ImageIcon(imagenBotonGuardarCampo.getImage().getScaledInstance(button_4.getWidth(), button_4.getHeight(), Image.SCALE_SMOOTH));
-		button_4.setIcon(iconoBotonGuardarCampo);
-		button_4.addActionListener(new ActionListener() {
+		
+		JButton button_5 = new JButton("");
+		button_5.setBounds(0, 581, 104, 78);
+		imagenBotonGuardarBomba = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarBomba.png"));
+		iconoBotonGuardarBomba = new ImageIcon(imagenBotonGuardarBomba.getImage().getScaledInstance(button_5.getWidth(), button_5.getHeight(), Image.SCALE_SMOOTH));
+		button_5.setIcon(iconoBotonGuardarBomba);
+		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
 					boolean estadoBoton = true;
 					public void mousePressed(MouseEvent e) {
-						if ( estadoBoton) {
+						if (estadoBoton) {
 							estadoBoton = false;
 							int x=e.getX() ;
 							int y=e.getY() ;
 							int filas = y / 80;
 							int columnas = x  / 80;
-							if (logica.verificarMagiaCampo(filas, columnas)) {
-								cantCampo++;
-								lblCantCampo.setText(""+cantCampo);
+							if (logica.verificarBomba(filas, columnas)) {
+								cantBomba++;
+								lblCantBomba.setText(""+cantBomba);
 								System.out.println("Encontre magia Campo a eliminar y elimino ");
 							}
 							
 						}
 					 
 					}});
-}});
-		
-		
-		 
-		
-		
-		panel_1.add(button_4);
-		
-		JButton button_5 = new JButton("");
-		button_5.setBounds(211, 571, 104, 78);
-		imagenBotonGuardarBomba = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarBomba.png"));
-		iconoBotonGuardarBomba = new ImageIcon(imagenBotonGuardarBomba.getImage().getScaledInstance(button_5.getWidth(), button_5.getHeight(), Image.SCALE_SMOOTH));
-		button_5.setIcon(iconoBotonGuardarBomba);
-		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+			}});
 		panel_1.add(button_5);
 		
 		JButton button_6 = new JButton("");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+					boolean estadoBoton6 = true;
+					public void mousePressed(MouseEvent e) {
+						if (estadoBoton6) {
+							int x=e.getX() ;
+							int y=e.getY() ;
+							int filas = y / 80;
+							int columnas = x  / 80;
+							logica.activarBomba(filas,columnas);
+							estadoBoton6 = false;
+							
+						}
+
+					}});
 			}
 		});
-		button_6.setBounds(211, 480, 104, 90);
+		
+		button_6.setBounds(0, 485, 104, 90);
 		imagenBotonBomba = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
 		iconoBotonBomba = new ImageIcon(imagenBotonBomba.getImage().getScaledInstance(button_6.getWidth(), button_6.getHeight(), Image.SCALE_SMOOTH));
 		button_6.setIcon(iconoBotonBomba);
@@ -596,7 +509,23 @@ public class Mapa_GUI2 extends JFrame {
 								}
 							}
 						}});
-				}}); 
+				}});
+			
+
+			panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+			boolean estadoBoton = true;
+			public void mousePressed(MouseEvent e) {
+				if (estadoBoton) {
+					estadoBoton = false;
+					int x=e.getX() ;
+					int y=e.getY() ;
+					int filas = y / 80;
+					int columnas = x  / 80;
+					logica.verificarMagiaFuerza(filas, columnas);
+					logica.verificarMagiaCampo(filas, columnas);			
+				}		
+			}
+			});
 	}
 	
 	public void setMonedasGUI(int m ) {

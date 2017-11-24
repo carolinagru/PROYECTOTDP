@@ -19,6 +19,7 @@ import Factory.A6factory;
 import Factory.AlienFactoryMethod;
 import Factory.BalaSoldadoFactory;
 import Factory.BalasFactoryMethod;
+import Factory.FactoryBomba;
 import Factory.FactoryCampoProteccion;
 import Factory.FactoryFuerza;
 import Hilos.HiloActivarObjetoTemporal;
@@ -31,7 +32,13 @@ import Personajes.Alien;
 import Personajes.Personaje;
 import Personajes.S5;
 import Personajes.Soldado;
+<<<<<<< HEAD
 import Visitor.VisitorSoldado;
+=======
+import PowerUps.Bomba;
+import PowerUps.ObjetoPrecioso;
+import Visitor.VisitorBomba;
+>>>>>>> cd772418ace9e3a73da4252d6f2cb2d805cfaa6d
 
 public class Mapa {
 	private Celda mapa[][];
@@ -59,6 +66,26 @@ public class Mapa {
 		if((x < this.filas) && (x >= 0) && (y < this.columnas) && (y >= 0)) {
 			return this.mapa[x][y];
 		}
+		return null;
+	}
+	
+	public Celda puedeInsertar(Celda c) {
+		Celda celdaVecina = getCelda(c.getFila()+1, c.getColumna());
+		if (celdaVecina != null)
+			if (celdaVecina.getElemento() == null)
+				return celdaVecina;
+			else {
+					celdaVecina = getCelda(c.getFila()-1, c.getColumna());
+					if (celdaVecina != null)
+						if (celdaVecina.getElemento() == null)
+							return celdaVecina;
+				 }
+		else {
+				celdaVecina = getCelda(c.getFila()-1, c.getColumna());
+				if (celdaVecina.getElemento() == null)
+					return celdaVecina;
+			 }
+		
 		return null;
 	}
 	
@@ -177,7 +204,7 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
-		int r = (int) (Math.random() * 7)+1;
+		int r = (int) (Math.random() * 9)+1;
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
@@ -187,17 +214,24 @@ public class Mapa {
 				 FactoryFuerza f3 = new FactoryFuerza();
 				 p.setMagiaTemporal(f3.crearMagia());
 			 }
+			 else
+				 if (r == 3) {
+					 FactoryBomba f4 = new FactoryBomba();
+					 p.setBomba(f4.crearBomba());
+				 }
 		 }
-		 
 	  return  p;
 	}
 	
 	public Bala insertarBalasMapa(BalasFactoryMethod factory, Soldado p) {
+		
 		Celda c = siguienteCeldaDer(p.getCelda());
 		Celda nueva = new Celda(c.getFila(),c.getColumna());
 		factory = new BalaSoldadoFactory(panel);
 		Bala b = factory.crearBalas(nueva,p);
-	 return b;
+	 
+		return b;
+	 
 	}
 
 	public Celda siguienteCeldaIzq(Celda c) {
@@ -210,6 +244,37 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
+	public LinkedList<Obstaculo> activarBomba(int x, int y,ObjetoPrecioso b) {
+		Celda c = getCelda(x,y);
+		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
+		LinkedList<Celda> celdas = new LinkedList<Celda>();
+		
+		celdas.addLast(getCelda(c.getFila()-1,c.getColumna()-1));
+		celdas.addLast(getCelda(c.getFila()-1,c.getColumna()));
+		celdas.addLast(getCelda(c.getFila()-1,c.getColumna()+1));
+		celdas.addLast(getCelda(c.getFila(),c.getColumna()-1));
+		celdas.addLast(getCelda(c.getFila(),c.getColumna()+1));
+		celdas.addLast( getCelda(c.getFila()+1,c.getColumna()-1));
+		celdas.addLast(getCelda(c.getFila()+1,c.getColumna()));
+		celdas.addLast(getCelda(c.getFila()+1,c.getColumna()+1));
+		
+		
+		VisitorBomba vb = new VisitorBomba();
+		vb.setBomba(b);
+		Obstaculo o ;
+		for (Celda celda : celdas) {
+			o = celda.getElemento();
+			if (o != null) {
+				if (o.puedoAtacar(vb)) {
+					o.actualizarGrafico(2);
+					celda.setElemento(null);			
+					eliminados.add(o);
+				}
+			}
+		}
+	  return eliminados;
+	}
+	
 	public void eliminar(Obstaculo o) {
 		//o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
@@ -220,6 +285,7 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
+<<<<<<< HEAD
 	
 	public Celda getCeldaVecina(Celda c) {
 		int fi = c.getFila();
@@ -240,5 +306,7 @@ public class Mapa {
 		
 	}
 	*/
+=======
+>>>>>>> cd772418ace9e3a73da4252d6f2cb2d805cfaa6d
 }
 

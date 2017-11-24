@@ -18,7 +18,7 @@ public class HiloSoldados  extends Thread{
 			 
 			while (execute) {			
 				 
-				l.inicioAtaqueSoldados();
+				//l.inicioAtaqueSoldados();
 				execute = l.getjuegoActivo();
 				Thread.sleep(1000);
 			}
