@@ -390,7 +390,7 @@ public class Mapa_GUI2 extends JFrame {
 						}});
 				}};
 			botonSoldado2.addActionListener(a23);
-		
+
 		JButton botonSoldado3 = new JButton();
 		botonSoldado3.setBounds(276, 0, 132, 76);
 		botonSoldado3.setBackground(Color.WHITE);
@@ -535,5 +535,10 @@ public class Mapa_GUI2 extends JFrame {
 	public void setPuntosGUI(int m ) {
 		lblPuntaje.setText(""+m);
 	}
+	
+	public void fondo(int n) {
+	
+	}
+	
 	
 }
