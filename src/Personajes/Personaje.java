@@ -13,7 +13,7 @@ public abstract class Personaje extends Obstaculo{
 	protected float fuerza;
 	protected Estado myEstado;
 	protected MagiaTemporal magiaT;
-	protected ObjetoPrecioso bomba;
+	protected ObjetoPrecioso objetoP;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
 	
@@ -21,14 +21,14 @@ public abstract class Personaje extends Obstaculo{
 		this.pos = pos;
 		grafico = null;
 		magiaT = null;
-		bomba = null;
+		objetoP = null;
 	}
 	
 	public Personaje () {
 		this.pos = null;
 		grafico = null;
 		magiaT = null;
-		bomba = null;
+		objetoP = null;
 	}
 	
 	public void setPosicion (Celda pos) {
@@ -43,12 +43,12 @@ public abstract class Personaje extends Obstaculo{
 		return magiaT;
 	}
 	
-	public ObjetoPrecioso getBomba() {
-		return bomba;
+	public ObjetoPrecioso getObjetoPrecioso() {
+		return objetoP;
 	}
 	
-	public void setBomba(ObjetoPrecioso b) {
-		bomba = b;
+	public void setObjetoPrecioso(ObjetoPrecioso b) {
+		objetoP = b;
 	}
 	
 	public void setFuerza (int f ) {

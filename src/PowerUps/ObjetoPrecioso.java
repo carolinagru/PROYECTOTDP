@@ -6,7 +6,7 @@ import Visitor.Visitor;
 
 
 
-public abstract class ObjetoPrecioso extends Obstaculo {
+public  class ObjetoPrecioso extends Obstaculo {
 		
 		 
 		
@@ -28,6 +28,11 @@ public abstract class ObjetoPrecioso extends Obstaculo {
 		 
 		public boolean dejoPasar(Visitor v) {
 			 
+			return false;
+		}
+
+
+		public boolean puedoAtacar(Visitor v) {
 			return false;
 		}
 		

@@ -55,7 +55,7 @@ public class Logica {
 	protected LinkedList<S3> soldadosMapaS3;
 	protected LinkedList<Soldado> soldados45;
 	protected LinkedList<Bala> balasSoldado;
-	protected LinkedList<ObjetoPrecioso> listaBomba;
+	protected LinkedList<ObjetoPrecioso> listaObjetoPrecioso;
 	protected LinkedList<MagiaTemporal> listaMagia;
 	protected LinkedList<Bala> balasAlien;
 	protected LinkedList<ObjetoTemporal> listaObjetosTemporales;
@@ -98,7 +98,7 @@ public class Logica {
 		a_eliminarObstaculoGrafica= new LinkedList<Obstaculo>();
 		balasSoldado = new LinkedList<Bala>();
 		balasAlien = new LinkedList<Bala>();
-		listaBomba = new LinkedList<ObjetoPrecioso>();
+		listaObjetoPrecioso = new LinkedList<ObjetoPrecioso>();
 		balasAeliminar = new LinkedList<Bala>();
 		listaObjetosTemporales = new LinkedList<ObjetoTemporal>();
 		listaObjetosComprarVida = new LinkedList<ObjetoVidaComprar>();
@@ -305,12 +305,12 @@ public class Logica {
 						mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 					}
 					else {
-							if (o.getBomba() != null) {
-								listaBomba.addLast(o.getBomba());
-								mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getBomba());
-								siguiente.setElemento(o.getBomba());
-								o.getBomba().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
-								mapaCombate.insertar(o.getBomba().getGrafico(0));
+							if (o.getObjetoPrecioso() != null) {
+								listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
+								mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
+								siguiente.setElemento(o.getObjetoPrecioso());
+								o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
+								mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 							}
 						
 							else {
@@ -358,12 +358,12 @@ public class Logica {
 							mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 						}
 						else {
-								if (o.getBomba() != null) {
-									listaBomba.addLast(o.getBomba());
-									mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getBomba());
-									siguiente.setElemento(o.getBomba());
-									o.getBomba().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
-									mapaCombate.insertar(o.getBomba().getGrafico(0));
+								if (o.getObjetoPrecioso() != null) {
+									listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
+									mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
+									siguiente.setElemento(o.getObjetoPrecioso());
+									o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
+									mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 								}
 							
 								else {
@@ -401,12 +401,12 @@ public class Logica {
 							mapaCombate.insertar(ov.getMagiaTemporal().getGrafico(0));
 						}
 						else {
-								if (ov.getBomba() != null) {
-									listaBomba.addLast(ov.getBomba());
-									mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getBomba());
-									siguienteVecina.setElemento(ov.getBomba());
-									ov.getBomba().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
-									mapaCombate.insertar(ov.getBomba().getGrafico(0));
+								if (ov.getObjetoPrecioso() != null) {
+									listaObjetoPrecioso.addLast(ov.getObjetoPrecioso());
+									mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getObjetoPrecioso());
+									siguienteVecina.setElemento(ov.getObjetoPrecioso());
+									ov.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
+									mapaCombate.insertar(ov.getObjetoPrecioso().getGrafico(0));
 								}
 							
 								else {
@@ -648,8 +648,8 @@ public class Logica {
 		boolean toReturn = false;
 		Celda c= mapaCombate.getCelda(x, y);
 		if ( c.getElemento() != null) {
-			if ( listaBomba.size() > 0) {
-				ObjetoPrecioso m = listaBomba.getFirst();
+			if ( listaObjetoPrecioso.size() > 0) {
+				ObjetoPrecioso m = listaObjetoPrecioso.getFirst();
 				int i = 0;
 				boolean corte = true;
 				while ( m != null && corte ) {
@@ -664,8 +664,8 @@ public class Logica {
 					}
 					else {
 						i++;
-						if ( i < listaBomba.size())
-							m = listaBomba.get(i);
+						if ( i < listaObjetoPrecioso.size())
+							m = listaObjetoPrecioso.get(i);
 						else
 							corte = false;
 					}
@@ -676,13 +676,18 @@ public class Logica {
   }
 	
 	public void activarBomba(int x, int y) {
-		LinkedList<Obstaculo> l = mapaCombate.activarBomba(x,y,listaBomba.getLast());
+		LinkedList<Obstaculo> l = mapaCombate.activarBomba(x,y,listaObjetoPrecioso.getLast());
 		
 		while (l.size() > 0) {
 			Obstaculo o = l.removeFirst();
 			a_eliminarObstaculo.add(o);
 		}
-				
+	  mapaCombate.eliminar(listaObjetoPrecioso.getLast());
+	  listaObjetoPrecioso.remove();
+	}
+	
+	public void activarPiedra(int x, int y) {
+		
 	}
 	
 	public boolean verificarMagiaFuerza(int x, int y) {

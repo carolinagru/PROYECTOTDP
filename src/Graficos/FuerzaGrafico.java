@@ -7,14 +7,13 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class FuerzaGrafico extends ObstaculoGrafico {
+	
 	public FuerzaGrafico( ) {
 		super( );
 		this.pos = new Point();
 		image[0] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/0.gif"));
-		image[1] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/0.gif"));
-		image[2] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/0.gif"));
-		image[3] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/0.gif"));
-}	
+		
+	}	
 
 
 

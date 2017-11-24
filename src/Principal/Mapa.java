@@ -22,6 +22,7 @@ import Factory.BalasFactoryMethod;
 import Factory.FactoryBomba;
 import Factory.FactoryCampoProteccion;
 import Factory.FactoryFuerza;
+import Factory.FactoryPiedra;
 import Hilos.HiloActivarObjetoTemporal;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
@@ -201,7 +202,7 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
-		int r = (int) (Math.random() * 9)+1;
+		int r = (int) (Math.random() * 10)+1;
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
@@ -214,8 +215,13 @@ public class Mapa {
 			 else
 				 if (r == 3) {
 					 FactoryBomba f4 = new FactoryBomba();
-					 p.setBomba(f4.crearBomba());
+					 p.setObjetoPrecioso(f4.crearObjetoPrecioso());
 				 }
+				 else 
+					 if (r == 4) {
+						 FactoryPiedra f5 = new FactoryPiedra();
+						 p.setObjetoPrecioso(f5.crearObjetoPrecioso());
+					 }
 		 }
 	  return  p;
 	}
@@ -243,6 +249,7 @@ public class Mapa {
 	
 	public LinkedList<Obstaculo> activarBomba(int x, int y,ObjetoPrecioso b) {
 		Celda c = getCelda(x,y);
+		insertar(b.getGrafico(0));
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
 		
