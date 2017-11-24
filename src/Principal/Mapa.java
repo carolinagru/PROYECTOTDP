@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Random;
+ 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
@@ -29,16 +29,15 @@ import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
 import Objetos.Obstaculo;
 import Personajes.Alien;
-import Personajes.Personaje;
-import Personajes.S5;
+ 
 import Personajes.Soldado;
-<<<<<<< HEAD
+ 
 import Visitor.VisitorSoldado;
-=======
-import PowerUps.Bomba;
+ 
+ 
 import PowerUps.ObjetoPrecioso;
 import Visitor.VisitorBomba;
->>>>>>> cd772418ace9e3a73da4252d6f2cb2d805cfaa6d
+ 
 
 public class Mapa {
 	private Celda mapa[][];
@@ -69,6 +68,7 @@ public class Mapa {
 		return null;
 	}
 	
+	
 	public Celda puedeInsertar(Celda c) {
 		Celda celdaVecina = getCelda(c.getFila()+1, c.getColumna());
 		if (celdaVecina != null)
@@ -85,7 +85,6 @@ public class Mapa {
 				if (celdaVecina.getElemento() == null)
 					return celdaVecina;
 			 }
-		
 		return null;
 	}
 	
@@ -113,7 +112,6 @@ public class Mapa {
 	        String cadena = "";
 	        char d;
 	        int y = 0;
-	        System.out.println("Entre a insertar objetosW");
 	        	while ((cadena = b.readLine()) != null) {
 	        		int x = 0;
 		        	for (int i = 0; i < cadena.length(); i++){
@@ -165,7 +163,7 @@ public class Mapa {
 			}
 		}
 		return toReturn;
-	}
+}
 	
 	public void insertar(JLabel l) {
 		panel.add(l);
@@ -285,7 +283,7 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
-<<<<<<< HEAD
+ 
 	
 	public Celda getCeldaVecina(Celda c) {
 		int fi = c.getFila();
@@ -306,7 +304,6 @@ public class Mapa {
 		
 	}
 	*/
-=======
->>>>>>> cd772418ace9e3a73da4252d6f2cb2d805cfaa6d
+ 
 }
 
