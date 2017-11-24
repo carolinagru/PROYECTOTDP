@@ -22,6 +22,7 @@ import Factory.BalasFactoryMethod;
 import Factory.FactoryBomba;
 import Factory.FactoryCampoProteccion;
 import Factory.FactoryFuerza;
+import Factory.FactoryPiedra;
 import Hilos.HiloActivarObjetoTemporal;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
@@ -31,6 +32,7 @@ import Objetos.Obstaculo;
 import Personajes.Alien;
  
 import Personajes.Soldado;
+<<<<<<< HEAD
  
 import Visitor.VisitorSoldado;
  
@@ -38,6 +40,12 @@ import Visitor.VisitorSoldado;
 import PowerUps.ObjetoPrecioso;
 import Visitor.VisitorBomba;
  
+=======
+import Visitor.VisitorSoldado;
+import PowerUps.Bomba;
+import PowerUps.ObjetoPrecioso;
+import Visitor.VisitorBomba;
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 
 public class Mapa {
 	private Celda mapa[][];
@@ -202,7 +210,7 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
-		int r = (int) (Math.random() * 9)+1;
+		int r = (int) (Math.random() * 10)+1;
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
@@ -215,8 +223,13 @@ public class Mapa {
 			 else
 				 if (r == 3) {
 					 FactoryBomba f4 = new FactoryBomba();
-					 p.setBomba(f4.crearBomba());
+					 p.setObjetoPrecioso(f4.crearObjetoPrecioso());
 				 }
+				 else 
+					 if (r == 4) {
+						 FactoryPiedra f5 = new FactoryPiedra();
+						 p.setObjetoPrecioso(f5.crearObjetoPrecioso());
+					 }
 		 }
 	  return  p;
 	}
@@ -244,6 +257,7 @@ public class Mapa {
 	
 	public LinkedList<Obstaculo> activarBomba(int x, int y,ObjetoPrecioso b) {
 		Celda c = getCelda(x,y);
+		insertar(b.getGrafico(0));
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
 		
@@ -274,7 +288,6 @@ public class Mapa {
 	}
 	
 	public void eliminar(Obstaculo o) {
-		//o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();
@@ -283,6 +296,7 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
+<<<<<<< HEAD
  
 	
 	public Celda getCeldaVecina(Celda c) {
@@ -305,5 +319,8 @@ public class Mapa {
 	}
 	*/
  
+=======
+
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 }
 

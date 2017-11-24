@@ -4,5 +4,5 @@ import PowerUps.ObjetoPrecioso;
 
 public interface ObjetoPreciosoMethodFactory {
 
-	public ObjetoPrecioso crearBomba();
+	public ObjetoPrecioso crearObjetoPrecioso();
 }

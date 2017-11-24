@@ -1,5 +1,9 @@
 /Logica.java
 /Sprites/
+<<<<<<< HEAD
+=======
+/UML/
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 /Disparo/
 /Estate/
 /Factory/
@@ -10,5 +14,8 @@
 /Personajes/
 /PowerUps/
 /Principal/
+<<<<<<< HEAD
 /UML/
+=======
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 /Visitor/

@@ -390,7 +390,7 @@ public class Mapa_GUI2 extends JFrame {
 						}});
 				}};
 			botonSoldado2.addActionListener(a23);
-		
+
 		JButton botonSoldado3 = new JButton();
 		botonSoldado3.setBounds(276, 0, 132, 76);
 		botonSoldado3.setBackground(Color.WHITE);
@@ -504,7 +504,6 @@ public class Mapa_GUI2 extends JFrame {
 								int filas = y / 80;
 								int columnas = x  / 80;
 								if (logica.verificarPosicion(filas, columnas)) {
-									
 									System.out.println("Encontre soldado a eliminar y elimino ");
 								}
 							}
@@ -539,5 +538,12 @@ public class Mapa_GUI2 extends JFrame {
 		lblPuntaje.setText(""+m);
 	}
 	
+<<<<<<< HEAD
+=======
+	public void fondo(int n) {
+	
+	}
+	
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 	
 }

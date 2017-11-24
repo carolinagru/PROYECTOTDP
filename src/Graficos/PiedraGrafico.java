@@ -4,9 +4,10 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-public class BombaGrafico extends ObstaculoGrafico{
+public class PiedraGrafico extends ObstaculoGrafico{
 	
-	public BombaGrafico() {
+	
+	public PiedraGrafico() {
 		super();
 		this.pos = new Point();
 		image[0] = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));

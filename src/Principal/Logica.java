@@ -1,9 +1,7 @@
 package Principal;
 
 import Personajes.*;
-import PowerUps.Bomba;
-import PowerUps.Campo_de_Proteccion;
-import PowerUps.Fuerza;
+
 import PowerUps.MagiaTemporal;
 import PowerUps.ObjetoPrecioso;
 
@@ -15,7 +13,7 @@ import Disparo.Bala;
  
 import Estate.Estado;
 import Estate.EstadoCampo;
-import Estate.EstadosinMagia;
+
 import Factory.AlienFactoryMethod;
  
 import Factory.BalasFactoryMethod;
@@ -58,7 +56,7 @@ public class Logica {
 	protected LinkedList<S3> soldadosMapaS3;
 	protected LinkedList<Soldado> soldados45;
 	protected LinkedList<Bala> balasSoldado;
-	protected LinkedList<ObjetoPrecioso> listaBomba;
+	protected LinkedList<ObjetoPrecioso> listaObjetoPrecioso;
 	protected LinkedList<MagiaTemporal> listaMagia;
 	protected LinkedList<Bala> balasAlien;
 	protected LinkedList<ObjetoTemporal> listaObjetosTemporales;
@@ -76,15 +74,13 @@ public class Logica {
 	protected BalasFactoryMethod factoryBala;
 	protected ObjTemporalFactoryMethod fabricaObjetoTemporales;
 	protected ObjVidaComprarFactoryMethod fabricaObjetoVidaComprar;
-	protected static int height = 500;
-	protected static int width= 1000;
-    protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
-    protected static int filas = ((height - 40) / tamanioCelda)+1;
+    protected static int columnas = ((1000 - 80 ) / tamanioCelda)+2;
+    protected static int filas = ((500 - 40) / tamanioCelda)+1;
     protected int cantOrdas;
-    protected int nivel;
     protected int cantEnemigos;
     protected boolean juegoActivo;
     protected Mapa_GUI2 gui;
+    protected int nivel;
     
 
 	public Logica(JPanel p, Mapa_GUI2 gui){
@@ -92,8 +88,6 @@ public class Logica {
 		panelMapa=p;
 		puntos = 100;
 		monedas = 500;
-		nivel = 1;
-		cantEnemigos = 12;
 		juegoActivo = true;
 		gui.setMonedasGUI(monedas);
 		
@@ -105,19 +99,20 @@ public class Logica {
 		a_eliminarObstaculoGrafica= new LinkedList<Obstaculo>();
 		balasSoldado = new LinkedList<Bala>();
 		balasAlien = new LinkedList<Bala>();
-		listaBomba = new LinkedList<ObjetoPrecioso>();
+		listaObjetoPrecioso = new LinkedList<ObjetoPrecioso>();
 		balasAeliminar = new LinkedList<Bala>();
 		listaObjetosTemporales = new LinkedList<ObjetoTemporal>();
 		listaObjetosComprarVida = new LinkedList<ObjetoVidaComprar>();
 		listaMagia = new LinkedList<MagiaTemporal>();
-
+		
+		nivel = 1;
 		cantBomba = 0;
 		cantCampo = 0;
-	 
+		cantEnemigos = 12;
+		cantOrdas = 1;
 		mapaCombate = new Mapa(filas,columnas,p);
 		
 		estadoMagia = new EstadoCampo();
-		cantOrdas = 1;
 		
 		ejecutarHilos(juegoActivo);
 	
@@ -127,7 +122,6 @@ public class Logica {
 		insertarObjetos();	
 		HiloLogico h = new HiloLogico(this);
 		h.start();
-		 
 	}
 
 	public boolean getjuegoActivo() {
@@ -139,12 +133,25 @@ public class Logica {
 	}
 	
 	public void setNivel(int n) {
-		this.nivel = n;
-		this.cantOrdas = 0;
-		this.cantEnemigos = 12;
-		this.juegoActivo = true;
-		ejecutarHilos(true);
+		aliensMapa.clear();
+		soldadosMapa.clear();
+		soldadosMapaS3.clear();
+		soldados45.clear();
+		a_eliminarObstaculo.clear();
+		a_eliminarObstaculoGrafica.clear();
+		balasSoldado.clear();
+		balasAlien.clear();
+		balasAeliminar.clear();
+		listaObjetosTemporales.clear();
+		listaObjetosComprarVida.clear();
+		listaMagia.clear();
 		
+		gui.fondo(n);
+		this.nivel = n;
+		cantOrdas = 0;
+		cantEnemigos = 12;
+		this.juegoActivo = true;
+		ejecutarHilos(true);	
 	}
 
 	public LinkedList<Soldado> getSoldados () {
@@ -156,7 +163,7 @@ public class Logica {
 	}
 
 	public void insertarObjetos() {
-			mapaCombate.insertarObjetos(this);
+		mapaCombate.insertarObjetos(this);
 	}
 		
 	public void limpiarBalasSoldado() {
@@ -185,8 +192,6 @@ public class Logica {
 		if ( aliensMapa.size() == 0) {
 			while ( aliensMapa.size() < 4)
 				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
-			cantEnemigos-= 4;
-			
 			cantOrdas++;
 		  }
 	 }
@@ -204,7 +209,6 @@ public class Logica {
 	}
 	
 	public void gano() {
-		
 		
 	}
 	
@@ -298,7 +302,10 @@ public class Logica {
 				 	o.accept(v);
 				}
 				else{
+<<<<<<< HEAD
 					//a_eliminarObstaculo.addLast(o);
+=======
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 					if ( o.getMagiaTemporal() != null) {
 						listaMagia.addLast(o.getMagiaTemporal());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
@@ -307,18 +314,19 @@ public class Logica {
 						mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 					}
 					else {
-							if (o.getBomba() != null) {
-								listaBomba.addLast(o.getBomba());
-								mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getBomba());
-								siguiente.setElemento(o.getBomba());
-								o.getBomba().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
-								mapaCombate.insertar(o.getBomba().getGrafico(0));
+							if (o.getObjetoPrecioso() != null) {
+								listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
+								mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
+								siguiente.setElemento(o.getObjetoPrecioso());
+								o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
+								mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 							}
 						
 							else {
 									mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
 									siguiente.setElemento(null);
 								 }
+<<<<<<< HEAD
 						}
 					puntos += o.getPuntos();
 					monedas += o.getMonedas();
@@ -327,14 +335,27 @@ public class Logica {
 					o.actualizarGrafico(2); 
 					a_eliminarObstaculo.addLast(o);
 					limpiarMuertos();
+=======
+						 }
+						cantEnemigos--;
+						puntos += o.getPuntos();
+						monedas += o.getMonedas();
+						gui.setMonedasGUI(monedas);
+						gui.setPuntosGUI(puntos);
+						o.actualizarGrafico(2); 
+						a_eliminarObstaculo.addLast(o);
+						//limpiarMuertos();
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 					}	   
 				}
 			}
 		}
 	}
+<<<<<<< HEAD
 	 
+=======
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 	
-
 	public void ataqueSoldadoS3 (S3 p ) {
 		Celda c = p.getCelda();	
 		Celda cv = p.getCeldaVecina();
@@ -361,18 +382,19 @@ public class Logica {
 							mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 						}
 						else {
-								if (o.getBomba() != null) {
-									listaBomba.addLast(o.getBomba());
-									mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getBomba());
-									siguiente.setElemento(o.getBomba());
-									o.getBomba().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
-									mapaCombate.insertar(o.getBomba().getGrafico(0));
+								if (o.getObjetoPrecioso() != null) {
+									listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
+									mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
+									siguiente.setElemento(o.getObjetoPrecioso());
+									o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
+									mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 								}
 							
 								else {
 										mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
 										siguiente.setElemento(null);
 									 }
+<<<<<<< HEAD
 								
 							}	 
 					puntos += o.getPuntos();
@@ -384,6 +406,19 @@ public class Logica {
 					a_eliminarObstaculo.addLast(o);
 					limpiarMuertos();
 					}
+=======
+							}
+							cantEnemigos--;
+							puntos += o.getPuntos();
+							monedas += o.getMonedas();
+							gui.setMonedasGUI(monedas);
+							gui.setPuntosGUI(puntos);
+							System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
+							o.actualizarGrafico(2); 
+							a_eliminarObstaculo.addLast(o);
+							//limpiarMuertos();
+						}	   
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 				}
 			}
 			if (ov != null) {
@@ -404,33 +439,32 @@ public class Logica {
 							mapaCombate.insertar(ov.getMagiaTemporal().getGrafico(0));
 						}
 						else {
-								if (ov.getBomba() != null) {
-									listaBomba.addLast(ov.getBomba());
-									mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getBomba());
-									siguienteVecina.setElemento(ov.getBomba());
-									ov.getBomba().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
-									mapaCombate.insertar(ov.getBomba().getGrafico(0));
+								if (ov.getObjetoPrecioso() != null) {
+									listaObjetoPrecioso.addLast(ov.getObjetoPrecioso());
+									mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getObjetoPrecioso());
+									siguienteVecina.setElemento(ov.getObjetoPrecioso());
+									ov.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
+									mapaCombate.insertar(ov.getObjetoPrecioso().getGrafico(0));
 								}
 							
 								else {
 										mapaCombate.setCeldaMapa(siguienteVecina.getFila(),siguienteVecina.getColumna(), null);
 										siguienteVecina.setElemento(null);
 									 }
-								puntos += ov.getPuntos();
-								monedas += ov.getMonedas();
-								gui.setMonedasGUI(monedas);
-								gui.setPuntosGUI(puntos);
-								ov.actualizarGrafico(2); 
-								a_eliminarObstaculo.addLast(ov);
-								limpiarMuertos();
+						}
+							cantEnemigos--;
+							puntos += ov.getPuntos();
+							monedas += ov.getMonedas();
+							gui.setMonedasGUI(monedas);
+							gui.setPuntosGUI(puntos);
+							ov.actualizarGrafico(2); 
+							a_eliminarObstaculo.addLast(ov);
+							//limpiarMuertos();
 							}
 					}
 				}
 			}
 		}
-	}
-	
- 
 	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
@@ -483,12 +517,12 @@ public class Logica {
 					mapaCombate.eliminar(b);
 					b.getCelda().setElemento(null);
 					if (o.getVida() <= 0){
+						cantEnemigos--;
 						o.actualizarGrafico(2);
 						a_eliminarObstaculo.add(o);
 						siguiente.setElemento(null);
 						mapaCombate.eliminar(b);
-						limpiarMuertos();
-
+						//limpiarMuertos();
 					}
 				}
 			}
@@ -504,7 +538,7 @@ public class Logica {
 				toReturn = true;
 				factorySoldado = new S1factory(panelMapa);
 				soldados45.addLast(factorySoldado.createPersonaje(c));
-				monedas-=25;
+				monedas-=45;
 				gui.setMonedasGUI(monedas);
 			}
 		}
@@ -530,13 +564,13 @@ public class Logica {
 		boolean toReturn = false;
 		Celda c = mapaCombate.getCelda(x, y);	
 		if (monedas >= 25 ) {
-			if (c.getElemento() != null) {
+			if (c.getElemento() == null) {
 				Celda v = mapaCombate.puedeInsertar(c); 
 				if (v != null){
 					toReturn = true;
 					factorySoldadoS3 = new S3factory(panelMapa);
 					soldadosMapaS3.addLast(factorySoldadoS3.createPersonaje(c,v));	
-					monedas -=25;
+					monedas -=30;
 					gui.setMonedasGUI(monedas);
 				}
 			}
@@ -553,7 +587,7 @@ public class Logica {
 				factorySoldado = new S4factory(panelMapa);
 				Soldado s =  factorySoldado.createPersonaje(c);
 				soldados45.addLast(s);
-				monedas -=25;
+				monedas -=45;
 				gui.setMonedasGUI(monedas);
 			}
 		}
@@ -569,7 +603,7 @@ public class Logica {
 				factorySoldado = new S5factory(panelMapa);
 				Soldado s =  factorySoldado.createPersonaje(c);
 				soldados45.addLast(s);
-				monedas -=25;
+				monedas -=45;
 				gui.setMonedasGUI(monedas);
 			}
 		}
@@ -607,7 +641,8 @@ public class Logica {
 						gui.setMonedasGUI(monedas);
 					}
 					mapaCombate.eliminar(p);
-					soldadosMapa.remove(p);
+					//soldadosMapa.remove(p);
+					a_eliminarObstaculo.add(p);
 					return true;
 				}
 			}
@@ -622,7 +657,24 @@ public class Logica {
 						gui.setMonedasGUI(monedas);
 					}
 					mapaCombate.eliminar(p);
-					soldados45.remove(p);
+					//soldados45.remove(p);
+					a_eliminarObstaculo.add(p);
+					return true;
+				}
+			}
+			for(Soldado p: soldadosMapaS3) {
+				if (p.getCelda().equals(c)) {
+					if ( p.getVida() != 100) {
+						monedas += p.getVida()*0.5;
+						gui.setMonedasGUI(monedas);
+					}
+					else {
+						monedas += p.getVida();
+						gui.setMonedasGUI(monedas);
+					}
+					mapaCombate.eliminar(p);
+					//soldados45.remove(p);
+					a_eliminarObstaculo.add(p);
 					return true;
 				}
 			}
@@ -634,8 +686,8 @@ public class Logica {
 		boolean toReturn = false;
 		Celda c= mapaCombate.getCelda(x, y);
 		if ( c.getElemento() != null) {
-			if ( listaBomba.size() > 0) {
-				ObjetoPrecioso m = listaBomba.getFirst();
+			if ( listaObjetoPrecioso.size() > 0) {
+				ObjetoPrecioso m = listaObjetoPrecioso.getFirst();
 				int i = 0;
 				boolean corte = true;
 				while ( m != null && corte ) {
@@ -650,8 +702,8 @@ public class Logica {
 					}
 					else {
 						i++;
-						if ( i < listaBomba.size())
-							m = listaBomba.get(i);
+						if ( i < listaObjetoPrecioso.size())
+							m = listaObjetoPrecioso.get(i);
 						else
 							corte = false;
 					}
@@ -662,14 +714,17 @@ public class Logica {
   }
 	
 	public void activarBomba(int x, int y) {
-		LinkedList<Obstaculo> l = mapaCombate.activarBomba(x,y,listaBomba.getLast());
+		LinkedList<Obstaculo> l = mapaCombate.activarBomba(x,y,listaObjetoPrecioso.getLast());
 		
 		while (l.size() > 0) {
 			Obstaculo o = l.removeFirst();
 			a_eliminarObstaculo.add(o);
 		}
-		
-	  limpiarMuertos();
+	  mapaCombate.eliminar(listaObjetoPrecioso.getLast());
+	  listaObjetoPrecioso.remove();
+	}
+	
+	public void activarPiedra(int x, int y) {
 		
 	}
 	
@@ -685,7 +740,10 @@ public class Logica {
 					if (m.equals(c.getElemento())) {
 						System.out.println("Entre una magia temporal Fuerza");
 						mapaCombate.eliminar(m);
+<<<<<<< HEAD
 						mapaCombate.setCeldaMapa(x, y, null);
+=======
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 						listaMagia.remove(m);
 						corte = false;
 						activarMagia_Fuerza();
@@ -717,7 +775,10 @@ public class Logica {
 					if (m.equals(c.getElemento())) {
 						cantCampo++;
 						mapaCombate.eliminar(m);
+<<<<<<< HEAD
 						mapaCombate.setCeldaMapa(x, y, null);
+=======
+>>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 						listaMagia.remove(m);
 						corte = false;
 						System.out.println("Entre a verificar magia  Campo");

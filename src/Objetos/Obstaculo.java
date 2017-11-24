@@ -26,11 +26,11 @@ public abstract class Obstaculo {
 		magiaT = m;
 	}
 	
-	public void setBomba(ObjetoPrecioso b) {
+	public void setObjetoPrecioso(ObjetoPrecioso b) {
 		bomba = b;
 	}
 	
-	public ObjetoPrecioso getBomba() {
+	public ObjetoPrecioso getObjetoPrecioso() {
 		return bomba;
 	}
 	

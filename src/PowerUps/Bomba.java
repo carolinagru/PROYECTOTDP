@@ -11,11 +11,7 @@ public class Bomba extends ObjetoPrecioso{
 		grafico = new BombaGrafico();
 	}
 
-	@Override
-	public boolean puedoAtacar(Visitor v) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	
 	
 

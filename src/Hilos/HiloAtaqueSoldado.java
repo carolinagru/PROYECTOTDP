@@ -21,6 +21,7 @@ public class HiloAtaqueSoldado  extends HiloBasico {
 				
 				for (S3 p: l.getS3())
 					l.ataqueSoldadoS3(p);
+				
 				Thread.sleep(10);
 				} catch (InterruptedException e2) {
 					e2.printStackTrace();
