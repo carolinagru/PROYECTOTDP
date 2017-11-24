@@ -31,11 +31,12 @@ public class VisitorAlien implements Visitor {
 	}
 
 	public void visit(Soldado a) {
-		//System.out.println("----VISITOR ALIEN : Fuerza alien"+myAlien.getFuerza()+" Fuerza soldado:"+a.getFuerza()+"Vida Alien :"+myAlien.getVida()+" Vida Soldado :"+a.getVida() );
-		a.setVida(a.getVida()*myAlien.getFuerza());
+ 		a.setVida(a.getVida()*myAlien.getFuerza());
  	}
 
 	public void visit(ObjetoVida a) {
+		//System.out.println("----VISITOR ALIEN : Fuerza alien"+myAlien.getFuerza()+" Fuerza soldado:"+a.getFuerza()+"Vida Alien :"+myAlien.getVida()+" Vida Soldado :"+a.getVida() );
+
 		a.setVida(a.getVida()*myAlien.getFuerza());
 		 
 	}
@@ -63,6 +64,8 @@ public class VisitorAlien implements Visitor {
 	}
  
 	public void visit(ObjetoPiedra a) {
+		a.setVida(a.getVida()*myAlien.getFuerza());
+		
 	 
 	}
 
@@ -87,7 +90,7 @@ public class VisitorAlien implements Visitor {
 
  
 	public void visit(MagiaTemporal m) {
-		 
+	 
 		
 	}
 
@@ -193,6 +196,7 @@ public class VisitorAlien implements Visitor {
 
 	 //Alien le saca vida a objeto comprado
 	public void visit(ObjetoVidaComprar a) {
+		 
 		a.setVida(a.getVida()*myAlien.getFuerza());
 	}
 

@@ -181,7 +181,7 @@ public class VisitorBalaAlien implements Visitor{
 	
 
 	public boolean puedoPasar(Bala a) {
-		return true;
+		return false;
 	}
 
 	public boolean puedoPasar(Alien a) {

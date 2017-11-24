@@ -87,51 +87,44 @@ public class VisitorBalaSoldado implements Visitor{
 	@Override
 	public boolean puedoPasar(ObjetoTemporal a) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean puedoPasar(ObjetoAgua a) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean puedoPasar(ObjetoFuego a) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean puedoPasar(ObjetoFuente a) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean puedoPasar(ObjetoPiedra a) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean puedoPasar(ObjetoVida a) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean puedoPasar(MagiaTemporal m) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
-	
-	
-	
-	
-
-	
-	
 	
 	 
 	public boolean Atacar(ObjetoTemporal a) {

@@ -31,6 +31,7 @@ import Personajes.Alien;
 import Personajes.Personaje;
 import Personajes.S5;
 import Personajes.Soldado;
+import Visitor.VisitorSoldado;
 
 public class Mapa {
 	private Celda mapa[][];
@@ -85,7 +86,7 @@ public class Mapa {
 	        String cadena = "";
 	        char d;
 	        int y = 0;
-	        
+	        System.out.println("Entre a insertar objetosW");
 	        	while ((cadena = b.readLine()) != null) {
 	        		int x = 0;
 		        	for (int i = 0; i < cadena.length(); i++){
@@ -119,15 +120,20 @@ public class Mapa {
 	 System.out.println("Error en objeto - leerArchivo. ");
    }	 
 }
-
+	//VERRR
 	public boolean puedeDisparar (Soldado s) {
 		boolean toReturn = false;
 		int distancia = s.getDistanciaAtaque() + s.getCelda().getColumna();
 		Celda c = siguienteCeldaDer(s.getCelda());
-		for ( int i = c.getColumna(); i <= distancia && toReturn == false ; i++) {
+		for ( int i = c.getColumna(); i < distancia && toReturn == false ; i++) {
 			if ( mapa[c.getFila()][i].getElemento() != null) {
-				System.out.println("Encontre algo en la celda :"+ mapa[c.getFila()][i].getElemento());
-				toReturn = true;
+				VisitorSoldado v = new VisitorSoldado();
+				v.setSoldado(s);
+				if ( mapa[c.getFila()][i].getElemento().puedoAtacar(v)) {
+					if (mapa[c.getFila()][i].getElemento().getVida() >0 )
+						System.out.println("Encontre algo en la celda :"+ mapa[c.getFila()][i].getElemento());
+						toReturn = true;
+					}
 				
 			}
 		}
@@ -205,7 +211,7 @@ public class Mapa {
 	}
 	
 	public void eliminar(Obstaculo o) {
-		o.getCelda().setElemento(null);
+		//o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();
@@ -225,5 +231,14 @@ public class Mapa {
 		Celda v = getCelda(fi,co);
 	 return v;
 	}
+	/*
+	public void activarBomba (Celda c) {
+		int fil = c.getFila();
+		int col = c.getColumna ();
+		if ( mapa[fil+1][col] != null)
+			
+		
+	}
+	*/
 }
 

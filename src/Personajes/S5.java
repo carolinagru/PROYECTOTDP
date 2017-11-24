@@ -4,7 +4,7 @@ package Personajes;
  
  
  
-import Disparo.Bala;
+ 
 import Graficos.Soldado5Grafico;
 import Principal.Celda;
  
