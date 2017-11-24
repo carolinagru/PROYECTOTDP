@@ -21,6 +21,8 @@ public class HiloAccionBala extends Thread {
 			for (Bala b : l.getBalas()){	
 				l.balaSoldado(b);
 			}
+			l.limpiarBalasSoldado();
+
 			Thread.sleep(10);
 			} catch (InterruptedException e2) {
 				e2.printStackTrace();

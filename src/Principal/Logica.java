@@ -122,6 +122,7 @@ public class Logica {
 	}
 	
 	public void ejecutarHilos(boolean resultado) {
+		insertarObjetos();	
 		HiloLogico h = new HiloLogico(this);
 		h.start();
 		 
@@ -422,13 +423,7 @@ public class Logica {
 		}
 	}
 	
-	public boolean moverDisparo() {
-		boolean toReturn = false;
-		for (Bala p :balasSoldado){	
-			moverDisparoSoldado(p);
-		}
-		return toReturn;
-	}
+ 
 	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
@@ -445,17 +440,15 @@ public class Logica {
 				p.actualizarGrafico(0);	
 			}
 			else {
-				//caso en que la celda siguiente tiene algun elemento 
 				balasAeliminar.addLast(p);
 				mapaCombate.eliminar(p);
-				limpiarBalasSoldado();
 			}
 		}
 		else {
-				balasAeliminar.addLast(p);
-				mapaCombate.eliminar(p);
-				limpiarBalasSoldado();
-			 }
+			balasAeliminar.addLast(p);
+			mapaCombate.eliminar(p);
+		}
+	 
 	}
 	
 	
@@ -482,12 +475,13 @@ public class Logica {
 					balasAeliminar.addLast(b);
 					mapaCombate.eliminar(b);
 					b.getCelda().setElemento(null);
-					limpiarBalasSoldado();
 					if (o.getVida() <= 0){
 						o.actualizarGrafico(2);
 						a_eliminarObstaculo.add(o);
 						siguiente.setElemento(null);
+						mapaCombate.eliminar(b);
 						limpiarMuertos();
+
 					}
 				}
 			}

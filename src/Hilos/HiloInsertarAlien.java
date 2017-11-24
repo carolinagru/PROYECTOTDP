@@ -15,8 +15,7 @@ private HiloLogico hiloLogico;
 	}
 		
 	public void run () {
-		try {			 
-			l.insertarObjetos();				
+		try {			 			
 			l.insertarEnemigos();
 				
 			Thread.sleep(10);

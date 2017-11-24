@@ -43,17 +43,7 @@ public class HiloLogico extends Thread {
 				
 				Thread.sleep(1500);
 				
-				hiloMovAlien.run();
- 				while (esperar)
-					Thread.sleep(200);
-				this.setEspera(true);
-	
- 				hiloAtaqueAlien.run();
-				while (esperar)
-					Thread.sleep(200);
-				this.setEspera(true);
-				
- 				hiloInsertarBalas.run();
+				hiloInsertarBalas.run();
 				this.setEspera(true);
 				
 				
@@ -61,15 +51,23 @@ public class HiloLogico extends Thread {
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
-					
+				
+				
 				hiloMovBala.run();
 				while (esperar)
 					Thread.sleep(300);
 				this.setEspera(true);
 				
- 				
+ 				hiloAtaqueAlien.run();
+				while (esperar)
+					Thread.sleep(200);
+				this.setEspera(true);
 				
-				
+				hiloMovAlien.run();
+ 				while (esperar)
+					Thread.sleep(200);
+				this.setEspera(true);
+ 
 				
  				hiloAtaqueSoldado.run();
 				while (esperar)
@@ -81,7 +79,7 @@ public class HiloLogico extends Thread {
 				this.setEspera(true);
 				
 				
-				this.setEspera(true);
+				 
 			}
 			
 			} catch (InterruptedException e2) {

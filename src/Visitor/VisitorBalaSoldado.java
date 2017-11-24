@@ -1,8 +1,7 @@
 package Visitor;
 
 import Disparo.Bala;
-import Disparo.BalaSoldado;
-import Objetos.ObjetoAgua;
+ import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
 import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
