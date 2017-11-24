@@ -3,19 +3,17 @@
 import Objetos.Obstaculo;
 import Principal.Logica;
 
-public class HiloLimpieza  extends Thread{
-	
-	private Logica l;
-	private HiloLogico hiloLogico;
+public class HiloLimpieza  extends HiloBasico{
+	 
 	
 	public  HiloLimpieza (Logica l, HiloLogico h ) {
-		this.l = l;
-		hiloLogico = h;
+		super(l,h);
 	}	
 	
 	
 	
 	public void run () {
+		if (execute) {
 		try {
 			while (l.getObstaculos_a_Limpiar().size() > 0) {	
 				Obstaculo o = l.getObstaculos_a_Limpiar().removeFirst();
@@ -26,6 +24,7 @@ public class HiloLimpieza  extends Thread{
 				e2.printStackTrace();
 		}
 		hiloLogico.setEspera(false);
+		}
 	}
 	 
 }

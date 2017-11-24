@@ -521,8 +521,9 @@ public class Mapa_GUI2 extends JFrame {
 					int y=e.getY() ;
 					int filas = y / 80;
 					int columnas = x  / 80;
-					logica.verificarMagiaFuerza(filas, columnas);
-					logica.verificarMagiaCampo(filas, columnas);			
+					System.out.println(filas +"-"+columnas);
+					//logica.verificarMagiaFuerza(filas, columnas);
+					//logica.verificarMagiaCampo(filas, columnas);			
 				}		
 			}
 			});
@@ -535,4 +536,20 @@ public class Mapa_GUI2 extends JFrame {
 	public void setPuntosGUI(int m ) {
 		lblPuntaje.setText(""+m);
 	}
+	
+	ActionListener a53 = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
+				public void mousePressed(MouseEvent e) {
+					 
+						int x=e.getX() ;
+						int y=e.getY() ;
+						int filas = y / 80;
+						int columnas = x  / 80;
+							System.out.println("No pudo comprar jugador 1 ");
+					  
+					}
+
+				});
+		}};
 }

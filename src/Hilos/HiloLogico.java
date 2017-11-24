@@ -34,14 +34,14 @@ public class HiloLogico extends Thread {
 	
 	public void run () {
 		try {	
-			while (esperar) {
+			while (esperar  ) {
 				//Thread.sleep(2000);
 				hiloInsertarAlien.run();
 				while (esperar)
 					Thread.sleep(200);
 				this.setEspera(true);
 				
-				Thread.sleep(1500);
+				Thread.sleep(1000);
 				
 				hiloInsertarBalas.run();
 				this.setEspera(true);
@@ -55,8 +55,13 @@ public class HiloLogico extends Thread {
 				
 				hiloMovBala.run();
 				while (esperar)
-					Thread.sleep(300);
+					Thread.sleep(100);
 				this.setEspera(true);
+				
+
+ 				hiloAtaqueSoldado.run();
+				while (esperar)
+					Thread.sleep(200);
 				
  				hiloAtaqueAlien.run();
 				while (esperar)
@@ -69,9 +74,6 @@ public class HiloLogico extends Thread {
 				this.setEspera(true);
  
 				
- 				hiloAtaqueSoldado.run();
-				while (esperar)
-					Thread.sleep(200);
 				
  				hiloLimpieza.run();
 				while (esperar)

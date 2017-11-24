@@ -1,7 +1,7 @@
 package Hilos;
 
  
-import Objetos.ObjetoTemporal;
+ 
 import Objetos.Obstaculo;
 import Principal.Logica;
 

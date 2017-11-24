@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import Disparo.Bala;
  
 import Estate.Estado;
- 
+import Estate.EstadoCampo;
 import Estate.EstadosinMagia;
 import Factory.AlienFactoryMethod;
  
@@ -108,13 +108,14 @@ public class Logica {
 		balasAeliminar = new LinkedList<Bala>();
 		listaObjetosTemporales = new LinkedList<ObjetoTemporal>();
 		listaObjetosComprarVida = new LinkedList<ObjetoVidaComprar>();
+		listaMagia = new LinkedList<MagiaTemporal>();
 
 		cantBomba = 0;
 		cantCampo = 0;
 	 
 		mapaCombate = new Mapa(filas,columnas,p);
 		
-		estadoMagia = new EstadosinMagia();
+		estadoMagia = new EstadoCampo();
 		cantOrdas = 1;
 		
 		ejecutarHilos(juegoActivo);
@@ -292,6 +293,7 @@ public class Logica {
 				 	o.accept(v);
 				}
 				else{
+					a_eliminarObstaculo.addLast(o);
 					if ( o.getMagiaTemporal() != null) {
 						listaMagia.addLast(o.getMagiaTemporal());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
@@ -316,7 +318,6 @@ public class Logica {
 							monedas += o.getMonedas();
 							gui.setMonedasGUI(monedas);
 							gui.setPuntosGUI(puntos);
-							System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
 							o.actualizarGrafico(2); 
 							a_eliminarObstaculo.addLast(o);
 							limpiarMuertos();
@@ -412,7 +413,6 @@ public class Logica {
 								monedas += ov.getMonedas();
 								gui.setMonedasGUI(monedas);
 								gui.setPuntosGUI(puntos);
-								System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
 								ov.actualizarGrafico(2); 
 								a_eliminarObstaculo.addLast(ov);
 								limpiarMuertos();
@@ -496,7 +496,7 @@ public class Logica {
 			if (c.getElemento() == null) {
 				toReturn = true;
 				factorySoldado = new S1factory(panelMapa);
-				soldadosMapa.addLast(factorySoldado.createPersonaje(c));
+				soldados45.addLast(factorySoldado.createPersonaje(c));
 				monedas-=25;
 				gui.setMonedasGUI(monedas);
 			}
