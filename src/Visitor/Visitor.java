@@ -9,6 +9,8 @@ import Objetos.ObjetoTemporal;
 import Objetos.ObjetoVida;
 import Objetos.ObjetoVidaComprar;
 import Personajes.*;
+import PowerUps.Bomba;
+import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
 
 public interface Visitor {
@@ -23,6 +25,9 @@ public interface Visitor {
 	public void visit (Soldado a );
 	public void visit (ObjetoVida a );
 	public void visit (ObjetoVidaComprar a );
+	public void visit (Bomba b);
+	public void visit (Fuerza b);
+
 
 	public boolean puedoPasar (ObjetoTemporal a);
 	public boolean puedoPasar (ObjetoAgua a);

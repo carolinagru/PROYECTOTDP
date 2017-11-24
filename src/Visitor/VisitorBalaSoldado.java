@@ -10,6 +10,8 @@ import Objetos.ObjetoVida;
 import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Soldado;
+import PowerUps.Bomba;
+import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
 
 public class VisitorBalaSoldado implements Visitor{
@@ -201,6 +203,18 @@ public class VisitorBalaSoldado implements Visitor{
 	public boolean Atacar(ObjetoVidaComprar a) {
 	 
 		return false;
+	}
+
+	@Override
+	public void visit(Bomba b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Fuerza b) {
+		// TODO Auto-generated method stub
+		
 	}
  
 }

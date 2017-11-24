@@ -20,9 +20,9 @@ public abstract class MagiaTemporal extends Obstaculo {
 		this.pos = c;
 		
 	}
-	
-	public void accept(Visitor v) {
-		 v.visit(this);
+	/*
+	public abstract void accept(Visitor v) {
+		// v.visit(this);
 		
 	}
 
@@ -31,6 +31,7 @@ public abstract class MagiaTemporal extends Obstaculo {
 		 
 		return false;
 	}
+	*/
 	
 	 
 	

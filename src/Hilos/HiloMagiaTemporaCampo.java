@@ -27,6 +27,7 @@ public class HiloMagiaTemporaCampo  extends Thread{
 			 
 			while (execute) {			
 				l.setEstado_MTLogica(new EstadoCampo());
+				System.out.println("Entre a magia campo");
 				Thread.sleep(8000);
 				l.setEstado_MTLogica(new EstadosinMagia());
 				execute = false;
