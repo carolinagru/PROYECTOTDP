@@ -108,7 +108,7 @@ public class Logica {
 		cantBomba = 0;
 		cantCampo = 0;
 		cantEnemigos = 12;
-	 
+		cantOrdas = 1;
 		mapaCombate = new Mapa(filas,columnas,p);
 		
 		estadoMagia = new EstadoCampo();

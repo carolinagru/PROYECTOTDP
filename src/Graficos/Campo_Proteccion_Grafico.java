@@ -12,7 +12,9 @@ public class Campo_Proteccion_Grafico extends ObstaculoGrafico {
 		super( );
 		this.pos = new Point();
 		image[0] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/campo.gif"));
-	    
+		image[1] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/campo.gif"));
+		image[2] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/campo.gif"));
+		image[3] = new ImageIcon(getClass().getResource("/Sprites/PowerUps/campo.gif"));
 	}
  
 	
