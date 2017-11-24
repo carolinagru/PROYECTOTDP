@@ -293,7 +293,6 @@ public class Logica {
 				 	o.accept(v);
 				}
 				else{
-					a_eliminarObstaculo.addLast(o);
 					if ( o.getMagiaTemporal() != null) {
 						listaMagia.addLast(o.getMagiaTemporal());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
@@ -314,21 +313,20 @@ public class Logica {
 									mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
 									siguiente.setElemento(null);
 								 }
-							puntos += o.getPuntos();
-							monedas += o.getMonedas();
-							gui.setMonedasGUI(monedas);
-							gui.setPuntosGUI(puntos);
-							o.actualizarGrafico(2); 
-							a_eliminarObstaculo.addLast(o);
-							limpiarMuertos();
+						 }
+						puntos += o.getPuntos();
+						monedas += o.getMonedas();
+						gui.setMonedasGUI(monedas);
+						gui.setPuntosGUI(puntos);
+						o.actualizarGrafico(2); 
+						a_eliminarObstaculo.addLast(o);
+						limpiarMuertos();
 					}	   
 				}
 			}
 		}
 	}
-	}
 	
-
 	public void ataqueSoldadoS3 (S3 p ) {
 		Celda c = p.getCelda();	
 		Celda cv = p.getCeldaVecina();
@@ -367,16 +365,16 @@ public class Logica {
 										mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
 										siguiente.setElemento(null);
 									 }
-								puntos += o.getPuntos();
-								monedas += o.getMonedas();
-								gui.setMonedasGUI(monedas);
-								gui.setPuntosGUI(puntos);
-								System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
-								o.actualizarGrafico(2); 
-								a_eliminarObstaculo.addLast(o);
-								limpiarMuertos();
-							}	   
-					}
+							}
+							puntos += o.getPuntos();
+							monedas += o.getMonedas();
+							gui.setMonedasGUI(monedas);
+							gui.setPuntosGUI(puntos);
+							System.out.println("Despues -Puntos :"+puntos + " Monedas :"+monedas);
+							o.actualizarGrafico(2); 
+							a_eliminarObstaculo.addLast(o);
+							limpiarMuertos();
+						}	   
 				}
 			}
 			if (ov != null) {
@@ -409,21 +407,19 @@ public class Logica {
 										mapaCombate.setCeldaMapa(siguienteVecina.getFila(),siguienteVecina.getColumna(), null);
 										siguienteVecina.setElemento(null);
 									 }
-								puntos += ov.getPuntos();
-								monedas += ov.getMonedas();
-								gui.setMonedasGUI(monedas);
-								gui.setPuntosGUI(puntos);
-								ov.actualizarGrafico(2); 
-								a_eliminarObstaculo.addLast(ov);
-								limpiarMuertos();
+						}
+							puntos += ov.getPuntos();
+							monedas += ov.getMonedas();
+							gui.setMonedasGUI(monedas);
+							gui.setPuntosGUI(puntos);
+							ov.actualizarGrafico(2); 
+							a_eliminarObstaculo.addLast(ov);
+							limpiarMuertos();
 							}
 					}
 				}
 			}
 		}
-	}
-	
- 
 	
 	public void moverDisparoSoldado(Bala p){
 		Celda siguiente = mapaCombate.siguienteCeldaDer(p.getCelda());
@@ -523,7 +519,7 @@ public class Logica {
 		boolean toReturn = false;
 		Celda c = mapaCombate.getCelda(x, y);	
 		if (monedas >= 25 ) {
-			if (c.getElemento() != null) {
+			if (c.getElemento() == null) {
 				Celda v = mapaCombate.puedeInsertar(c); 
 				if (v != null){
 					toReturn = true;
@@ -546,7 +542,7 @@ public class Logica {
 				factorySoldado = new S4factory(panelMapa);
 				Soldado s =  factorySoldado.createPersonaje(c);
 				soldados45.addLast(s);
-				monedas -=25;
+				monedas -=45;
 				gui.setMonedasGUI(monedas);
 			}
 		}
@@ -562,7 +558,7 @@ public class Logica {
 				factorySoldado = new S5factory(panelMapa);
 				Soldado s =  factorySoldado.createPersonaje(c);
 				soldados45.addLast(s);
-				monedas -=25;
+				monedas -=60;
 				gui.setMonedasGUI(monedas);
 			}
 		}

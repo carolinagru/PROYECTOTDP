@@ -32,13 +32,10 @@ import Personajes.Alien;
 import Personajes.Personaje;
 import Personajes.S5;
 import Personajes.Soldado;
-<<<<<<< HEAD
 import Visitor.VisitorSoldado;
-=======
 import PowerUps.Bomba;
 import PowerUps.ObjetoPrecioso;
 import Visitor.VisitorBomba;
->>>>>>> cd772418ace9e3a73da4252d6f2cb2d805cfaa6d
 
 public class Mapa {
 	private Celda mapa[][];
@@ -276,7 +273,6 @@ public class Mapa {
 	}
 	
 	public void eliminar(Obstaculo o) {
-		//o.getCelda().setElemento(null);
 		panel.remove(o.getGrafico(2));
 		panel.revalidate();
 		panel.repaint();
@@ -285,28 +281,6 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
-<<<<<<< HEAD
-	
-	public Celda getCeldaVecina(Celda c) {
-		int fi = c.getFila();
-		int co = c.getColumna();
-		if (fi == 5) 
-			fi = 4;
-		else fi++;
-		
-		Celda v = getCelda(fi,co);
-	 return v;
-	}
-	/*
-	public void activarBomba (Celda c) {
-		int fil = c.getFila();
-		int col = c.getColumna ();
-		if ( mapa[fil+1][col] != null)
-			
-		
-	}
-	*/
-=======
->>>>>>> cd772418ace9e3a73da4252d6f2cb2d805cfaa6d
+
 }
 

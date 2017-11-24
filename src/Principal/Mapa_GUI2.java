@@ -504,7 +504,6 @@ public class Mapa_GUI2 extends JFrame {
 								int filas = y / 80;
 								int columnas = x  / 80;
 								if (logica.verificarPosicion(filas, columnas)) {
-									
 									System.out.println("Encontre soldado a eliminar y elimino ");
 								}
 							}
@@ -537,19 +536,4 @@ public class Mapa_GUI2 extends JFrame {
 		lblPuntaje.setText(""+m);
 	}
 	
-	ActionListener a53 = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-				public void mousePressed(MouseEvent e) {
-					 
-						int x=e.getX() ;
-						int y=e.getY() ;
-						int filas = y / 80;
-						int columnas = x  / 80;
-							System.out.println("No pudo comprar jugador 1 ");
-					  
-					}
-
-				});
-		}};
 }
