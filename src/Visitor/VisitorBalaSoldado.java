@@ -13,6 +13,7 @@ import Personajes.Soldado;
 import PowerUps.Bomba;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.Piedra;
 
 public class VisitorBalaSoldado implements Visitor{
 	protected Bala myDisparoSoldado;
@@ -215,6 +216,18 @@ public class VisitorBalaSoldado implements Visitor{
 	public void visit(Fuerza b) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void visit(Piedra p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean puedoPasar(Piedra p) {
+		// TODO Auto-generated method stub
+		return false;
 	}
  
 }

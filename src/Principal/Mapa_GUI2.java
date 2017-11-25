@@ -229,33 +229,6 @@ public class Mapa_GUI2 extends JFrame {
 		imagenBotonGuardarFuerza = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarFuerza.png"));
 		imagenBotonGuardarCampo = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarCampo.png"));
 		
-		JButton button_5 = new JButton("");
-		button_5.setBounds(0, 581, 104, 78);
-		imagenBotonGuardarBomba = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarBomba.png"));
-		iconoBotonGuardarBomba = new ImageIcon(imagenBotonGuardarBomba.getImage().getScaledInstance(button_5.getWidth(), button_5.getHeight(), Image.SCALE_SMOOTH));
-		button_5.setIcon(iconoBotonGuardarBomba);
-		button_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel_3.addMouseListener(new java.awt.event.MouseAdapter() {
-					boolean estadoBoton = true;
-					public void mousePressed(MouseEvent e) {
-						if (estadoBoton) {
-							estadoBoton = false;
-							int x=e.getX() ;
-							int y=e.getY() ;
-							int filas = y / 80;
-							int columnas = x  / 80;
-							if (logica.verificarBomba(filas, columnas)) {
-								cantBomba++;
-								lblCantBomba.setText(""+cantBomba);
-								System.out.println("Encontre magia Campo a eliminar y elimino ");
-							}
-							
-						}
-					 
-					}});
-			}});
-		panel_1.add(button_5);
 		
 		JButton button_6 = new JButton("");
 		button_6.addActionListener(new ActionListener() {
@@ -538,12 +511,10 @@ public class Mapa_GUI2 extends JFrame {
 		lblPuntaje.setText(""+m);
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public void fondo(int n) {
 	
 	}
 	
->>>>>>> e0e397387316e4412f1f7293feb60159858d2304
 	
 }

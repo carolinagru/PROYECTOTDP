@@ -10,9 +10,7 @@ public class BombaGrafico extends ObstaculoGrafico{
 		super();
 		this.pos = new Point();
 		image[0] = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
-		image[1] = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
-		image[2] = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
-		image[3] = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
+		
 		
 	}
 

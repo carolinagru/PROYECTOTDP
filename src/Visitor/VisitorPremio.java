@@ -14,6 +14,7 @@ import PowerUps.Bomba;
 import PowerUps.Campo_de_Proteccion;
 import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
+import PowerUps.Piedra;
 import Principal.Logica;
 
 public class VisitorPremio  implements Visitor{
@@ -36,7 +37,7 @@ public class VisitorPremio  implements Visitor{
 	
 	public void visit (Bomba b) {
 		System.out.println("Entre a visitar BOMBA");
-		l.getListaBombas().addLast(b);
+		l.getListaObjetosPrecioso().addLast(b);
 		
 	}
 	
@@ -231,6 +232,18 @@ public class VisitorPremio  implements Visitor{
 
 	@Override
 	public boolean Atacar(MagiaTemporal m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void visit(Piedra p) {
+		// TODO Auto-generated method stub
+		l.getListaObjetosPrecioso().addLast(p);
+	}
+
+	@Override
+	public boolean puedoPasar(Piedra p) {
 		// TODO Auto-generated method stub
 		return false;
 	}

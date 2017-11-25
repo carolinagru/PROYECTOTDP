@@ -32,20 +32,15 @@ import Objetos.Obstaculo;
 import Personajes.Alien;
  
 import Personajes.Soldado;
-<<<<<<< HEAD
  
 import Visitor.VisitorSoldado;
  
  
 import PowerUps.ObjetoPrecioso;
 import Visitor.VisitorBomba;
- 
-=======
-import Visitor.VisitorSoldado;
+
 import PowerUps.Bomba;
-import PowerUps.ObjetoPrecioso;
-import Visitor.VisitorBomba;
->>>>>>> e0e397387316e4412f1f7293feb60159858d2304
+
 
 public class Mapa {
 	private Celda mapa[][];
@@ -296,31 +291,7 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
-<<<<<<< HEAD
- 
-	
-	public Celda getCeldaVecina(Celda c) {
-		int fi = c.getFila();
-		int co = c.getColumna();
-		if (fi == 5) 
-			fi = 4;
-		else fi++;
-		
-		Celda v = getCelda(fi,co);
-	 return v;
-	}
-	/*
-	public void activarBomba (Celda c) {
-		int fil = c.getFila();
-		int col = c.getColumna ();
-		if ( mapa[fil+1][col] != null)
-			
-		
-	}
-	*/
- 
-=======
 
->>>>>>> e0e397387316e4412f1f7293feb60159858d2304
+
 }
 
