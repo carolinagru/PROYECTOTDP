@@ -115,9 +115,7 @@ public class Logica {
 	
 	}
 	
-	public Mapa_GUI2 getGui() {
-		return gui;
-	}
+	 
 	
 	public void ejecutarHilos(boolean resultado) {
 		insertarObjetos();	
@@ -301,38 +299,21 @@ public class Logica {
 				}
 				else{
 					if ( o.getMagiaTemporal() != null) {
-<<<<<<< HEAD
 						System.out.println("Encontre magia temporal ------"+o.getMagiaTemporal()+"Celda :"+siguiente.getFila()+ " - "+siguiente.getColumna());
-						listaMagia.addLast(o.getMagiaTemporal());
-=======
->>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
 						siguiente.setElemento(o.getMagiaTemporal());
 						o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 						mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
-						System.out.println("Se inserto magia en celda siguiente ."+siguiente.getElemento());
-						
+						System.out.println("Se inserto magia en celda siguiente ."+siguiente.getElemento());	
 					}
-<<<<<<< HEAD
-=======
-					if (o.getObjetoPrecioso() != null) {
-						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
-						siguiente.setElemento(o.getObjetoPrecioso());
-						o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
-						mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
-					}
-				
->>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
 					else {
 						if (o.getObjetoPrecioso() != null) {
 							System.out.println("Encontre un objeto Precioso ------");
-							listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
 							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
 							siguiente.setElemento(o.getObjetoPrecioso());
 							o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 							mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
 						}
-					
 						else {
 								mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
 								siguiente.setElemento(null);

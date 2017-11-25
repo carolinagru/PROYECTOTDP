@@ -36,13 +36,10 @@ public class VisitorPremio  implements Visitor{
 	}
 	
 	public void visit (Bomba b) {
-<<<<<<< HEAD
-		System.out.println("Entre a visitar BOMBA "+l.getListaObjetosPrecioso().size());
-		l.getGui().setBombas();
-		
-=======
+ 
+		System.out.println("Entre a visitar BOMBA ");
 		l.getGui().incrementarBomba();
->>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
+ 
 	}
 	
 	public void visit (Fuerza f) {
