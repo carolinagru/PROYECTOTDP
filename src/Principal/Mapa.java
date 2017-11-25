@@ -250,8 +250,8 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
-	public LinkedList<Obstaculo> activarBomba(int x, int y,ObjetoPrecioso b) {
-		Celda c = getCelda(x,y);
+	public LinkedList<Obstaculo> activarBomba(Celda c,Obstaculo b) {
+		
 		insertar(b.getGrafico(0));
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
@@ -267,7 +267,6 @@ public class Mapa {
 		
 		
 		VisitorBomba vb = new VisitorBomba();
-		vb.setBomba(b);
 		Obstaculo o ;
 		for (Celda celda : celdas) {
 			o = celda.getElemento();

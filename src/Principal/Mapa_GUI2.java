@@ -62,8 +62,9 @@ public class Mapa_GUI2 extends JFrame {
 	protected JPanel panel_3;
 	protected JLabel lblMonedas = new JLabel("0");
 	protected  JLabel lblPuntaje = new JLabel("0");
+	protected JLabel lblCantBomba = new JLabel("0");
 	private int cantBomba = 0;
-
+	private int cantPiedra = 0;
 	
 	public void iniciar() {
 		try {
@@ -217,7 +218,7 @@ public class Mapa_GUI2 extends JFrame {
 		panel_1.setLayout(null);
 		
 		
-		JLabel lblCantBomba = new JLabel("0");
+		
 		lblCantBomba.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCantBomba.setEnabled(false);
 		lblCantBomba.setBounds(10, 455, 46, 14);
@@ -494,13 +495,9 @@ public class Mapa_GUI2 extends JFrame {
 					int filas = y / 80;
 					int columnas = x  / 80;
 					System.out.println(filas +" - "+ columnas);
-
-					logica.accionMagia(filas, columnas);
-					
-					
+					logica.accionMagia(filas, columnas);	
 				}		
-			}
-			});
+			}});
 	}
 	
 	public void setMonedasGUI(int m ) {
@@ -514,6 +511,15 @@ public class Mapa_GUI2 extends JFrame {
 
 	public void fondo(int n) {
 	
+	}
+	
+	public void incrementarBomba() {
+		cantBomba++;
+		lblCantBomba.setText(""+cantBomba);
+	}
+	public void incrementarPiedra() {
+		cantPiedra++;
+		//hacer un contador para piedra
 	}
 	
 	

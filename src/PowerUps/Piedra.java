@@ -12,7 +12,16 @@ public class Piedra extends ObjetoPrecioso{
 	}
 	
 	public void accept(Visitor v) {		
-		v.visit(this);
 	}
 
+	public boolean dejoPasar(Visitor v) {
+		 
+		return false;
+	}
+
+
+	public boolean puedoAtacar(Visitor v) {
+		return false;
+	}
+	
 }

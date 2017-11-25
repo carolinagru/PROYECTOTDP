@@ -17,12 +17,6 @@ import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
 
 public class VisitorBomba implements Visitor {
-	protected ObjetoPrecioso miBomba;
-	
-	public void setBomba(ObjetoPrecioso b) {
-		miBomba = b;
-	}
-	
 	
 	@Override
 	public void visit(ObjetoTemporal o) {
@@ -158,7 +152,6 @@ public class VisitorBomba implements Visitor {
 
 	@Override
 	public boolean Atacar(ObjetoTemporal a) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

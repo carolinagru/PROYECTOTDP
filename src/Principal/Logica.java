@@ -1,7 +1,7 @@
 package Principal;
 
 import Personajes.*;
-
+import PowerUps.Bomba;
 import PowerUps.MagiaTemporal;
 import PowerUps.ObjetoPrecioso;
 import PowerUps.Piedra;
@@ -57,8 +57,6 @@ public class Logica {
 	protected LinkedList<S3> soldadosMapaS3;
 	protected LinkedList<Soldado> soldados45;
 	protected LinkedList<Bala> balasSoldado;
-	protected LinkedList<ObjetoPrecioso> listaObjetoPrecioso;
-	protected LinkedList<MagiaTemporal> listaMagia;
 	protected LinkedList<Bala> balasAlien;
 	protected LinkedList<ObjetoTemporal> listaObjetosTemporales;
 	protected LinkedList<ObjetoVidaComprar> listaObjetosComprarVida;
@@ -100,11 +98,9 @@ public class Logica {
 		a_eliminarObstaculoGrafica= new LinkedList<Obstaculo>();
 		balasSoldado = new LinkedList<Bala>();
 		balasAlien = new LinkedList<Bala>();
-		listaObjetoPrecioso = new LinkedList<ObjetoPrecioso>();
 		balasAeliminar = new LinkedList<Bala>();
 		listaObjetosTemporales = new LinkedList<ObjetoTemporal>();
 		listaObjetosComprarVida = new LinkedList<ObjetoVidaComprar>();
-		listaMagia = new LinkedList<MagiaTemporal>();
 		
 		nivel = 1;
 		cantBomba = 0;
@@ -117,6 +113,10 @@ public class Logica {
 		
 		ejecutarHilos(juegoActivo);
 	
+	}
+	
+	public Mapa_GUI2 getGui() {
+		return gui;
 	}
 	
 	public void ejecutarHilos(boolean resultado) {
@@ -145,7 +145,6 @@ public class Logica {
 		balasAeliminar.clear();
 		listaObjetosTemporales.clear();
 		listaObjetosComprarVida.clear();
-		listaMagia.clear();
 		
 		gui.fondo(n);
 		this.nivel = n;
@@ -159,9 +158,6 @@ public class Logica {
 		return soldadosMapa;
 	}
 	
-	public LinkedList<ObjetoPrecioso> getListaObjetosPrecioso () {
-		return listaObjetoPrecioso;
-	}
 
 	public void insertarObjetos() {
 		mapaCombate.insertarObjetos(this);
@@ -184,6 +180,7 @@ public class Logica {
 				aliensMapa.remove(o);
 				soldadosMapa.remove(o);
 				mapaCombate.getLista().remove(o);
+				listaObjetosComprarVida.remove(o);
 			}
 		}
 	}
@@ -304,14 +301,12 @@ public class Logica {
 				}
 				else{
 					if ( o.getMagiaTemporal() != null) {
-						listaMagia.addLast(o.getMagiaTemporal());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
 						siguiente.setElemento(o.getMagiaTemporal());
 						o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 						mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 					}
 					if (o.getObjetoPrecioso() != null) {
-						listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
 						siguiente.setElemento(o.getObjetoPrecioso());
 						o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
@@ -355,14 +350,12 @@ public class Logica {
 					}
 					else{
 						if ( o.getMagiaTemporal() != null) {
-							listaMagia.addLast(o.getMagiaTemporal());
 							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
 							siguiente.setElemento(o.getMagiaTemporal());
 							o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 							mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
 						}
 						if (o.getObjetoPrecioso() != null) {
-							listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
 							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
 							siguiente.setElemento(o.getObjetoPrecioso());
 							o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
@@ -395,7 +388,6 @@ public class Logica {
 					}
 					else{
 						if ( ov.getMagiaTemporal() != null) {
-							listaMagia.addLast(ov.getMagiaTemporal());
 							mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getMagiaTemporal());
 							siguienteVecina.setElemento(ov.getMagiaTemporal());
 							ov.getMagiaTemporal().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
@@ -403,7 +395,6 @@ public class Logica {
 						}
 						
 						if (ov.getObjetoPrecioso() != null) {
-							listaObjetoPrecioso.addLast(ov.getObjetoPrecioso());
 							mapaCombate.setCeldaMapa(siguienteVecina.getFila(), siguienteVecina.getColumna(), ov.getObjetoPrecioso());
 							siguienteVecina.setElemento(ov.getObjetoPrecioso());
 							ov.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguienteVecina.getFila(), siguienteVecina.getColumna());
@@ -454,7 +445,6 @@ public class Logica {
 		}
 	 
 	}
-	
 	
 	public void soldadosBala() {
 		for (Soldado p: soldados45){
@@ -643,24 +633,30 @@ public class Logica {
 	}
 	
 	public void activarBomba(int x, int y) {
-		LinkedList<Obstaculo> l = mapaCombate.activarBomba(x,y,listaObjetoPrecioso.getLast());
-		
-		while (l.size() > 0) {
-			Obstaculo o = l.removeFirst();
-			a_eliminarObstaculo.add(o);
+		Celda celda = mapaCombate.getCelda(x, y);
+		if (celda.getElemento() != null) {
+			Obstaculo b = new Bomba();
+			b.setCelda(x, y);
+			mapaCombate.setCeldaMapa(x, y, b);
+			celda.setElemento(b);
+			LinkedList<Obstaculo> l = mapaCombate.activarBomba(celda,b);
+			while (l.size() > 0) {
+				Obstaculo o = l.removeFirst();
+				a_eliminarObstaculo.add(o);
+			}
+			mapaCombate.eliminar(b);
 		}
-	  mapaCombate.eliminar(listaObjetoPrecioso.getLast());
-	  listaObjetoPrecioso.remove();
 	}
 	
 	public void activarPiedra(int x, int y) {
 		Piedra p = new Piedra();
 		p.setCelda(x, y);
+		mapaCombate.setCeldaMapa(x, y, p);
+		p.getCelda().setElemento(p);
 		mapaCombate.insertar(p.getGrafico(0));
 		HilosObjetoPreciosoPiedra op = new HilosObjetoPreciosoPiedra(this);
 		op.start();
 		mapaCombate.eliminar(p);
-		listaObjetoPrecioso.remove();
 	}
 	
 	public boolean comprarPared (int x, int y) {
@@ -750,7 +746,5 @@ public class Logica {
 		}
 		
 	}
-	
-	
 	
 }
