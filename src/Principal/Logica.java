@@ -31,7 +31,8 @@ import Hilos.HiloActivarObjetoTemporal;
 import Hilos.HiloLogico;
 import Hilos.HiloMagiaTemporaCampo;
 import Hilos.HiloMagiaTemporalFuerza;
- 
+import InterfazGrafica.PanelGano;
+import InterfazGrafica.PanelNivel2;
 import InterfazGrafica.panelGameOver;
 import Factory.S1factory;
 import Factory.S2factory;
@@ -77,7 +78,7 @@ public class Logica {
 	protected ObjVidaComprarFactoryMethod fabricaObjetoVidaComprar;
 	protected static int height = 500;
 	protected static int width= 1000;
-    protected static int columnas = ((width - 80 ) / tamanioCelda)+2;
+    protected static int columnas = ((width - 80) / tamanioCelda)+2;
     protected static int filas = ((height - 40) / tamanioCelda)+1;
     protected int cantOrdas;
     protected int nivel;
@@ -117,7 +118,6 @@ public class Logica {
 		
 		estadoMagia = new EstadoCampo();
 		cantOrdas = 1;
-		
 		ejecutarHilos(juegoActivo);
 	
 	}
@@ -126,7 +126,6 @@ public class Logica {
 		insertarObjetos();	
 		HiloLogico h = new HiloLogico(this);
 		h.start();
-		 
 	}
 
 	public boolean getjuegoActivo() {
@@ -143,7 +142,6 @@ public class Logica {
 		this.cantEnemigos = 12;
 		this.juegoActivo = true;
 		ejecutarHilos(true);
-		
 	}
 
 	public LinkedList<Soldado> getSoldados () {
@@ -151,16 +149,16 @@ public class Logica {
 	}
 
 	public void insertarObjetos() {
-			mapaCombate.insertarObjetos(this);
+		mapaCombate.insertarObjetos(this);
 	}
 		
 	public void limpiarBalasSoldado() {
-	 if ( balasAeliminar != null){
-		while (balasAeliminar.size() > 0) {
-			Bala b = balasAeliminar.removeFirst();
-			balasSoldado.remove(b);
-		}
-	 }
+		 if ( balasAeliminar != null){
+			while (balasAeliminar.size() > 0) {
+				Bala b = balasAeliminar.removeFirst();
+				balasSoldado.remove(b);
+			}
+		 }
 	}
 	
 	public void limpiarMuertos (){
@@ -176,18 +174,23 @@ public class Logica {
 	}
 	
 	public void insertarEnemigos() {
-	 if (cantEnemigos != 0) {
-		if ( aliensMapa.size() == 0) {
-			while ( aliensMapa.size() < 4)
-				aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
-			cantEnemigos-= 4;
-			
-			cantOrdas++;
-		  }
-	 }
-	 else { juegoActivo = false;
-	 		if (nivel == 1)
+		 if(cantEnemigos != 0) {
+			if ( aliensMapa.size() == 0) {
+				while ( aliensMapa.size() < 4)
+					aliensMapa.addLast(mapaCombate.insertarEnemigo(factoryAlien,nivel,cantOrdas));	 
+				cantEnemigos-= 4;
+				cantOrdas++;
+			}
+		 }
+		 else{ 
+		 	juegoActivo = false;
+	 		if (nivel == 1) {
 	 			setNivel(2);
+	 			PanelNivel2 panel = new PanelNivel2();
+	 			panel.setLocationRelativeTo(null);
+	 			panel.setVisible(true);
+	 			gui.setVisible(false);
+	 		}
 	 		else gano();
 	 	  }
 	}
@@ -199,8 +202,15 @@ public class Logica {
 	}
 	
 	public void gano() {
-		
-		
+		if(nivel == 2) {
+			if(cantEnemigos == 0) {
+				juegoActivo = false;
+				PanelGano p = new PanelGano();
+				p.setLocationRelativeTo(null);
+				p.setVisible(true);
+				gui.setVisible(false);
+			}
+		}
 	}
 	
 	public void gameOver() {

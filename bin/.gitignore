@@ -1,6 +1,7 @@
 /Logica.java
+/.gitignore
+/Archivos/
 /Sprites/
-/UML/
 /Disparo/
 /Estate/
 /Factory/
@@ -11,4 +12,5 @@
 /Personajes/
 /PowerUps/
 /Principal/
+/UML/
 /Visitor/
