@@ -36,12 +36,24 @@ public class VisitorPremio  implements Visitor{
 	}
 	
 	public void visit (Bomba b) {
+<<<<<<< HEAD
  
 		System.out.println("Entre a visitar BOMBA ");
+<<<<<<< HEAD
 		l.getMapaCombate().eliminar(b);
 		b.getCelda().setElemento(null);
+=======
+		l.getBombas().addLast(b);
+=======
+<<<<<<< HEAD
+		System.out.println("Entre a visitar BOMBA "+l.getListaObjetosPrecioso().size());
+		l.getGui().setBombas();
+		
+=======
+>>>>>>> 1fccf882b4f605290218d231c34e3c8fcae79048
+>>>>>>> c504cfefd8dd27c3500dc19d21875aad56075010
 		l.getGui().incrementarBomba();
- 
+>>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
 	}
 	
 	public void visit (Fuerza f) {
@@ -242,6 +254,7 @@ public class VisitorPremio  implements Visitor{
 	@Override
 	public void visit(Piedra p) {
 		// TODO Auto-generated method stub
+		l.getPiedras().addLast(p);
 		l.getGui().incrementarPiedra();
 	}
 

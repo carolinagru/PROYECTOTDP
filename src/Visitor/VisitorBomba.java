@@ -11,10 +11,8 @@ import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Soldado;
 import PowerUps.Bomba;
-import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
 import PowerUps.ObjetoPrecioso;
-import PowerUps.Piedra;
 
 public class VisitorBomba implements Visitor {
 	
@@ -211,34 +209,6 @@ public class VisitorBomba implements Visitor {
 
 	@Override
 	public boolean Atacar(MagiaTemporal m) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public void visit(Bomba b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void visit(Fuerza b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void visit(Piedra p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public boolean puedoPasar(Piedra p) {
 		// TODO Auto-generated method stub
 		return false;
 	}

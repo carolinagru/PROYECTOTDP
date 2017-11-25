@@ -10,7 +10,7 @@ public class FactoryFuerza implements MagiaTemporalMethodFactory {
 		public FactoryFuerza( ) {	 
 		}
 		
-		public Fuerza crearMagia () {
+		public MagiaTemporal crearMagia () {
 			Fuerza f = new Fuerza();
 				
 		 return f;
