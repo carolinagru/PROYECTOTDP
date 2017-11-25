@@ -253,7 +253,7 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
-	public LinkedList<Obstaculo> activarBomba(Celda c,Obstaculo b) {
+	public LinkedList<Obstaculo> activarBomba(Celda c,ObjetoPrecioso b) {
 		
 		insertar(b.getGrafico(0));
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
