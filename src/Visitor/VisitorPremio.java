@@ -36,8 +36,8 @@ public class VisitorPremio  implements Visitor{
 	}
 	
 	public void visit (Bomba b) {
-		System.out.println("Entre a visitar BOMBA");
-		l.getListaObjetosPrecioso().addLast(b);
+		System.out.println("Entre a visitar BOMBA "+l.getListaObjetosPrecioso().size());
+		l.getGui().setBombas();
 		
 	}
 	

@@ -62,7 +62,8 @@ public class Mapa_GUI2 extends JFrame {
 	protected JPanel panel_3;
 	protected JLabel lblMonedas = new JLabel("0");
 	protected  JLabel lblPuntaje = new JLabel("0");
-	private int cantBomba = 0;
+	protected JLabel lblCantBomba = new JLabel("0");
+	private int cantBombas = 0;
 
 	
 	public void iniciar() {
@@ -182,7 +183,7 @@ public class Mapa_GUI2 extends JFrame {
 							int filas = y / 80;
 							int columnas = x  / 80;
 							if (!logica.comprarRobot(filas,columnas)) {
-								System.out.println("No pudo comprar jugador 1 ");
+								System.out.println("No 1 ");
 							}
 						  estadoBoton1 = false;
 						}
@@ -217,9 +218,8 @@ public class Mapa_GUI2 extends JFrame {
 		panel_1.setLayout(null);
 		
 		
-		JLabel lblCantBomba = new JLabel("0");
+		 
 		lblCantBomba.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCantBomba.setEnabled(false);
 		lblCantBomba.setBounds(10, 455, 46, 14);
 		panel_1.add(lblCantBomba);
 		
@@ -230,6 +230,7 @@ public class Mapa_GUI2 extends JFrame {
 		imagenBotonGuardarCampo = new ImageIcon(getClass().getResource("/Sprites/botones/botonGuardarCampo.png"));
 		
 		
+		//Boton BOMBA
 		JButton button_6 = new JButton("");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -243,12 +244,16 @@ public class Mapa_GUI2 extends JFrame {
 							int columnas = x  / 80;
 							logica.activarBomba(filas,columnas);
 							estadoBoton6 = false;
+							restarBombas ();
+							System.out.println("Inserte bomba");
 							
 						}
 
 					}});
 			}
 		});
+		
+		
 		
 		button_6.setBounds(0, 485, 104, 90);
 		imagenBotonBomba = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
@@ -516,5 +521,17 @@ public class Mapa_GUI2 extends JFrame {
 	
 	}
 	
+	public void setBombas ( ) {
+		System.out.println("entre a set bombas ");
+		cantBombas++;
+		lblCantBomba.setText(""+cantBombas);
+		
+	}
+	
+	public void restarBombas () {
+		cantBombas--;
+		lblCantBomba.setText(""+cantBombas);
+		
+	}
 	
 }

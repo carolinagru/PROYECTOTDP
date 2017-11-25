@@ -304,24 +304,30 @@ public class Logica {
 				}
 				else{
 					if ( o.getMagiaTemporal() != null) {
+						System.out.println("Encontre magia temporal ------"+o.getMagiaTemporal()+"Celda :"+siguiente.getFila()+ " - "+siguiente.getColumna());
 						listaMagia.addLast(o.getMagiaTemporal());
 						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getMagiaTemporal());
 						siguiente.setElemento(o.getMagiaTemporal());
 						o.getMagiaTemporal().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
 						mapaCombate.insertar(o.getMagiaTemporal().getGrafico(0));
+						System.out.println("Se inserto magia en celda siguiente ."+siguiente.getElemento());
+						
 					}
-					if (o.getObjetoPrecioso() != null) {
-						listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
-						mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
-						siguiente.setElemento(o.getObjetoPrecioso());
-						o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
-						mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
-					}
-				
 					else {
-							mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
-							siguiente.setElemento(null);
+						if (o.getObjetoPrecioso() != null) {
+							System.out.println("Encontre un objeto Precioso ------");
+							listaObjetoPrecioso.addLast(o.getObjetoPrecioso());
+							mapaCombate.setCeldaMapa(siguiente.getFila(), siguiente.getColumna(), o.getObjetoPrecioso());
+							siguiente.setElemento(o.getObjetoPrecioso());
+							o.getObjetoPrecioso().getObstaculoGrafico().setPoint(siguiente.getFila(), siguiente.getColumna());
+							mapaCombate.insertar(o.getObjetoPrecioso().getGrafico(0));
+						}
+					
+						else {
+								mapaCombate.setCeldaMapa(siguiente.getFila(),siguiente.getColumna(), null);
+								siguiente.setElemento(null);
 						 }	
+					}
 					cantEnemigos--;
 					puntos += o.getPuntos();
 					monedas += o.getMonedas();
@@ -330,6 +336,8 @@ public class Logica {
 					o.actualizarGrafico(2); 
 					a_eliminarObstaculo.addLast(o);
 					//limpiarMuertos();
+					System.out.println("Se inserto magia en celda siguiente ultimo ."+siguiente.getElemento());
+
 				}	   
 			}
 		}
@@ -678,6 +686,7 @@ public class Logica {
 	 return toReturn;
 	}
 	
+	
 	public boolean comprarRobot(int x, int y) {
 		boolean toReturn = false;
 		Celda c = mapaCombate.getCelda(x, y);	
@@ -736,6 +745,10 @@ public class Logica {
 	
 	public int getPuntos () {
 		return puntos;
+	}
+	
+	public Mapa_GUI2 getGui () {
+		return gui;
 	}
 	
 	public void accionMagia (int x, int y) {

@@ -22,7 +22,8 @@ public  class ObjetoPrecioso extends Obstaculo {
 			
 		}
 		
-		public void accept(Visitor v) {			
+		public void accept(Visitor v) {	
+			
 		}
 
 		 

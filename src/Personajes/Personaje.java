@@ -12,8 +12,8 @@ public abstract class Personaje extends Obstaculo{
 	
 	protected float fuerza;
 	protected Estado myEstado;
-	protected MagiaTemporal magiaT;
-	protected ObjetoPrecioso objetoP;
+//	protected MagiaTemporal magiaT;
+//	protected ObjetoPrecioso objetoP;
 	protected int cantCeldas;
 	protected int distanciaAtaque;
 	
@@ -34,7 +34,7 @@ public abstract class Personaje extends Obstaculo{
 	public void setPosicion (Celda pos) {
 		this.pos = pos;
 	}
-	
+	/*
 	public void setMagiaTemporal (MagiaTemporal m) {
 		magiaT = m;
 	}
@@ -50,7 +50,7 @@ public abstract class Personaje extends Obstaculo{
 	public void setObjetoPrecioso(ObjetoPrecioso b) {
 		objetoP = b;
 	}
-	
+	*/
 	public void setFuerza (int f ) {
 		fuerza = f;
 	}

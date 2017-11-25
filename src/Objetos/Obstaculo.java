@@ -20,18 +20,18 @@ public abstract class Obstaculo {
 	protected int monedas;
 	protected Estado myEstado;
 	protected MagiaTemporal magiaT;
-	protected ObjetoPrecioso bomba;
+	protected ObjetoPrecioso objetoP;
 	
 	public void setMagiaTemporal (MagiaTemporal m) {
 		magiaT = m;
 	}
 	
 	public void setObjetoPrecioso(ObjetoPrecioso b) {
-		bomba = b;
+		objetoP = b;
 	}
 	
 	public ObjetoPrecioso getObjetoPrecioso() {
-		return bomba;
+		return objetoP;
 	}
 	
 	public MagiaTemporal getMagiaTemporal () {

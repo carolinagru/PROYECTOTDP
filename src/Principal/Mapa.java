@@ -205,7 +205,8 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
-		int r = (int) (Math.random() * 10)+1;
+		 int r = (int) (Math.random() * 10)+1;
+		
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
@@ -220,11 +221,13 @@ public class Mapa {
 					 FactoryBomba f4 = new FactoryBomba();
 					 p.setObjetoPrecioso(f4.crearObjetoPrecioso());
 				 }
+			 /*
 				 else 
 					 if (r == 4) {
 						 FactoryPiedra f5 = new FactoryPiedra();
 						 p.setObjetoPrecioso(f5.crearObjetoPrecioso());
 					 }
+					 */
 		 }
 	  return  p;
 	}
