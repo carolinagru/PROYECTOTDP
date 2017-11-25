@@ -2,7 +2,6 @@ package Personajes;
 
 import Estate.Estado;
 import PowerUps.MagiaTemporal;
-import PowerUps.ObjetoPrecioso;
 import Principal.Celda;
 import Visitor.*;
 
@@ -28,14 +27,7 @@ public class Alien extends Personaje {
  		return magiaT;
  	}
  	
- 	public ObjetoPrecioso getObjetoPrecioso() {
-		return objetoP;
-	}
-	
-	public void setObjetoPrecioso(ObjetoPrecioso b) {
-		objetoP = b;
-	}
- 	
+   
      public void setEstado (Estado e ) {
     	this.myEstado = e;
      }

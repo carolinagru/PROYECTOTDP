@@ -11,7 +11,6 @@ public class BombaGrafico extends ObstaculoGrafico{
 		this.pos = new Point();
 		image[0] = new ImageIcon(getClass().getResource("/Sprites/Objeto_Precioso/bomba.gif"));
 		
-		
 	}
 
 }

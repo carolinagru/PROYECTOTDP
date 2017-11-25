@@ -2,6 +2,14 @@
 <classpath>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Carol/Documents/GitHub/TDP2017GOT-311066abcb9c8514a9159a1f5ee8424b7b721546/PROYECTOTDP/miglayout15-swing.jar"/>
+=======
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="C:/Users/NSC_7/OneDrive/Documents/GitHub/TDP2017GOT/ProyectoTDPpoliciasVSaliens/miglayout15-swing.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Emanuel/OneDrive/Documentos/GitHub/miglayout15-swing.jar"/>
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
+>>>>>>> 1fccf882b4f605290218d231c34e3c8fcae79048
 	<classpathentry kind="output" path="bin"/>
 </classpath>

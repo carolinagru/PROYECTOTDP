@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
- 
+import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Disparo.Bala;
@@ -22,7 +22,6 @@ import Factory.BalasFactoryMethod;
 import Factory.FactoryBomba;
 import Factory.FactoryCampoProteccion;
 import Factory.FactoryFuerza;
-import Factory.FactoryPiedra;
 import Hilos.HiloActivarObjetoTemporal;
 import Objetos.ObjetoAgua;
 import Objetos.ObjetoFuego;
@@ -30,17 +29,13 @@ import Objetos.ObjetoFuente;
 import Objetos.ObjetoPiedra;
 import Objetos.Obstaculo;
 import Personajes.Alien;
- 
+import Personajes.Personaje;
+import Personajes.S5;
 import Personajes.Soldado;
- 
 import Visitor.VisitorSoldado;
- 
- 
+import PowerUps.Bomba;
 import PowerUps.ObjetoPrecioso;
 import Visitor.VisitorBomba;
-
-import PowerUps.Bomba;
-
 
 public class Mapa {
 	private Celda mapa[][];
@@ -71,7 +66,6 @@ public class Mapa {
 		return null;
 	}
 	
-	
 	public Celda puedeInsertar(Celda c) {
 		Celda celdaVecina = getCelda(c.getFila()+1, c.getColumna());
 		if (celdaVecina != null)
@@ -88,6 +82,7 @@ public class Mapa {
 				if (celdaVecina.getElemento() == null)
 					return celdaVecina;
 			 }
+		
 		return null;
 	}
 	
@@ -115,6 +110,7 @@ public class Mapa {
 	        String cadena = "";
 	        char d;
 	        int y = 0;
+	        System.out.println("Entre a insertar objetosW");
 	        	while ((cadena = b.readLine()) != null) {
 	        		int x = 0;
 		        	for (int i = 0; i < cadena.length(); i++){
@@ -166,7 +162,7 @@ public class Mapa {
 			}
 		}
 		return toReturn;
-}
+	}
 	
 	public void insertar(JLabel l) {
 		panel.add(l);
@@ -205,8 +201,12 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
+<<<<<<< HEAD
+		int r = (int) (Math.random() * 9)+1;
+=======
 		 int r = (int) (Math.random() * 10)+1;
 		
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
@@ -219,8 +219,10 @@ public class Mapa {
 			 else
 				 if (r == 3) {
 					 FactoryBomba f4 = new FactoryBomba();
-					 p.setObjetoPrecioso(f4.crearObjetoPrecioso());
+					 p.setBomba(f4.crearBomba());
 				 }
+<<<<<<< HEAD
+=======
 			 /*
 				 else 
 					 if (r == 4) {
@@ -228,6 +230,7 @@ public class Mapa {
 						 p.setObjetoPrecioso(f5.crearObjetoPrecioso());
 					 }
 					 */
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 		 }
 	  return  p;
 	}
@@ -253,9 +256,18 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
+<<<<<<< HEAD
 	public LinkedList<Obstaculo> activarBomba(Celda c,ObjetoPrecioso b) {
+=======
+<<<<<<< HEAD
+	public LinkedList<Obstaculo> activarBomba(int x, int y,ObjetoPrecioso b) {
+		Celda c = getCelda(x,y);
+=======
+	public LinkedList<Obstaculo> activarBomba(Celda c,Obstaculo b) {
+>>>>>>> 1fccf882b4f605290218d231c34e3c8fcae79048
 		
 		insertar(b.getGrafico(0));
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
 		
@@ -293,7 +305,6 @@ public class Mapa {
 	public LinkedList<Obstaculo> getLista() {
 		return objetosMapa;
 	}
-
 
 }
 
