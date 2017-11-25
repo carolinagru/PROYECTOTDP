@@ -78,11 +78,18 @@ public class Mapa_GUI2 extends JFrame {
 
 =======
 	protected JLabel lblCantBomba = new JLabel("0");
- 
+<<<<<<< HEAD
 	private int cantBombas = 0;
+
+=======
+	private int cantBomba = 0;
 	private int cantPiedra = 0;
+<<<<<<< HEAD
  
 >>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
+=======
+>>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
+>>>>>>> parent of 9f2c3c5... ema
 	
 	public void iniciar() {
 		try {
@@ -238,7 +245,11 @@ public class Mapa_GUI2 extends JFrame {
 		panel.add(button_2);
 		
 		
- 
+<<<<<<< HEAD
+		 
+=======
+		
+>>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
 		lblCantBomba.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCantBomba.setBounds(10, 455, 46, 14);
 		panel_1.add(lblCantBomba);
@@ -547,29 +558,34 @@ public class Mapa_GUI2 extends JFrame {
 	
 	}
 	
- 
-  
+<<<<<<< HEAD
+	public void setBombas ( ) {
+		System.out.println("entre a set bombas ");
+		cantBombas++;
+		lblCantBomba.setText(""+cantBombas);
+		
+	}
 	
 	public void restarBombas () {
 		cantBombas--;
 		lblCantBomba.setText(""+cantBombas);
 		
 	}
- 
+=======
 	public void incrementarBomba() {
-		cantBombas++;
-		lblCantBomba.setText(""+cantBombas);
+		cantBomba++;
+		lblCantBomba.setText(""+cantBomba);
 	}
 	public void incrementarPiedra() {
 		cantPiedra++;
-		 
+		//hacer un contador para piedra
 	}
 	
-	public void restarPiedras () {
-		cantPiedra--;
-		
-	}
+>>>>>>> 82bc74337f48638211395da67ee779e7b3075a08
 	
+<<<<<<< HEAD
  
 >>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
+=======
+>>>>>>> parent of 9f2c3c5... ema
 }
