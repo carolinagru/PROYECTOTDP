@@ -72,9 +72,17 @@ public class Mapa_GUI2 extends JFrame {
 	protected JPanel panel_3;
 	protected JLabel lblMonedas = new JLabel("0");
 	protected  JLabel lblPuntaje = new JLabel("0");
+<<<<<<< HEAD
 	protected int cantBomba = 0;
 	protected int n;
 
+=======
+	protected JLabel lblCantBomba = new JLabel("0");
+ 
+	private int cantBombas = 0;
+	private int cantPiedra = 0;
+ 
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 	
 	public void iniciar() {
 		try {
@@ -208,7 +216,7 @@ public class Mapa_GUI2 extends JFrame {
 							int filas = y / 80;
 							int columnas = x  / 80;
 							if (!logica.comprarRobot(filas,columnas)) {
-								System.out.println("No pudo comprar jugador 1 ");
+								System.out.println("No 1 ");
 							}
 						  estadoBoton1 = false;
 						}
@@ -230,9 +238,8 @@ public class Mapa_GUI2 extends JFrame {
 		panel.add(button_2);
 		
 		
-		JLabel lblCantBomba = new JLabel("0");
+ 
 		lblCantBomba.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCantBomba.setEnabled(false);
 		lblCantBomba.setBounds(10, 455, 46, 14);
 		panel_1.add(lblCantBomba);
 		
@@ -270,6 +277,7 @@ public class Mapa_GUI2 extends JFrame {
 			}});
 		panel_1.add(button_5);
 		
+		//Boton BOMBA
 		JButton button_6 = new JButton("");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -283,12 +291,16 @@ public class Mapa_GUI2 extends JFrame {
 							int columnas = x  / 80;
 							logica.activarBomba(filas,columnas);
 							estadoBoton6 = false;
+							restarBombas ();
+							System.out.println("Inserte bomba");
 							
 						}
 
 					}});
 			}
 		});
+		
+		
 		
 		button_6.setBounds(0, 485, 104, 90);
 		imagenBotonBomba = new ImageIcon(getClass().getResource("/Sprites/botones/bomba.png"));
@@ -508,12 +520,16 @@ public class Mapa_GUI2 extends JFrame {
 					int y=e.getY() ;
 					int filas = y / 80;
 					int columnas = x  / 80;
+<<<<<<< HEAD
 					System.out.println(filas +"-"+columnas);
 					//logica.verificarMagiaFuerza(filas, columnas);
 					//logica.verificarMagiaCampo(filas, columnas);			
+=======
+					System.out.println(filas +" - "+ columnas);
+					logica.accionMagia(filas, columnas);	
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 				}		
-			}
-			});
+			}});
 	}
 	
 	public void setMonedasGUI(int m ) {
@@ -524,4 +540,36 @@ public class Mapa_GUI2 extends JFrame {
 		lblPuntaje.setText(""+m);
 	}
 	
+<<<<<<< HEAD
+=======
+
+	public void fondo(int n) {
+	
+	}
+	
+ 
+  
+	
+	public void restarBombas () {
+		cantBombas--;
+		lblCantBomba.setText(""+cantBombas);
+		
+	}
+ 
+	public void incrementarBomba() {
+		cantBombas++;
+		lblCantBomba.setText(""+cantBombas);
+	}
+	public void incrementarPiedra() {
+		cantPiedra++;
+		 
+	}
+	
+	public void restarPiedras () {
+		cantPiedra--;
+		
+	}
+	
+ 
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 }

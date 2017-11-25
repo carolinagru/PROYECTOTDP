@@ -201,7 +201,12 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
+<<<<<<< HEAD
 		int r = (int) (Math.random() * 9)+1;
+=======
+		 int r = (int) (Math.random() * 10)+1;
+		
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());
@@ -216,6 +221,16 @@ public class Mapa {
 					 FactoryBomba f4 = new FactoryBomba();
 					 p.setBomba(f4.crearBomba());
 				 }
+<<<<<<< HEAD
+=======
+			 /*
+				 else 
+					 if (r == 4) {
+						 FactoryPiedra f5 = new FactoryPiedra();
+						 p.setObjetoPrecioso(f5.crearObjetoPrecioso());
+					 }
+					 */
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 		 }
 	  return  p;
 	}
@@ -241,8 +256,14 @@ public class Mapa {
 		return getCelda(c.getFila(),col);
 	}
 	
+<<<<<<< HEAD
 	public LinkedList<Obstaculo> activarBomba(int x, int y,ObjetoPrecioso b) {
 		Celda c = getCelda(x,y);
+=======
+	public LinkedList<Obstaculo> activarBomba(Celda c,Obstaculo b) {
+		
+		insertar(b.getGrafico(0));
+>>>>>>> 9f2c3c5cfd7e54c0fe39e2b489671a8bc99aef7b
 		LinkedList<Obstaculo> eliminados = new LinkedList<Obstaculo>();
 		LinkedList<Celda> celdas = new LinkedList<Celda>();
 		
@@ -257,7 +278,6 @@ public class Mapa {
 		
 		
 		VisitorBomba vb = new VisitorBomba();
-		vb.setBomba(b);
 		Obstaculo o ;
 		for (Celda celda : celdas) {
 			o = celda.getElemento();

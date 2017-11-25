@@ -11,32 +11,55 @@ import Objetos.ObjetoVidaComprar;
 import Personajes.Alien;
 import Personajes.Soldado;
 import PowerUps.Bomba;
+import PowerUps.Campo_de_Proteccion;
+import PowerUps.Fuerza;
 import PowerUps.MagiaTemporal;
-import PowerUps.ObjetoPrecioso;
+import PowerUps.Piedra;
+import Principal.Logica;
 
-public class VisitorBomba implements Visitor {
+public class VisitorPremio  implements Visitor{
+	private Logica l;
 	
-	@Override
+	public VisitorPremio (Logica l) {
+		this.l = l;
+	}
+	 
 	public void visit(ObjetoTemporal o) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
-	@Override
+	 
 	public void visit(MagiaTemporal m) {
-		// TODO Auto-generated method stub
-		
-	}
+		 
 
-	@Override
+	}
+	
+	public void visit (Bomba b) {
+ 
+		System.out.println("Entre a visitar BOMBA ");
+		l.getGui().incrementarBomba();
+ 
+	}
+	
+	public void visit (Fuerza f) {
+		System.out.println("Entre a visitar FUERZA");
+		l.activarMagia_Fuerza();
+	}
+	
+	public void visit (Campo_de_Proteccion c ) {
+		System.out.println("Entre a visitar CAMPO PROTECCION");
+		l.activarMagia_Campo();
+	}
+ 
 	public void visit(ObjetoAgua a) {
-		// TODO Auto-generated method stub
+	 
 		
 	}
 
-	@Override
+	 
 	public void visit(ObjetoFuego a) {
-		// TODO Auto-generated method stub
+		 
 		
 	}
 
@@ -150,6 +173,7 @@ public class VisitorBomba implements Visitor {
 
 	@Override
 	public boolean Atacar(ObjetoTemporal a) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -168,13 +192,13 @@ public class VisitorBomba implements Visitor {
 	@Override
 	public boolean Atacar(ObjetoFuente a) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean Atacar(ObjetoPiedra a) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
@@ -186,25 +210,25 @@ public class VisitorBomba implements Visitor {
 	@Override
 	public boolean Atacar(Alien a) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean Atacar(Soldado a) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean Atacar(ObjetoVida a) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean Atacar(ObjetoVidaComprar a) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
@@ -212,6 +236,17 @@ public class VisitorBomba implements Visitor {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
+	@Override
+	public void visit(Piedra p) {
+		// TODO Auto-generated method stub
+		l.getGui().incrementarPiedra();
+	}
+
+	@Override
+	public boolean puedoPasar(Piedra p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
