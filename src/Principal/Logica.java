@@ -203,7 +203,7 @@ public class Logica {
 	
 	public void gano() {
 		if(nivel == 2) {
-			if(cantEnemigos == 0) {
+			if(cantEnemigos == 0) { 
 				juegoActivo = false;
 				PanelGano p = new PanelGano();
 				p.setLocationRelativeTo(null);
