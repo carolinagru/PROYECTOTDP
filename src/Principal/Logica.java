@@ -56,6 +56,7 @@ public class Logica {
 	protected LinkedList<Soldado> soldadosMapa;
 	protected LinkedList<S3> soldadosMapaS3;
 	protected LinkedList<Soldado> soldados45;
+	protected LinkedList<Alien> alien35;
 	protected LinkedList<Bala> balasSoldado;
 	protected LinkedList<Bala> balasAlien;
 	protected LinkedList<ObjetoTemporal> listaObjetosTemporales;
@@ -649,6 +650,7 @@ public class Logica {
 				a_eliminarObstaculo.add(o);
 			}
 			mapaCombate.eliminar(b);
+			celda.setElemento(null);
 		}
 	}
 	
@@ -750,8 +752,7 @@ public class Logica {
 		VisitorPremio v = new VisitorPremio (this);
 		if (c.getElemento()!=null) {
 			c.getElemento().accept(v);
-			mapaCombate.eliminar(c.getElemento());
-			mapaCombate.setCeldaMapa(x, y, null);
+			
 		}
 		
 	}

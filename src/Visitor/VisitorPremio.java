@@ -38,6 +38,8 @@ public class VisitorPremio  implements Visitor{
 	public void visit (Bomba b) {
  
 		System.out.println("Entre a visitar BOMBA ");
+		l.getMapaCombate().eliminar(b);
+		b.getCelda().setElemento(null);
 		l.getGui().incrementarBomba();
  
 	}

@@ -205,8 +205,8 @@ public class Mapa {
 		}
 		p = factory.createPersonaje(c);
 		 
-		 int r = (int) (Math.random() * 10)+1;
-		
+		// int r = (int) (Math.random() * 10)+1;
+		int r = 3;
 		 if (r == 1) {
 			FactoryCampoProteccion f2 = new FactoryCampoProteccion ();
 			p.setMagiaTemporal(f2.crearMagia());

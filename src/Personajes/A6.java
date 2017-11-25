@@ -13,6 +13,7 @@ public class A6 extends Alien{
 		this.punto=35;
  		this.vida = 100;
 		this.fuerza = (float) 0.6;
+		this.distanciaAtaque = 4;
 		this.grafico = new Alien6Grafico(pos.getFila(), pos.getColumna());		
 		
 	}
